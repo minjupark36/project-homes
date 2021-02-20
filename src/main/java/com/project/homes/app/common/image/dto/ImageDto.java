@@ -26,7 +26,7 @@ public class ImageDto {
 	@Builder
 	public ImageDto(long id, String hashtagsNames, String filepath, String originalFilename, String url, String sort,
 			LocalDate createDate, long pnum, long view, long scrap) {
-		super();
+		
 		this.id = id;
 		this.hashtagsNames = hashtagsNames;
 		this.filepath = filepath;

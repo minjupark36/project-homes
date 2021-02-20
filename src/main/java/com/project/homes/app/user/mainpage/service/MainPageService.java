@@ -32,5 +32,6 @@ public class MainPageService {
 	public List<InfoDto> getInfoList(String searchAs) {
 		return mainPageMapper.getInfoList(searchAs);
 	}
+	
 
 }

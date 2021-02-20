@@ -4,5 +4,71 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.homes.app.user.scrap.mapper.ScrapMapper">
 
+	<sql id="scrapColumns">
+		id,
+		members_id,
+		images_id,
+		create_date
+	</sql>
+	
+	<!-- javaType : "객체를 속성으로 가지고있는 해당 객체의 CamelCase명 또는, @Alias("키값")" -->
+	<!-- property : "객체참조변수명" -->
+	<!-- id : "PK" -->
+	<resultMap id="ScrapDto" type="ScrapDto">
+		<result column="id" property="id"/>
+		<result column="members_id" property="membersId"/>
+		<result column="images_id" property="imagesId"/>
+		<result column="create_date" property="createDate"/>
+		<association property="imageDto" resultMap="ImageDto"/>
+	</resultMap>
+	
+	<!-- id : "JOIN 하는 POJO 클래스의 CamelCase명 또는, @Alias("키값")" -->
+	<!-- type : "FROM 대상인 POJO 클래스의 CamelCase명 또는, @Alias("키값")" -->
+	<!-- column : "DB 컬럼명" -->
+	<!-- property: "type에 적힌 POJO클래스의 속성명" -->
+	<resultMap id="ImageDto" type="ImageDto">
+		<result column="filepath" property="filepath"/>
+		<result column="sort" property="sort"/>
+	</resultMap>
+	
+<!-- 개인 스크랩 이미지 리스트 가져오기 -->	
+	<select id="getScrapList" 
+	parameterType="java.util.HashMap" 
+	resultMap="ScrapDto">
+	
+	SELECT
+		s.id
+		, s.images_id
+		, s.create_date
+		, i.filepath	
+		, i.sort
+	FROM 
+		scrap_images s		
+	JOIN 
+		images i
+	ON 
+		s.images_id = i.id
+	WHERE 
+		<!-- view에서 ${id}로 값 받기 or session값 -->
+		s.members_id = 7
+	<!-- 조건 만족시 내부쿼리 실행, 불만족시 전체쿼리 탈출 -->
+	<!-- 어떤 비교를 하던지 null체크 선행 要 -->
+	<choose>
+		<when test="sort != null and sort != '' and sort.equals('interior')">
+			AND i.sort = #{sort}
+		</when>
+		<when test="sort != null and sort != '' and sort.equals('deco')">
+			AND i.sort = #{sort}
+		</when>
+		<otherwise>
+			AND i.sort IS NOT NULL
+		</otherwise>
+	</choose>				
+	ORDER BY
+		create_date desc
+		, id desc
+	LIMIT ${limit}
+	
+	</select>
 
 </mapper>
