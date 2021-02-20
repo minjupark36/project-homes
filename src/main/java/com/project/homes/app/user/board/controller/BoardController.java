@@ -67,7 +67,7 @@ public class BoardController {
 		model.addAttribute("boardDetail",boardService.getBoardDetail(id));
 		model.addAttribute("categoriesId",categoriesId);
 		model.addAttribute("replyList",boardService.getReplyList(id));
-		model.addAttribute("hit", boardService.countView(id));
+		model.addAttribute("view", boardService.countView(id));
 		
 		return "user/board/boardDetail";
 	}

@@ -49,7 +49,7 @@
 		<tr>
 			<td>카테고리</td>
 			<td> 
-				<select name="categoriesId">
+				<select name="categoriesId" class="form-control">
 					<option value=1>자유게시판</option>
 					<option value=2>FAQ</option>
 					<option value=3>공지사항</option>
@@ -64,15 +64,14 @@
 		</tr>
 		<tr>
 			<td colspan=2>
-			<input type="file" name="files" multiple="multiple" class="form-control">
+			<input type="file" name="files" multiple="multiple">
 		</tr>
    	
 </table>
-<button type="button" id="btn" 
-class="btn btn-raised btn-primary btn-round waves-effect" onclick="writeBoard();">작성 완료</button>
+<button type="button" id="btn" class="btn btn-outline-secondary" onclick="writeBoard();">작성 완료</button>
 
 </form>
-<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/user/board'">취소</button>
+<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board'">취소</button>
 
 </div>
 </body>

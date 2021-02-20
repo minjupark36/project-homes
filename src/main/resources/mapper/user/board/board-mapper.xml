@@ -54,7 +54,7 @@
 	      </where>
       	</if>
       	
-      	order by group_no desc,group_order 
+      	order by group_no desc,group_order,depth
 	</select>
 	
 	<select id="getBoardDetail" resultType="BoardDto" parameterType="long" resultMap="boardDtoResultMap">
@@ -79,7 +79,7 @@
 			group_no,
 			group_order,
 			depth
-		FROM boards b
+		FROM boards
 		WHERE group_no=#{id} AND id!=#{id}
 		order by group_no desc,depth
 	</select>

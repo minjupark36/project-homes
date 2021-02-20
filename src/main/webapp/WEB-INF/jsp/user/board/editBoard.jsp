@@ -105,10 +105,10 @@
    	
 </table>
 <br>
-<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="editBoard(${d.id},${d.categoriesId})">수정완료</button>
+<button type="button" class="btn btn-outline-secondary" onclick="editBoard(${d.id},${d.categoriesId})">수정완료</button>
 
 </form>
-<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/user/board/detail?id=${d.id}&categoriesId=${d.categoriesId}'">취소</button>
+<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/detail?id=${d.id}&categoriesId=${d.categoriesId}'">취소</button>
 </div>
 </body>
 </html>

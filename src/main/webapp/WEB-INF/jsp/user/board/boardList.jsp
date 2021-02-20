@@ -14,6 +14,9 @@
 		$("#search-form").submit();
 	}
 </script>
+<style>
+	
+</style>
 </head>
 <body>
 <div>
@@ -29,7 +32,7 @@
 </c:forEach>
 </table>
 </div>
-<div>
+<div class="category">
 	<a href="/user/board/1">자유게시판</a>
 	<a href="/user/board/2">FAQ</a>
 	<a href="/user/board/3">공지사항</a>
@@ -66,7 +69,7 @@
 	</ul>
 </div>
 <div>
-	<form id="search-form" action="/user/board/${categoriesId }" method="get">
+	<form id="search-form" action="/user/board/${categoriesId}" method="get">
 		<input type="hidden" name="num" id="searchNum" value="1">
 		
 		<div class="d-flex clearfix col-12">
@@ -77,10 +80,10 @@
 				</select>
 			</div>
 			<div class="input-group col-8">
-				<input type="text" name="search" id="search" class="form-control" value="${searchMap.search }">
+				<input type="text" name="search" id="search" class="form-control" value="${searchMap.search}">
 			</div>
 			<div class="col-2">
-				<button type="button" onclick="search(1);" class="btn btn-raised btn-primary btn-round waves-effect">Search</button>
+				<button type="button" onclick="search(1);" class="btn btn-outline-secondary">Search</button>
 			</div>
 		</div>
 	</form>

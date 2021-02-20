@@ -34,9 +34,9 @@
 <body>
 <c:set var="d" value="${boardDetail}"></c:set>
 <div>
-	<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="deleteBoard(${d.id})">글 삭제</button>
-	<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/user/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}'">수정</button>
-	<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/user/board'">리스트로 이동</button>
+	<button type="button" class="btn btn-outline-secondary" onclick="deleteBoard(${d.id})">글 삭제</button>
+	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}'">수정</button>
+	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board'">게시판</button>
 </div>
 <div>
 <input type="hidden" value="${d.id}" name="id"/> 
@@ -54,7 +54,7 @@
 	</table>
 </div>
 <div>
-<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/user/board/reply?pid=${d.groupNo}&groupOrder=${d.groupOrder}&depth=${d.depth}&categoriesId=${d.categoriesId}'">답글</button>	
+<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/reply?pid=${d.groupNo}&groupOrder=${d.groupOrder}&depth=${d.depth}&categoriesId=${d.categoriesId}'">답글</button>	
 </div>
 <div>
 	<table class="table table-hover">	

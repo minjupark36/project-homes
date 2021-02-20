@@ -61,13 +61,14 @@
 		
 		<tr>
 			<td colspan=2>
-			<input type="file" name="files" multiple="multiple" class="form-control">
+			<input type="file" name="files" multiple="multiple">
 		</tr>
 		
    	
 </table>
 
-<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="writeReply()">작성완료</button>
+<button type="button" class="btn btn-outline-secondary" onclick="writeReply()">작성완료</button>
+<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board'">취소</button>
 </form>
 </div>
 </body>
