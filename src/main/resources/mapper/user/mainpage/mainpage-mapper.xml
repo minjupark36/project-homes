@@ -30,6 +30,16 @@
 		<result property="scrap" column="scrap"/>
 	</resultMap>
 	
+	<resultMap type="InfoDto" id="InfoDto">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="text" column="text"/>
+		<result property="url" column="url"/>
+		<result property="imageUrl" column="image_url"/>
+		<result property="view" column="view"/>
+		<result property="createDate" column="create_date"/>
+	</resultMap>
+	
 	<select id="getInteriorImages"
 	parameterType="java.util.HashMap"
 	resultType="ImageDto" resultMap="ImageDto">
@@ -82,6 +92,26 @@
 	        <when test="order == 'lowscrap'">scrap asc</when>
 	        <otherwise>id desc</otherwise>
 	    </choose>
+			
+	</select>
+	
+	<select id="getInfoList"
+	parameterType="String"
+	resultMap="InfoDto">
+	
+		SELECT
+			*
+		FROM 
+			information			
+		<if test="searchAs != ''">
+		    <where> 
+		      	title LIKE CONCAT('%',#{searchAs},'%')	
+		      	OR
+		      	text LIKE CONCAT('%',#{searchAs},'%')	      		      	
+		    </where>
+      	</if> 
+		ORDER BY
+			id
 			
 	</select>
 	

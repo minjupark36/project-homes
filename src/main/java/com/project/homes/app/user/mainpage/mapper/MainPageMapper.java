@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.project.homes.app.common.image.dto.ImageDto;
+import com.project.homes.app.common.info.dto.InfoDto;
 
 @Repository
 @Mapper
@@ -15,5 +16,6 @@ public interface MainPageMapper {
 	List<ImageDto> getInteriorImages();
 	List<ImageDto> getDecoImages();
 	List<ImageDto> getImageList(String order);
+	List<InfoDto> getInfoList(String searchAs);
 
 }

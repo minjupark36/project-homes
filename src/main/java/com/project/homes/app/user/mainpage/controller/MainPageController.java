@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.homes.app.common.image.service.ImageService;
@@ -42,6 +43,23 @@ public class MainPageController {
 		model.addAttribute("mainpageList",mainPageService.getImageList(order));
 
 		return "/user/mainpage/mainImages";
+	}
+	
+	/*메인-정보 페이지*/
+	@RequestMapping("/main/info")
+	public String mainInfoList(Model model
+			, @RequestParam(name="order", defaultValue="recent") String order
+			, @RequestParam(name="search", defaultValue ="") String searchAs
+			) {
+
+		System.out.println("===========================");
+		System.out.println(searchAs);
+		System.out.println("===========================");
+//		MemberDto memberDto = Utils.getMemberFromSession();
+		
+		model.addAttribute("searchAs",searchAs);
+		model.addAttribute("infoList", mainPageService.getInfoList(searchAs));		
+		return "/user/mainpage/mainInfo";
 	}
 	
 }
