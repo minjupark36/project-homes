@@ -32,6 +32,7 @@ public class MainPageController {
 		
 		model.addAttribute("interior",mainPageService.getInteriorImages());
 		model.addAttribute("deco",mainPageService.getDecoImages());
+//		model.addAttribute("hashtagList",hashtagService.selectHashtags());
 		
 		return "/user/mainpage/main";
 	}
@@ -42,6 +43,7 @@ public class MainPageController {
 			,@RequestParam(name="order", defaultValue="recent") String order) {
 
 		model.addAttribute("mainpageList",mainPageService.getImageList(order));
+//		model.addAttribute("hashtagList",hashtagService.selectHashtags());
 
 		return "/user/mainpage/mainImages";
 	}

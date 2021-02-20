@@ -16,7 +16,11 @@ public interface ScrapMapper {
 	List<ScrapDto> getScrapList(String sort, int limit);
 	
 	/*스크랩 추가 및 삭제*/
-	boolean addToScrap(int imagesId);
-	boolean deleteScrap(int id);
+	boolean addToScrap(long imagesId);
+	boolean deleteScrap(long id);
+	
+	/*이미지 조회수/스크랩수*/
+	int countView(long id);
+	int countScrap(long id);
 
 }

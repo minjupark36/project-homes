@@ -37,7 +37,7 @@ public class ScrapController {
 	/*스크랩 추가*/
 	@RequestMapping("/scrap/add")
 	@ResponseBody
-	public boolean addToScrap(@RequestParam("imagesId") int imagesId
+	public boolean addToScrap(@RequestParam("imagesId") long imagesId
 			) {
 		
 //		ScrapDto scrapDto = new ScrapDto();
@@ -50,7 +50,7 @@ public class ScrapController {
 		System.out.println("================================");
 		
 		boolean res = scrapService.addToScrap(imagesId);
-//		scrapService.countScrap(imagesId);
+		scrapService.countScrap(imagesId);
 		
 		return res;		
 	}
@@ -58,7 +58,7 @@ public class ScrapController {
 	/*스크랩 취소*/
 	@DeleteMapping("/user/scrap")
 	@ResponseBody
-	public String deleteScrap(@RequestParam("id") int id) {
+	public String deleteScrap(@RequestParam("id") long id) {
 //		MemberDto memberDto = Utils.getMemberFromSession();
 		return scrapService.deleteScrap(id)+"";
 	}

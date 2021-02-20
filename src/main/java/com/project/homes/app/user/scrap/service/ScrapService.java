@@ -3,6 +3,7 @@ package com.project.homes.app.user.scrap.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.homes.app.user.scrap.dto.ScrapDto;
 import com.project.homes.app.user.scrap.mapper.ScrapMapper;
@@ -19,12 +20,20 @@ public class ScrapService {
 		return scrapMapper.getScrapList(sort,limit);
 	}
 	
-	public boolean addToScrap(int imagesId) {
+	public boolean addToScrap(long imagesId) {
 		return scrapMapper.addToScrap(imagesId);		
 	}
 	
-	public boolean deleteScrap(int id) {
+	public boolean deleteScrap(long id) {
 		return scrapMapper.deleteScrap(id);
+	}
+	
+	public long countView(@RequestParam("id") long id) {
+		return scrapMapper.countView(id);
+	}
+	
+	public long countScrap(@RequestParam("id") long id) {
+		return scrapMapper.countScrap(id);
 	}
 
 }

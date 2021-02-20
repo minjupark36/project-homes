@@ -26,9 +26,17 @@
 	<!-- type : "FROM 대상인 POJO 클래스의 CamelCase명 또는, @Alias("키값")" -->
 	<!-- column : "DB 컬럼명" -->
 	<!-- property: "type에 적힌 POJO클래스의 속성명" -->
-	<resultMap id="ImageDto" type="ImageDto">
-		<result column="filepath" property="filepath"/>
-		<result column="sort" property="sort"/>
+	<resultMap id="ImageDto" type="ImageDto">		
+		<id property="id" column="id"/>
+		<result property="hashtagsNames" column="hashtags_names"/>
+		<result property="filepath" column="filepath"/>
+		<result property="originalFilename" column="original_filename"/>
+		<result property="url" column="url"/>
+		<result property="sort" column="sort"/>
+		<result property="createDate" column="create_date"/>
+		<result property="pnum" column="pnum"/>
+		<result property="view" column="view"/>
+		<result property="scrap" column="scrap"/>
 	</resultMap>
 	
 <!-- 개인 스크랩 이미지 리스트 가져오기 -->	
@@ -86,6 +94,30 @@
 		WHERE 
 			id = #{id}
 	</delete>
+	
+	<update id="countView" 
+	parameterType="ImageDto">
+	
+		UPDATE 
+			images 
+		SET 
+			view = view + 1 
+		WHERE 
+			id = #{id}
+  			
+	</update>
+	
+	<update id="countScrap" 
+	parameterType="ImageDto">
+	
+		UPDATE 
+			images 
+		SET 
+			scrap = scrap + 1 
+		WHERE 
+			id = #{id}
+  			
+	</update>
 	
 	
 </mapper>
