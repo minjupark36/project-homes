@@ -12,20 +12,20 @@ import lombok.Setter;
 @Getter /*기본 getter/setter를 생성(lombok)*/
 public class ImageDto {
 
-	private int id;
+	private long id;
 	private String hashtagsNames;
 	private String filepath;
 	private String originalFilename;
 	private String url;
 	private String sort;
 	private LocalDate createDate;
-	private int pnum;
-	private int view;
-	private int scrap;
+	private long pnum;
+	private long view;
+	private long scrap;
 	
 	@Builder
-	public ImageDto(int id, String hashtagsNames, String filepath, String originalFilename, String url, String sort,
-			LocalDate createDate, int pnum, int view, int scrap) {
+	public ImageDto(long id, String hashtagsNames, String filepath, String originalFilename, String url, String sort,
+			LocalDate createDate, long pnum, long view, long scrap) {
 		super();
 		this.id = id;
 		this.hashtagsNames = hashtagsNames;
@@ -38,9 +38,5 @@ public class ImageDto {
 		this.view = view;
 		this.scrap = scrap;
 	}
-	
-	
-
-
 			
 }
