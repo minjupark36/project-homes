@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <script>
 	function writeBoard(){
 		// 폼데이터로 파일 업로드
@@ -41,9 +42,9 @@
 <div>
 <form action="/user/board/insert" method="post" enctype="multipart/form-data" id="form" name="form">
 		
-	<table  class="table table-hover">
+	<table  class="table">
 		<tr>
-			<td>제목</td><td><input type="text" name="title"></td>
+			<td>제목</td><td><input type="text" name="title" class="form-group" placeholder="제목을 입력해주세요"></td>
 		</tr>
 		<tr>
 			<td>카테고리</td>
@@ -58,7 +59,7 @@
 
 		<tr>
 			<td colspan=2>
-			<textarea  name="content" rows="10" cols="80"></textarea>
+			<textarea  name="content" rows="10" cols="80" placeholder="내용을 입력해주세요"></textarea>
 			</td>
 		</tr>
 		<tr>

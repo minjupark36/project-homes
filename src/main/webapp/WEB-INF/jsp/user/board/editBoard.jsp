@@ -64,7 +64,7 @@
 <form action="/user/board/edit" method="post" enctype="multipart/form-data" id="form">
 	<input type="hidden" value="${d.id}" name="id"/>
 	
-	<table>
+	<table class="table">
 		<tr>
 			<td>제목</td><td><input type="text" name="title" value="${d.title} "></td>
 		</tr>
@@ -72,9 +72,9 @@
 			<td>카테고리</td>
 			<td> 
 				<select name="categoriesId">
-					<option value=1>자유게시판</option>
-					<option value=2>FAQ</option>
-					<option value=3>공지사항</option>
+					<option value=1 <c:if test="${d.categoriesId==1}">selected</c:if>>자유게시판</option>
+					<option value=2 <c:if test="${d.categoriesId==2}">selected</c:if>>FAQ</option>
+					<option value=3 <c:if test="${d.categoriesId==3}">selected</c:if>>공지사항</option>
 				</select>
     		</td>
 		</tr>

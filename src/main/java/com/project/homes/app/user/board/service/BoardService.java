@@ -73,7 +73,6 @@ public class BoardService {
 			boardMapper.insertBoard(boardDto);
 			id = boardMapper.selectMaxId();
 			attachService.insertAttach(mfiles, id);
-			System.out.println(id);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
