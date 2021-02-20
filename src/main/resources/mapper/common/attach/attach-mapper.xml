@@ -3,7 +3,43 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.homes.app.common.attach.mapper.AttachMapper">
-
+	<sql id="attachColumns">
+		id,
+		boards_id,
+		filename,
+		filesize,
+		filetype,
+		create_date
+	</sql>
+	
+	<resultMap type="AttachDto" id="attachDtoResultMap">	
+	<id property="id" column="id"/>
+	<result property="boardId" column="boards_id"/>
+	<result property="filename" column="filename"/>
+	<result property="filesize" column="filesize"/>
+	<result property="filetype" column="filetype"/>
+	<result property="createDate" column="create_date"/>
+	
+	</resultMap>
+	
+	<insert id="insertAttach" parameterType="hashmap">
+		INSERT INTO boards_attach
+		VALUES 
+		(NULL,#{id},#{filename},#{filesize},#{filetype},NOW())
+	</insert>
+	
+	<delete id="deleteAttach" parameterType="long">
+		DELETE FROM boards_attach WHERE id=#{id}
+	</delete>
+	
+	<select id="getAttachById"
+		resultType="AttachDto"
+		parameterType="Integer">
+		SELECT 
+			<include refid="attachColumns" />
+		FROM boards_attach
+		WHERE boards_id=#{boards_id}
+	</select>
 
 
 </mapper>
