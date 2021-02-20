@@ -25,4 +25,8 @@ public class MainPageService {
 		return mainPageMapper.getDecoImages() ;
 	}
 
+	public List<ImageDto>  getImageList(String order) {
+		return mainPageMapper.getImageList(order);
+	}
+
 }

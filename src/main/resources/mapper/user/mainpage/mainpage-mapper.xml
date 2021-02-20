@@ -62,4 +62,27 @@
 		
 	</select>
 	
+	<select id="getImageList"
+	parameterType="java.util.HashMap"
+	resultType="ImageDto" resultMap="ImageDto">
+	
+		SELECT
+			<include refid="ImageColumns"/>
+		FROM 
+			images
+		WHERE 
+			sort='interior'
+		ORDER BY
+		<choose>
+	        <when test="order == 'recent'">create_date asc</when>
+	        <when test="order == 'descent'">create_date desc</when>
+	        <when test="order == 'highview'">view desc</when>
+	        <when test="order == 'lowview'">view asc</when>
+	        <when test="order == 'highscrap'">scrap desc</when>
+	        <when test="order == 'lowscrap'">scrap asc</when>
+	        <otherwise>id desc</otherwise>
+	    </choose>
+			
+	</select>
+	
 </mapper>

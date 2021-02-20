@@ -26,12 +26,22 @@ public class MainPageController {
 	
 	/*메인 페이지*/
 	@GetMapping("/main")
-	public String mainPageList(Model model
-			,@RequestParam(name="order", defaultValue="recent") String order) {
+	public String mainPageList(Model model) {
 		
 		model.addAttribute("interior",mainPageService.getInteriorImages());
 		model.addAttribute("deco",mainPageService.getDecoImages());
 		
 		return "/user/mainpage/main";
 	}
+	
+	/*메인-사진 페이지*/
+	@GetMapping("/main/images")
+	public String mainImagesList(Model model
+			,@RequestParam(name="order", defaultValue="recent") String order) {
+
+		model.addAttribute("mainpageList",mainPageService.getImageList(order));
+
+		return "/user/mainpage/mainImages";
+	}
+	
 }

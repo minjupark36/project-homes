@@ -14,5 +14,6 @@ public interface MainPageMapper {
 	/*메인페이지사진(인테리어,소품)*/
 	List<ImageDto> getInteriorImages();
 	List<ImageDto> getDecoImages();
+	List<ImageDto> getImageList(String order);
 
 }
