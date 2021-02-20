@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.project.homes.app.common.attach.service.AttachService;
 import com.project.homes.app.user.board.dto.BoardDto;
 import com.project.homes.app.user.board.service.BoardService;
 
@@ -28,6 +29,7 @@ import lombok.RequiredArgsConstructor;
 public class BoardController {
 	
 	private final BoardService boardService;
+	private final AttachService attachService;
 	
 	//게시판 전체 리스트 보이기
 	@GetMapping("/user/board")
@@ -79,12 +81,12 @@ public class BoardController {
 		return id+"";
 	}
 	
-	//detail페이지에서 id 받아 수정 form 
+	//detail페이지에서 게시판id 받아 수정 form 
 	@GetMapping("/user/board/edit")
-	public String getEditForm(@RequestParam("id") int id,
-							  @RequestParam("categoriesId") int categoriesId,
+	public String getEditForm(@RequestParam("id") long id,
+							  @RequestParam("categoriesId") long categoriesId,
 							  Model model) {
-
+		model.addAttribute("attachList",attachService.getAttachById(id));
 		model.addAttribute("boardDetail",boardService.getBoardDetail(id));
 		return "user/board/editBoard";
 	}
@@ -92,12 +94,32 @@ public class BoardController {
 	//게시판 수정하기
 	@ResponseBody
 	@PostMapping("/user/board/edit")
-	public String editBoard(@RequestParam("files") List<MultipartFile> mfiles
+	public String editBoard(@RequestParam("files") MultipartFile[] mfiles
 			, BoardDto boardDto) {		
 		return boardService.editBoard(boardDto, mfiles)+"";
 		
 	}
-	
+	//게시판 글쓰기form 보여주기
+	@GetMapping("/user/board/insert")
+	public String getinsertForm() {
+		
+      return "user/board/insertBoard";
+	}
+	//게시판 insert하기
+	@ResponseBody
+	@PostMapping("/user/board/insert")
+	public String insertBoard(HttpServletRequest request
+			, @RequestParam("files") MultipartFile[] mfiles
+			, BoardDto boardDto
+			) {
+		boolean res=true;
+//		
+//		MemberDto memberDto = Utils.getMemberFromSession();
+//		boardDto.setMemberId(memberDto.getId());
+//		
+		boardService.saveBoardAndAttach(boardDto, mfiles);		
+		return res+"";
+	}
 	
 
 }

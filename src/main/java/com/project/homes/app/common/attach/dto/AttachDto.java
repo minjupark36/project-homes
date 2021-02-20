@@ -16,7 +16,4 @@ public class AttachDto {
 	private long filesize;
 	private String filetype;
 	private LocalDate createDate;
-
-	
-
 }

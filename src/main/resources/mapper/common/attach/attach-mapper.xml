@@ -34,11 +34,11 @@
 	
 	<select id="getAttachById"
 		resultType="AttachDto"
-		parameterType="Integer">
+		parameterType="long">
 		SELECT 
 			<include refid="attachColumns" />
 		FROM boards_attach
-		WHERE boards_id=#{boards_id}
+		WHERE boards_id=#{id}
 	</select>
 
 

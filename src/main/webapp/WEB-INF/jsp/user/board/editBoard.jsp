@@ -37,6 +37,25 @@
 			}
 		})
 	}
+	function deleteAttach(id){
+		$.ajax({
+			url:'/user/board/attach',
+			method:'delete',
+			data:{'id': id},    
+			dataType:'text',
+			success:function(res){
+				if(confirm("해당 첨부파일을 삭제하시겠습니까?")){
+					alert("삭제되었습니다")
+					location.reload();
+				}else{
+					return false;
+				} 				
+			},
+			error:function(xhr, status, err){
+				alert(status+','+err);	
+			}
+		});   
+	}
 </script>
 </head>
 <body>
@@ -45,7 +64,7 @@
 <form action="/user/board/edit" method="post" enctype="multipart/form-data" id="form">
 	<input type="hidden" value="${d.id}" name="id"/>
 	
-	<table  class="table table-hover">
+	<table>
 		<tr>
 			<td>제목</td><td><input type="text" name="title" value="${d.title} "></td>
 		</tr>
@@ -65,13 +84,27 @@
 			<textarea  name="content" rows="10" cols="80">${d.content}</textarea>
 			</td>
 		</tr>
+		<tr></tr>
+		
+		<c:forEach var="a" items="${attachList}">
+			<tr>
+				<td>
+					${a.filename}
+				</td>
+				<td>
+					<a href="javascript:deleteAttach(${a.id});">삭제</a>
+				</td>
+			</tr>
+		</c:forEach>
+		
+		
 		<tr>
 			<td colspan=2>
 			<input type="file" name="files" multiple="multiple">
 		</tr>
    	
 </table>
-
+<br>
 <button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="editBoard(${d.id},${d.categoriesId})">수정완료</button>
 
 </form>
