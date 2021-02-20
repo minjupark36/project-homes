@@ -2,12 +2,14 @@ package com.project.homes.app.common.attach.service;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.homes.app.common.attach.dto.AttachDto;
 import com.project.homes.app.common.attach.mapper.AttachMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -44,9 +46,16 @@ public class AttachService {
 		         return "파일 저장 실패";
 		      }
 		   }
-		//첨부파일 삭제
-		@Transactional
-		public long deleteAttach(@RequestParam("id") long id) {
-			return attachMapper.deleteAttach(id);
-		}
+	//첨부파일 삭제
+	@Transactional
+	public long deleteAttach(@RequestParam("id") long id) {
+		return attachMapper.deleteAttach(id);
+	}
+	
+	//해당 게시판 첨부파일 리스트
+	public List<AttachDto> getAttachById(@RequestParam("id") long id){
+		return attachMapper.getAttachById(id);
+	}
+		
+		
 }

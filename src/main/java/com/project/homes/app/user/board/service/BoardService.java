@@ -52,11 +52,11 @@ public class BoardService {
 
 	//게시판 편집
 	@Transactional
-	public boolean editBoard(BoardDto boardDto, List<MultipartFile> files) {
-		int id = 0;
+	public boolean editBoard(BoardDto boardDto, MultipartFile[] mfiles) {
+		long id = boardDto.getId();
 		try {
-			id = boardMapper.editBoard(boardDto);
-//				attachService.editAttach(files, id);
+			boardMapper.editBoard(boardDto);
+			attachService.insertAttach(mfiles, id);
 			return true;
 		} catch(Exception e) {
 			e.printStackTrace();

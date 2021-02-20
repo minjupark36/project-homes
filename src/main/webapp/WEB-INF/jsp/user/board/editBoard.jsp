@@ -45,7 +45,7 @@
 <form action="/user/board/edit" method="post" enctype="multipart/form-data" id="form">
 	<input type="hidden" value="${d.id}" name="id"/>
 	
-	<table  class="table table-hover">
+	<table>
 		<tr>
 			<td>제목</td><td><input type="text" name="title" value="${d.title} "></td>
 		</tr>
@@ -65,13 +65,23 @@
 			<textarea  name="content" rows="10" cols="80">${d.content}</textarea>
 			</td>
 		</tr>
+		<tr></tr>
+		<tr>
+		<c:forEach var="a" items="${attachList}">
+		
+			<td colspan=2>
+				${a.filename}
+			</td>
+		</c:forEach>
+		</tr>
+		
 		<tr>
 			<td colspan=2>
 			<input type="file" name="files" multiple="multiple">
 		</tr>
    	
 </table>
-
+<br>
 <button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="editBoard(${d.id},${d.categoriesId})">수정완료</button>
 
 </form>
