@@ -62,4 +62,18 @@ public class MainPageController {
 		return "/user/mainpage/mainInfo";
 	}
 	
+	/*개인정보처리방침*/
+	@GetMapping("/user/terms/privacy")
+	public String privacyPolicy() {
+		
+		return "/user/terms/privacy_policy";
+	}
+
+	/*이용약관*/
+	@GetMapping("/user/terms/conditions")
+	public String termsAndConditions() {
+		
+		return "/user/terms/terms_and_conditions";
+	}
+	
 }
