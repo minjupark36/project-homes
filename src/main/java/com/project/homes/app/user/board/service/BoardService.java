@@ -84,4 +84,22 @@ public class BoardService {
 		return boardMapper.countView(id);
 	}
 	
+	//답글 insert
+	@Transactional
+	public long insertReply(MultipartFile[] mfiles
+						   , BoardDto boardDto
+						   ,@RequestParam("id") long id
+						   ,@RequestParam("groupOrder") long groupOrder
+						   ,@RequestParam("categoriesId") long categoriesId) {
+		
+		try {
+			boardMapper.insertReply(boardDto);
+			boardMapper.groupOrderUpdate(id,groupOrder);
+			attachService.insertAttach(mfiles,id);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+	
 }

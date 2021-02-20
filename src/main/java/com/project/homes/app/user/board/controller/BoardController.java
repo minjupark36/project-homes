@@ -108,8 +108,7 @@ public class BoardController {
 	//게시판 insert하기
 	@ResponseBody
 	@PostMapping("/user/board/insert")
-	public String insertBoard(HttpServletRequest request
-			, @RequestParam("files") MultipartFile[] mfiles
+	public String insertBoard(@RequestParam("files") MultipartFile[] mfiles
 			, BoardDto boardDto
 			) {
 		boolean res=true;
@@ -118,6 +117,34 @@ public class BoardController {
 //		boardDto.setMemberId(memberDto.getId());
 //		
 		boardService.saveBoardAndAttach(boardDto, mfiles);		
+		return res+"";
+	}
+	
+	//답글 form 보여주기
+	@GetMapping("/user/board/reply")
+	public String getReplyForm(@RequestParam("pid") long id
+				  ,@RequestParam("groupOrder") long groupOrder  
+			      ,@RequestParam("depth") long depth
+			      ,@RequestParam("categoriesId") long categoriesId
+			      ,Model model) {
+		model.addAttribute("id",id);
+		model.addAttribute("groupOrder",groupOrder);
+		model.addAttribute("depth",depth);
+		model.addAttribute("categoriesId",categoriesId);
+		return "user/board/replyForm";
+	}
+	
+	//답글 insert
+	@ResponseBody
+	@PostMapping("/user/board/reply")
+	public String insertReply(HttpServletRequest request
+							  , @RequestParam("files") MultipartFile[] mfiles
+			                  ,BoardDto boardDto
+			                  ,@RequestParam("id") long id
+			                  ,@RequestParam("groupOrder") long groupOrder
+			                  ,@RequestParam("categoriesId") long categoriesId) {
+		boolean res=true;		
+		boardService.insertReply(mfiles,boardDto,id,groupOrder,categoriesId);		
 		return res+"";
 	}
 	

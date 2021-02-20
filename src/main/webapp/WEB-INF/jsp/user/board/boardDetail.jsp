@@ -52,5 +52,8 @@
 		</tr>	
 	</table>
 </div>
+<div>
+<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/user/board/reply?pid=${d.groupNo}&groupOrder=${d.groupOrder}&depth=${d.depth}&categoriesId=${d.categoriesId}'">답글</button>	
+</div>
 </body>
 </html>
