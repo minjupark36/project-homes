@@ -37,6 +37,25 @@
 			}
 		})
 	}
+	function deleteAttach(id){
+		$.ajax({
+			url:'/user/board/attach',
+			method:'delete',
+			data:{'id': id},    
+			dataType:'text',
+			success:function(res){
+				if(confirm("해당 첨부파일을 삭제하시겠습니까?")){
+					alert("삭제되었습니다")
+					location.reload();
+				}else{
+					return false;
+				} 				
+			},
+			error:function(xhr, status, err){
+				alert(status+','+err);	
+			}
+		});   
+	}
 </script>
 </head>
 <body>
@@ -66,14 +85,18 @@
 			</td>
 		</tr>
 		<tr></tr>
-		<tr>
-		<c:forEach var="a" items="${attachList}">
 		
-			<td colspan=2>
-				${a.filename}
-			</td>
+		<c:forEach var="a" items="${attachList}">
+			<tr>
+				<td>
+					${a.filename}
+				</td>
+				<td>
+					<a href="javascript:deleteAttach(${a.id});">삭제</a>
+				</td>
+			</tr>
 		</c:forEach>
-		</tr>
+		
 		
 		<tr>
 			<td colspan=2>
