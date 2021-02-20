@@ -48,13 +48,10 @@
 			group_order,
 			depth
 		FROM boards 
-		<if test="searchMap != null">
-	      
-	      
-	      	<if test="searchMap.searchAs != null">
-	      		AND ${searchMap.searchAs} LIKE CONCAT('%',#{searchMap.search},'%')
-	      	</if>
-	     
+		<if test="searchMap != null and searchMap.searchAs != null">
+	      <where>
+	      	AND ${searchMap.searchAs} LIKE CONCAT('%',#{searchMap.search},'%')
+	      </where>
       	</if>
       	
       	order by group_no desc,group_order 
@@ -107,13 +104,19 @@
 			group_order,
 			depth
 		FROM boards 
-		<if test="searchMap != null">
-	      	<if test="searchMap.searchAs != null">
-	      		AND ${searchMap.searchAs} LIKE CONCAT('%',#{searchMap.search},'%')
-	      	</if>
+		<if test="searchMap != null and searchMap.searchAs != null">
+	      <where>
+	      	categories_id=#{categoriesId}
+	      	AND ${searchMap.searchAs} LIKE CONCAT('%',#{searchMap.search},'%')
+	      	
+	      </where>
 	     
       	</if>
-      	WHERE categories_id=#{categoriesId}
+      	<if test="searchMap.searchAs == null">
+      		<where>
+      		categories_id=#{categoriesId}
+      		</where>
+      	</if>
       	order by group_no desc,group_order desc,depth
 	</select>
 	

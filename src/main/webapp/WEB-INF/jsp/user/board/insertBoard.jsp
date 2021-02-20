@@ -44,7 +44,7 @@
 		
 	<table  class="table">
 		<tr>
-			<td>제목</td><td><input type="text" name="title" class="form-group" placeholder="제목을 입력해주세요"></td>
+			<td>제목</td><td><input type="text" name="title" class="form-control" placeholder="제목을 입력해주세요"></td>
 		</tr>
 		<tr>
 			<td>카테고리</td>
@@ -59,12 +59,12 @@
 
 		<tr>
 			<td colspan=2>
-			<textarea  name="content" rows="10" cols="80" placeholder="내용을 입력해주세요"></textarea>
+			<textarea  name="content" rows="10" cols="80" placeholder="내용을 입력해주세요" class="form-control"></textarea>
 			</td>
 		</tr>
 		<tr>
 			<td colspan=2>
-			<input type="file" name="files" multiple="multiple">
+			<input type="file" name="files" multiple="multiple" class="form-control">
 		</tr>
    	
 </table>

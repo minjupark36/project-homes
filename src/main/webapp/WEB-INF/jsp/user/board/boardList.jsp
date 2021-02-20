@@ -30,5 +30,53 @@
 <div id="post">
 	<a href="/user/board/insert/${categoriesId }">게시판 작성</a>
 </div>
+<div id="paging">
+<ul id="pagination" class="pagination">
+	<li class="page-item"><a class="page-link" href="javascript:search(1);">&lt&lt</a></li>
+	<c:if test="${pageInfo.hasPreviousPage}">
+			<li class="page-item"><a class="page-link" href="javascript:search(${pageInfo.prePage});">pre</a></li>
+	</c:if>
+	<c:forEach var="p" items="${pageInfo.navigatepageNums}" >
+		
+		<c:choose>
+			
+			<c:when test="${p==pageInfo.pageNum}">
+				<li class="page-item active"><a class="page-link" href="javascript:void(0);"
+				style="font-weight: bolder;">${p}</a></li>
+			</c:when>
+			<c:otherwise >
+				<li class="page-item"><a class="page-link" href="javascript:search(${p});">${p}</a></li>
+			</c:otherwise>
+			
+		</c:choose>
+		
+	</c:forEach>
+	
+	<c:if test="${pageInfo.hasNextPage}">
+			<li class="page-item"><a class="page-link" href="javascript:search(${pageInfo.nextPage});">next</a></li>
+	</c:if>
+	<li class="page-item"><a class="page-link" href="javascript:search(${pageInfo.pages});">&gt&gt</a></li>
+	</ul>
+</div>
+<div>
+	<form id="search-form" action="/user/board/${categoriesId }" method="get">
+		<input type="hidden" name="num" id="searchNum" value="1">
+		
+		<div class="d-flex clearfix col-12">
+			<div class="col-2">
+				<select name="searchAs" id="searchAs" class="form-control">
+					<option value="title" <c:if test="${searchMap.searchAs == 'title'}">selected</c:if>>title</option>
+					<option value="writer" <c:if test="${searchMap.searchAs == 'writer'}">selected</c:if>>writer</option>
+				</select>
+			</div>
+			<div class="input-group col-8">
+				<input type="text" name="search" id="search" class="form-control" value="${searchMap.search }">
+			</div>
+			<div class="col-2">
+				<button type="button" onclick="search(1);" class="btn btn-raised btn-primary btn-round waves-effect">Search</button>
+			</div>
+		</div>
+	</form>
+</div>
 </body>
 </html>
