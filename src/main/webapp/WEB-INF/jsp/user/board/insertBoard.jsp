@@ -26,7 +26,7 @@
 			success : function(res) {
 				if(res.trim()=="true"){
 					alert("게시글이 등록되었습니다");
-					location.href="/user/board/"+categoriesId;
+					location.href="/user/board";
 					
 				}else{
 					alert("게시글 등록 실패");

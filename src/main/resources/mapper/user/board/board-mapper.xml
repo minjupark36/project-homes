@@ -114,7 +114,7 @@
 	     
       	</if>
       	WHERE categories_id=#{categoriesId}
-      	order by group_no desc,group_order 
+      	order by group_no desc,group_order desc,depth
 	</select>
 	
 	<insert id="insertBoard" parameterType="BoardDto" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >

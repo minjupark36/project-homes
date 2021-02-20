@@ -56,6 +56,7 @@ public class BoardService {
 		long id = boardDto.getId();
 		try {
 			boardMapper.editBoard(boardDto);
+			
 			attachService.insertAttach(mfiles, id);
 			return true;
 		} catch(Exception e) {
@@ -92,10 +93,12 @@ public class BoardService {
 						   ,@RequestParam("groupOrder") long groupOrder
 						   ,@RequestParam("categoriesId") long categoriesId) {
 		
+		long Id = 0;
 		try {
 			boardMapper.insertReply(boardDto);
 			boardMapper.groupOrderUpdate(id,groupOrder);
-			attachService.insertAttach(mfiles,id);
+			Id = boardMapper.selectMaxId();
+			attachService.insertAttach(mfiles,Id);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
