@@ -4,9 +4,16 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function search(num){
+		$("#searchNum").val(num);
+		$("#search-form").submit();
+	}
+</script>
 </head>
 <body>
 <div>
@@ -28,7 +35,7 @@
 	<a href="/user/board/3">공지사항</a>
 </div>
 <div id="post">
-	<a href="/user/board/insert/${categoriesId }">게시판 작성</a>
+	<a href="/user/board/insert">게시판 작성</a>
 </div>
 <div id="paging">
 <ul id="pagination" class="pagination">

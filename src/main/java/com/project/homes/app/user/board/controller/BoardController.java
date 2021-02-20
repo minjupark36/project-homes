@@ -37,7 +37,7 @@ public class BoardController {
 							, @RequestParam(required = false) Map<String, Object> searchMap
 							, @RequestParam(name="num", defaultValue="1") int num
 							){
-		PageHelper.startPage(num,20);
+		PageHelper.startPage(num,15);
 		PageInfo<BoardDto> pageInfo=new PageInfo<>(boardService.getBoardList(searchMap));
 		model.addAttribute("pageInfo",pageInfo);
 		model.addAttribute("searchMap", searchMap);
@@ -51,7 +51,7 @@ public class BoardController {
 					, @RequestParam(name="num", defaultValue="1") int num
 					, @PathVariable Long categoriesId
 					){
-		PageHelper.startPage(num,20);
+		PageHelper.startPage(num,15);
 		PageInfo<BoardDto> pageInfo=new PageInfo<>(boardService.boardByCategory(searchMap,categoriesId));
 		model.addAttribute("pageInfo",pageInfo);
 		model.addAttribute("searchMap", searchMap);
