@@ -12,6 +12,11 @@ import com.project.homes.app.user.scrap.dto.ScrapDto;
 @Mapper
 public interface ScrapMapper {
 	
+	/*스크랩 리스트*/
 	List<ScrapDto> getScrapList(String sort, int limit);
+	
+	/*스크랩 추가 및 삭제*/
+	boolean addToScrap(int imagesId);
+	boolean deleteScrap(int id);
 
 }

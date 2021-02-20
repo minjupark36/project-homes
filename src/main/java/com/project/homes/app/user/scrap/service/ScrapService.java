@@ -18,5 +18,13 @@ public class ScrapService {
 	public List<ScrapDto> getScrapList(String sort, int limit) {		
 		return scrapMapper.getScrapList(sort,limit);
 	}
+	
+	public boolean addToScrap(int imagesId) {
+		return scrapMapper.addToScrap(imagesId);		
+	}
+	
+	public boolean deleteScrap(int id) {
+		return scrapMapper.deleteScrap(id);
+	}
 
 }

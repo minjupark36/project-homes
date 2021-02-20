@@ -70,5 +70,22 @@
 	LIMIT ${limit}
 	
 	</select>
-
+	
+	<insert id="addToScrap" 
+	parameterType="integer">
+		INSERT 
+			INTO scrap_images
+		VALUES 
+			(Null,7,${imagesId},NOW())
+	</insert>
+	
+	<delete id="deleteScrap" 
+	parameterType="java.util.HashMap">
+		DELETE 
+			FROM scrap_images
+		WHERE 
+			id = #{id}
+	</delete>
+	
+	
 </mapper>
