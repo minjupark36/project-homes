@@ -56,5 +56,15 @@
 <div>
 <button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/user/board/reply?pid=${d.groupNo}&groupOrder=${d.groupOrder}&depth=${d.depth}&categoriesId=${d.categoriesId}'">답글</button>	
 </div>
+<div>
+	<table class="table table-hover">	
+	<c:forEach var="r" items="${replyList}">		
+		<tr onclick="location.href='/user/board/detail?id=${r.id}&categoriesId=${r.categoriesId}'">
+			<th>제목</th>
+			<td>${r.title}</td>
+		</tr>		
+	</c:forEach>
+	</table>
+</div>
 </body>
 </html>
