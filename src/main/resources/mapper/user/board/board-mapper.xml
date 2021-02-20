@@ -32,11 +32,99 @@
 		<result property="depth" column="depth"/>
 	</resultMap>
 	
-	<select id="getBoardList" resultType="BoardDto"  resultMap="boardDtoResultMap">
+	<select id="getBoardList" 
+		parameterType="hashMap"
+		resultType="BoardDto" resultMap="boardDtoResultMap">
+		SELECT
+			id,
+			members_id,
+			CONCAT(REPEAT("ㅤRE:",depth),title) title,
+			content,
+			create_date,
+			modified_date,
+			categories_id,
+			view,
+			group_no,
+			group_order,
+			depth
+		FROM boards 
+		<if test="searchMap != null">
+	      
+	      
+	      	<if test="searchMap.searchAs != null">
+	      		AND ${searchMap.searchAs} LIKE CONCAT('%',#{searchMap.search},'%')
+	      	</if>
+	     
+      	</if>
+      	
+      	order by group_no desc,group_order 
+	</select>
+	
+	<select id="getBoardDetail" resultType="BoardDto" parameterType="long" resultMap="boardDtoResultMap">
 		SELECT 
 			<include refid="boardColumns" />
 			
 		FROM boards
-
+		
+		WHERE id=#{id}
 	</select>
+	
+	<select id="getReplyList" resultType="BoardDto" parameterType="long" resultMap="boardDtoResultMap">
+		SELECT
+			id,
+			members_id,
+			CONCAT(REPEAT("ㅤRE:",depth),title) title,
+			content,
+			create_date,
+			modified_date,
+			categories_id,
+			view,
+			group_no,
+			group_order,
+			depth
+		FROM boards b
+		WHERE group_no=#{id} AND id!=#{id}
+		order by group_no desc,depth
+	</select>
+	
+	<delete id="deleteBoard" parameterType="long">
+		DELETE FROM boards WHERE id=#{id}
+	</delete>
+	
+	<select id="boardByCategory" 
+		parameterType="hashMap"
+		resultType="BoardDto" resultMap="boardDtoResultMap">
+		SELECT
+			id,
+			members_id,
+			CONCAT(REPEAT("ㅤRE:",depth),title) title,
+			content,
+			create_date,
+			modified_date,
+			categories_id,
+			view,
+			group_no,
+			group_order,
+			depth
+		FROM boards 
+		<if test="searchMap != null">
+	      	<if test="searchMap.searchAs != null">
+	      		AND ${searchMap.searchAs} LIKE CONCAT('%',#{searchMap.search},'%')
+	      	</if>
+	     
+      	</if>
+      	WHERE categories_id=#{categoriesId}
+      	order by group_no desc,group_order 
+	</select> 
+	
+	<update id="editBoard" parameterType="BoardDto">
+		UPDATE boards
+		SET title=#{title}, content=#{content}, modified_date=NOW(), categories_id=#{categoriesId}
+		where id=#{id}
+	</update>
+	
+	<update id="countView" parameterType="long">
+  		UPDATE boards SET view = view + 1 WHERE id=#{id}
+	</update>
+	
 </mapper>
