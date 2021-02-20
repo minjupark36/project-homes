@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.homes.app.common.attach.service.AttachService;
 import com.project.homes.app.user.board.dto.BoardDto;
 import com.project.homes.app.user.board.mapper.BoardMapper;
 
@@ -21,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class BoardService {
 	
 	private final BoardMapper boardMapper;
+	private final AttachService attachService;
 	
 	//게시판 전체 리스트 보여주기
 	public List<BoardDto> getBoardList(Map<String, Object> searchMap){
@@ -60,6 +62,21 @@ public class BoardService {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	//게시판 insert
+	@Transactional
+	public long saveBoardAndAttach(BoardDto boardDto, MultipartFile[] mfiles) {
+		long id = 0;
+		try {
+			boardMapper.insertBoard(boardDto);
+			id = boardMapper.selectMaxId();
+			attachService.insertAttach(mfiles, id);
+			System.out.println(id);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return id;
 	}
 
 	public long countView(long id) {

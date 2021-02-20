@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+
 import com.project.homes.app.user.board.dto.BoardDto;
 import com.project.homes.app.user.board.service.BoardService;
 
@@ -81,8 +82,8 @@ public class BoardController {
 	
 	//detail페이지에서 id 받아 수정 form 
 	@GetMapping("/user/board/edit")
-	public String getEditForm(@RequestParam("id") int id,
-							  @RequestParam("categoriesId") int categoriesId,
+	public String getEditForm(@RequestParam("id") long id,
+							  @RequestParam("categoriesId") long categoriesId,
 							  Model model) {
 
 		model.addAttribute("boardDetail",boardService.getBoardDetail(id));
@@ -97,7 +98,27 @@ public class BoardController {
 		return boardService.editBoard(boardDto, mfiles)+"";
 		
 	}
-	
+	//게시판 글쓰기form 보여주기
+	@GetMapping("/user/board/insert")
+	public String getinsertForm() {
+		
+      return "user/board/insertBoard";
+	}
+	//게시판 insert하기
+	@ResponseBody
+	@PostMapping("/user/board/insert")
+	public String insertBoard(HttpServletRequest request
+			, @RequestParam("files") MultipartFile[] mfiles
+			, BoardDto boardDto
+			) {
+		boolean res=true;
+//		
+//		MemberDto memberDto = Utils.getMemberFromSession();
+//		boardDto.setMemberId(memberDto.getId());
+//		
+		boardService.saveBoardAndAttach(boardDto, mfiles);		
+		return res+"";
+	}
 	
 
 }

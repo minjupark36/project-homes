@@ -27,6 +27,8 @@
 	<a href="/user/board/2">FAQ</a>
 	<a href="/user/board/3">공지사항</a>
 </div>
-
+<div id="post">
+	<a href="/user/board/insert/${categoriesId }">게시판 작성</a>
+</div>
 </body>
 </html>

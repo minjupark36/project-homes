@@ -16,6 +16,8 @@ public interface BoardMapper {
 	List<BoardDto> getBoardList(@Param("searchMap") Map<String, Object> searchMap);
 	BoardDto getBoardDetail(long id);
 	List<BoardDto> getReplyList(long id);
+	int insertBoard(BoardDto boardDto);
+	long selectMaxId();
 	boolean deleteBoard(long id);
 	List<BoardDto> boardByCategory(@Param("searchMap") Map<String, Object> searchMap,long categoriesId);
 	int editBoard(BoardDto boardDto);

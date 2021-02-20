@@ -115,7 +115,25 @@
       	</if>
       	WHERE categories_id=#{categoriesId}
       	order by group_no desc,group_order 
-	</select> 
+	</select>
+	
+	<insert id="insertBoard" parameterType="BoardDto" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+	<selectKey keyProperty="id" resultType="long" order="BEFORE">
+	
+		select max(id)+1 from boards
+	
+	</selectKey>
+	<if test="id!=null">
+		INSERT INTO boards 			
+		VALUES 
+		(null,1,#{title},#{content},NOW(),null,#{categoriesId},0,#{id},0,0)
+	</if>
+	<if test="id==null">
+		INSERT INTO boards 			
+		VALUES 
+		(null,1,#{title},#{content},NOW(),null,#{categoriesId},0,1,0,0)
+	</if>
+	</insert> 
 	
 	<update id="editBoard" parameterType="BoardDto">
 		UPDATE boards
@@ -126,5 +144,9 @@
 	<update id="countView" parameterType="long">
   		UPDATE boards SET view = view + 1 WHERE id=#{id}
 	</update>
+	
+	<select id="selectMaxId" resultType="long">
+		SELECT MAX(id) from boards
+	</select>
 	
 </mapper>
