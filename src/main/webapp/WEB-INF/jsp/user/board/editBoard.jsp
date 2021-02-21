@@ -63,6 +63,17 @@
 			}
 		});   
 	}
+	$(document).ready(function() {
+	    $('#content').on('keyup', function() {
+	        $('#content_cnt').html("("+$(this).val().length+" / 300)");
+	 
+	        if($(this).val().length > 300) {
+	            $(this).val($(this).val().substring(0, 300));
+	            $('#content_cnt').html("(300 / 300)");
+	            alert("300자 이내로 입력해주세요")
+	        }
+	    });
+	});
 </script>
 </head>
 <body>
@@ -125,7 +136,8 @@
 
 		<tr>
 			<td colspan=2>
-			<textarea  name="content" rows="10" cols="80" class="form-control">${d.content}</textarea>
+			<textarea  id="content" name="content" rows="10" cols="80" class="form-control">${d.content}</textarea>
+			<div id="content_cnt">(0 / 300)</div>
 			</td>
 		</tr>
 		<tr></tr>
