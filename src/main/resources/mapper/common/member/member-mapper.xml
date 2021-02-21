@@ -39,9 +39,25 @@
             , #{gender} )
     </insert>
     
-    <select id="login" 
+    <select id="loginCheck" 
     parameterType="MemberDto" 
     resultType="MemberDto">
+    
+	SELECT 
+		<include refid="MemberColumns" />
+	FROM
+	 	members
+	 WHERE
+	 	email=#{email} 
+	 	AND
+	 	password=#{password}
+
+	</select>
+	
+	<select id="getUser" 
+    parameterType="MemberDto" 
+    resultType="MemberDto">
+    
 	SELECT 
 		<include refid="MemberColumns" />
 	FROM

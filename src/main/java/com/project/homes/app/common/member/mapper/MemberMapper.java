@@ -13,6 +13,8 @@ public interface MemberMapper {
 
 	int addMember(MemberDto memberDto);
 
-	Optional<MemberDto> login(MemberDto memberDto);
+	MemberDto loginCheck(MemberDto memberDto);
+
+	MemberDto getUser(MemberDto memberDto);
 
 }

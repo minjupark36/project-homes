@@ -1,10 +1,12 @@
 package com.project.homes.app.common.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.homes.app.common.member.dto.MemberDto;
@@ -24,29 +26,27 @@ public class MemberController {
 	}
 	
 	@GetMapping("/sign-in")
-	public String loginForm(@RequestParam(name = "loginStatus", required = false) String loginStatus, Model model) {
-		model.addAttribute("loginStatus", loginStatus);
+	public String loginForm(Model model) {
 		return "login/sign-in";
 	}
-	
+		
 	@PostMapping("/sign-in")
 	@ResponseBody
-	public String login(MemberDto memberDto) {
-		return memberService.login(memberDto)+"";
+	public String loginCheck(MemberDto memberDto, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(memberService.loginCheck(memberDto)) {
+			session.setAttribute("loginCheck",true);
+			session.setAttribute("user", memberService.getUser(memberDto));
+		}
+        
+		return memberService.loginCheck(memberDto)+"";
 	}
 	
 	@GetMapping("/sign-up")
 	public String signUpForm() {
 		return "login/sign-up";
 	}
-	
-	@PostMapping("/sendMail")
-	@ResponseBody
-	public String sendMail(String email) {
-		String key = memberService.sendMail(email);
-		return key;
-	}
-	
+
 	@PostMapping("/sign-up")
 	@ResponseBody
 	public String signUp(MemberDto memberDto){		
@@ -56,5 +56,14 @@ public class MemberController {
 		System.out.println("=============");
 		return res+"";
 	}
+	
+	@PostMapping("/sendMail")
+	@ResponseBody
+	public String sendMail(String email) {
+		String key = memberService.sendMail(email);
+		return key;
+	}
+	
+	
 
 }

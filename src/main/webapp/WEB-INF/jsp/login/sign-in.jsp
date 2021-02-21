@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,7 +80,7 @@
 			success:function (res){
 				if(res.trim()=='true'){
 					alert("로그인에 성공했습니다.");
-					location.href = "/main"
+					location.href="/main";
 				}else {
 					alert("로그인에 실패했습니다.")
 					return false;
@@ -108,8 +108,9 @@
 			<button type="button" id="btn_login" onclick="login();">LOGIN</button>
 		</div>
 	
-	</form>
+	</form>	
 </div>
+
 </div>
 </body>
 </html>

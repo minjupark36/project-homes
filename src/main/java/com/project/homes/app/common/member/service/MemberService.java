@@ -52,15 +52,22 @@ public class MemberService {
 
 	}
 
-	public boolean login(MemberDto memberDto) {
+	public boolean loginCheck(MemberDto memberDto) {
 		
-		Optional<MemberDto> member = Optional.empty();
-		member = memberMapper.login(memberDto);
+		MemberDto member = new MemberDto();
+		member = memberMapper.loginCheck(memberDto);
 		if(member!=null) {
 			return true;
 		}else {
 			return false;
 		}		
+	}
+
+	public MemberDto getUser(MemberDto memberDto) {
+		
+		MemberDto member = new MemberDto();
+		member = memberMapper.getUser(memberDto);
+		return member;
 	}
 
 }
