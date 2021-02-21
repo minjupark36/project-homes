@@ -22,6 +22,8 @@ public interface BoardMapper {
 	List<BoardDto> boardByCategory(@Param("searchMap") Map<String, Object> searchMap,long categoriesId);
 	int editBoard(BoardDto boardDto);
 	long countView(long id);
+	BoardDto getNextBoard(long id);
+	BoardDto getPreBoard(long id);
 	long insertReply(BoardDto boardDto);
 	void groupOrderUpdate(long id, long groupOrder);
 }
