@@ -17,12 +17,12 @@
 	}
 	
 	.container.main-login > h1 {
-	    font-size: 4.0rem;
+	    font-size: 3.0rem;
 	    color: #685547;
 	}
 	
 	.container.main-login > h2 {
-	    font-size: 2.0rem;
+	    font-size: 1.5rem;
 	    margin-top: 20px;
 	    color: #685547;
 	}
