@@ -13,6 +13,10 @@
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 <style>
+	#home-icon {
+			width:30px;
+			height:30px;
+	}
 	.tag{
 		display:inline
 	}
@@ -190,6 +194,44 @@
 
 </head>
 <body>
+<!-- 메인 메뉴바 -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="/main"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user/board">| 커뮤니티</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/main/store">| 스토어</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/user/scrap">| 내 스크랩</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- 하위 메뉴바 -->
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="/main">홈</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/main/images">사진</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/main/info">정보</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+	
 <form>
 	
 	<c:set var="interior" value="${interiorImage}"></c:set>		
@@ -239,7 +281,7 @@
 	<input type="hidden" value="${interior.id}" name="imageId" id="imageId">
 		<table class="comments">
 			<tr>
-				<td><input type="text" name="content" id="content"></td><td><button type="submit">답글 등록</button></td>
+				<td><input type="text" name="content" id="content" class="form-control"></td><td><button type="submit" class="btn btn-outline-secondary">답글 등록</button></td>
 			</tr>
 		</table>
 	</form>
@@ -250,14 +292,14 @@
 			<input type="hidden" value="${comment.groupOrder}" name="groupOrder" id="groupOrder${status.index}">
 			<input type="hidden" value="${comment.depth}" name="depth" id="depth${status.index}">
 			<input type="hidden" value="${comment.id}" name="id" id="id${status.index}">
-				<tr><td><input type="text" value="${comment.content}" name="content" id="content${status.index}" readonly ></td></tr>
+				<tr><td><input type="text" value="${comment.content}" name="content" id="content${status.index}" class="form-control" readonly ></td></tr>
 				<tr class="com">	
-					<td><button type="button" onclick="deleteComment(${comment.id});" >댓글 삭제</button></td>
-					<td><button type="button" onclick="editForm(${status.index});" id="editbtn${status.index}">댓글 수정</button></td>
-					<td><button style="display: none" type="button" onclick="editComment(${status.index});" id="editedbtn${status.index}">수정완료</button></td>
-					<td><button type="button" onclick="replyForm(${status.index})" id="${status.index}">답글 달기</button>
+					<td><button type="button" class="btn btn-outline-secondary" onclick="deleteComment(${comment.id});" >댓글 삭제</button></td>
+					<td><button type="button" class="btn btn-outline-secondary" onclick="editForm(${status.index});" id="editbtn${status.index}">댓글 수정</button></td>
+					<td><button style="display: none" class="btn btn-outline-secondary" type="button" onclick="editComment(${status.index});" id="editedbtn${status.index}">수정완료</button></td>
+					<td><button type="button" class="btn btn-outline-secondary" onclick="replyForm(${status.index})" id="${status.index}">답글 달기</button>
 					<td id="replytd${status.index}" style="display: none"><input type="text" name="reply" id="reply${status.index}">
-					<button type="button" onclick="replyComment(${status.index})">답글 작성완료</button></td>
+					<button type="button" class="btn btn-outline-secondary" onclick="replyComment(${status.index})">답글 작성완료</button></td>
 				</tr>		
 			</c:forEach>
 			
