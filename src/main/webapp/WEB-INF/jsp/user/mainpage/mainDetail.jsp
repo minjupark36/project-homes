@@ -38,7 +38,10 @@
 			  font-size:20px		}
 				/* 두 태그에 각각 y 위치 입력 */
 	#TopButton {
-	  bottom: 108px;        
+	  	  bottom: 108px;        
+	}
+	.count{
+		  border-radius: 20px
 	}
 </style>
 <script>
@@ -287,6 +290,7 @@
 	</form>
 	<form action="/comment/reply" method="post">
 		<table class="commentslist">
+			<tr><td><button type="button" class="btn btn-outline-secondary count">댓글${countComment}</button></td></tr>
 			<c:forEach var="comment" items="${commentsList}" varStatus="status">
 			<input type="hidden" value="${comment.groupNo}" name="groupNo" id="groupNo${status.index}">
 			<input type="hidden" value="${comment.groupOrder}" name="groupOrder" id="groupOrder${status.index}">

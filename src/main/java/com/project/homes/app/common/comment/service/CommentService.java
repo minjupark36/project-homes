@@ -2,6 +2,7 @@ package com.project.homes.app.common.comment.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,5 +49,9 @@ private final CommentMapper commentMapper;
 		commentMapper.groupOrderUpdate(id, groupOrder);
 		return res;
 		
+	}
+	//댓글 개수
+	public long countComment(@RequestParam("id") long id) {
+		return commentMapper.countComment(id);
 	}
 }

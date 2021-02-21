@@ -82,6 +82,11 @@
     	UPDATE comments SET group_order=group_order+1
     	WHERE group_no=#{id} AND group_order>#{groupOrder}
 	</update>
+	
+	<select id="countComment" parameterType="long" resultType="long">
+		SELECT COUNT(*) FROM comments 
+		WHERE images_id=#{id}
+	</select>
 
 
 </mapper>

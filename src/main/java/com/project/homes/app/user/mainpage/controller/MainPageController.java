@@ -100,6 +100,7 @@ public class MainPageController {
 		model.addAttribute("tagList",tagList);
 		mainPageService.countView(id);
 		model.addAttribute("commentsList",commentService.commentList(id));
+		model.addAttribute("countComment",commentService.countComment(id));
 		return "/user/mainpage/mainDetail";
 	}
 	

@@ -19,4 +19,5 @@ public interface CommentMapper {
 	long editComment(CommentDto commentDto);
 	long replyComment(CommentDto commentDto);
 	void groupOrderUpdate(@Param("id") long id, @Param("groupOrder") long group_order);
+	long countComment(@Param("id") long id);
 }
