@@ -148,6 +148,30 @@
   		UPDATE boards SET view = view + 1 WHERE id=#{id}
 	</update>
 	
+	<select id="getNextBoard" resultType="BoardDto" parameterType="long" resultMap="boardDtoResultMap">
+		SELECT 
+			<include refid="boardColumns" />
+		FROM boards
+		WHERE id IN 
+			(
+				SELECT min(id)
+				FROM boards
+				WHERE id>#{id}
+			)
+	</select>
+	
+	<select id="getPreBoard" resultType="BoardDto" parameterType="long" resultMap="boardDtoResultMap">
+		SELECT 
+			<include refid="boardColumns" />
+		FROM boards
+		WHERE id IN 
+			(
+				SELECT max(id)
+				FROM boards
+				WHERE #{id}>id
+			)
+	</select>
+	
 	<select id="selectMaxId" resultType="long">
 		SELECT MAX(id) from boards
 	</select>

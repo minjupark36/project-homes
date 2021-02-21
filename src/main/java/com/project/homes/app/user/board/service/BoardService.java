@@ -49,6 +49,15 @@ public class BoardService {
 	public boolean deleteBoard(@RequestParam("id") long id) {
 		return boardMapper.deleteBoard(id);
 	}
+	
+	//게시판 다음글 가져오기
+	public BoardDto getNextBoard(@RequestParam("id") long id) {
+		return boardMapper.getNextBoard(id);
+	}
+	//게시판 이전글 가져오기
+	public BoardDto getPreBoard(@RequestParam("id") long id) {
+		return boardMapper.getPreBoard(id);
+	}
 
 	//게시판 편집
 	@Transactional

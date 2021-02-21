@@ -81,6 +81,26 @@ public class BoardController {
 		return id+"";
 	}
 	
+	//다음(page=2) 혹은 이전(page=1) 게시판 보여주기
+		@PostMapping("/user/board/detail")
+		@ResponseBody
+		public String getNextBoard(@RequestParam("id") long id,@RequestParam("page") int page) {
+			String info=null;
+			if(page==2) {
+				BoardDto nextBoard=boardService.getNextBoard(id);
+				long nextId=nextBoard.getId();
+				long nextCategoriesId=nextBoard.getCategoriesId();
+				info=nextId+","+nextCategoriesId;
+			}
+			else if(page==1) {
+				BoardDto preBoard=boardService.getPreBoard(id);
+				long preId=preBoard.getId();
+				long preCategoriesId=preBoard.getCategoriesId();
+				info=preId+","+preCategoriesId;	
+			}
+			return info;
+		}
+	
 	//detail페이지에서 게시판id 받아 수정 form 
 	@GetMapping("/user/board/edit")
 	public String getEditForm(@RequestParam("id") long id,
