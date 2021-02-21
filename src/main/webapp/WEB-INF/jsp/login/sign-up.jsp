@@ -84,6 +84,7 @@
   	
 </style>
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(function() {
 	var isCertification = false;
@@ -126,7 +127,7 @@ $(function() {
 	});
 	
 	$("#pwCheck").on("propertychange change keyup paste input", function() {
-		if ($("#pw").val() == $("#pwCheck").val()) {
+		if ($("#password").val() == $("#pwCheck").val()) {
 			$(".pw-compare").text("사용가능한 비밀번호입니다.").css("display", "block");
 		
 		} else {
@@ -136,6 +137,46 @@ $(function() {
 	});
 
 });
+
+	function signUp(){
+		
+		var email = $(".email").val();
+		email = email + "@" + $(".domain").val()
+		
+		var password = $('#password').val();
+		var name = $('#name').val();		
+		var gender = $(":input:radio[name=gender]:checked").val();
+		
+		var formData = {
+				email : email,
+				password : password,
+				name : name,
+				gender: gender 
+		}
+		
+		console.log(formData);
+		
+		$.ajax({ 
+			url:'/sign-up', 
+			method:'post',
+			data: formData,
+			dataType:'text',
+			success:function (res){
+				if(res.trim()=='true'){
+					alert("회원가입에 성공했습니다.")
+					location.href = "/main"
+				}else {
+					alert("회원가입에 실패했습니다.")
+					return false;
+				}
+			}, 
+			error:function(xhr, status, err){
+				alert(status+', '+err);
+			}
+		
+		});
+
+	}
 
 
 </script>
@@ -147,7 +188,7 @@ $(function() {
 	<h2>회원가입</h2>
 	<form action="/sign-up" method="post">
 		<div class="title">이메일</div>
-		<input type="text" placeholder="E-Mail" name="email" class="email">@ 
+		<input type="text" placeholder="E-Mail" name="email" class="email" id="email" required="required">@ 
 		<select name="domain" class="domain">
 			<option value="gmail.com">gmail.com</option>
 			<option value="naver.com">naver.com</option>
@@ -159,18 +200,18 @@ $(function() {
 		</section>
 		
 		<div class="title">비밀번호</div>
-		<input type="password" placeholder="비밀번호를 입력하세요." name="password" class="value" id="pw"><br>
+		<input type="password" placeholder="비밀번호를 입력하세요." name="password" class="value" id="password"><br>
 		<input type="password" placeholder="비밀번호를 확인해주세요." class="value" id="pwCheck">
 		<div class="pw-compare" style="display: none">비밀번호가 일치하지 않습니다.</div><br> 
 		
 		<div class="title">이름</div>
-		<input type="text" placeholder="이름을 입력하세요." name="name" class="value"><br> 
+		<input type="text" placeholder="이름을 입력하세요." name="name" class="value" id="name"><br> 
 		
 		<div class="title">성별</div>
-		<input type="radio" name="gender" value="남성" checked>남성 
-		<input type="radio" name="gender" value="여성">여성<br>
+		<input type="radio" name="gender" value="남성" class="gender">남성 
+		<input type="radio" name="gender" value="여성" class="gender">여성<br>
 		<div>
-			<button type="submit" id="btn_login">JOIN</button>
+			<button type="button" id="btn_login" onclick="signUp();">JOIN</button>
 		</div>
 	</form>
 </section>
