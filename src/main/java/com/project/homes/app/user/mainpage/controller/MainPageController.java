@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.homes.app.common.comment.service.CommentService;
 import com.project.homes.app.common.image.dto.ImageDto;
 import com.project.homes.app.common.image.service.ImageService;
 import com.project.homes.app.user.mainpage.dto.MainPageDto;
@@ -28,6 +29,7 @@ public class MainPageController {
 	private final MainPageService mainPageService;
 	private final ImageService imageService;
 	private final ScrapService scrapService;
+	private final CommentService commentService;
 	
 	@Autowired
 	private MainPageMapper mainPageMapper;
@@ -97,7 +99,7 @@ public class MainPageController {
 		List<String> tagList = Arrays.asList(imageTags.split("  "));
 		model.addAttribute("tagList",tagList);
 		mainPageService.countView(id);
-		//model.addAttribute("commentsList",commentsService.commentsList(id));
+		model.addAttribute("commentsList",commentService.commentList(id));
 		return "/user/mainpage/mainDetail";
 	}
 	

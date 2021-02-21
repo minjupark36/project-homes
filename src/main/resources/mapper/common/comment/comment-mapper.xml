@@ -3,7 +3,85 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.homes.app.common.comment.mapper.CommentMapper">
-
+	<sql id="commentColumns">
+		id,
+		members_id,
+		images_id,
+		content,
+		create_date,
+		modified_date,
+		group_no,
+		group_order,
+		depth
+	</sql>	
+	<resultMap type="CommentDto" id="commentDtoResultMap">	
+	<id property="id" column="id"/>
+	<result property="memberId" column="members_id"/>
+	<result property="imageId" column="images_id"/>
+	<result property="content" column="content"/>
+	<result property="createDate" column="create_date"/>
+	<result property="modifiedDate" column="modified_date"/>
+	<result property="groupNo" column="group_no"/>
+	<result property="groupOrder" column="group_order"/>
+	<result property="depth" column="depth"/>
+	</resultMap>
+	
+	<insert id="insertComment" parameterType="CommentDto" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+	<selectKey keyProperty="id" resultType="long" order="BEFORE">
+		select max(id)+1 from comments
+		
+	</selectKey>
+		<if test="id!=null">
+			INSERT INTO comments 			
+			VALUES 
+			(null,1,#{imageId},#{content},NOW(),null,#{id},0,0)
+		</if>
+		<if test="id==null">
+			INSERT INTO comments 			
+			VALUES 
+			(null,1,#{imageId},#{content},NOW(),null,1,0,0)
+		</if>
+	</insert>
+	
+	<select id="commentList" resultType="CommentDto" parameterType="Long" resultMap="commentDtoResultMap">
+		SELECT 
+			id,
+			members_id,
+			images_id,
+			CONCAT(REPEAT("ㅤRE:",depth),content) content,
+			create_date,
+			modified_date,
+			group_no,
+			group_order,
+			depth
+			
+			
+		FROM comments
+		
+		WHERE images_id=#{id}
+		order by group_no desc,depth
+	</select>
+	
+	<delete id="deleteComment" parameterType="long">
+		DELETE FROM comments WHERE id=#{id}
+	</delete>
+	
+	<update id="editComment" parameterType="CommentDto">
+		UPDATE comments
+		SET content=#{content}, modified_date=NOW()
+		where id=#{id}
+	</update>
+	
+	<insert id="replyComment" parameterType="CommentDto">
+		INSERT INTO comments 			
+		VALUES 
+		(null,1,#{imageId},#{content},NOW(),null,#{groupNo},#{groupOrder}+1,#{depth}+1)
+	</insert>
+	
+	<update id="groupOrderUpdate" parameterType="long">
+    	UPDATE comments SET group_order=group_order+1
+    	WHERE group_no=#{id} AND group_order>#{groupOrder}
+	</update>
 
 
 </mapper>

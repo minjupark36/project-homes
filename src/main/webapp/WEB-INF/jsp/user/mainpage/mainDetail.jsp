@@ -120,7 +120,7 @@
 	  function deleteComment(id){
 		  
 		  $.ajax({
-				url:'/comments/delete',
+				url:'/comment/delete',
 				method:'delete',
 				data:{'id':id},    
 				dataType:'text',
@@ -142,9 +142,9 @@
 		  
 	  }
 	  function editComment(index){
-		  console.log(index+"sdadasdas")
+		  console.log(index);
 		  $.ajax({
-				url:'/comments/edit',
+				url:'/comment/edit',
 				method:'post',
 				data : {
 					'id' : $("#id"+index).val(),
@@ -169,7 +169,7 @@
 	  
 	  function replyComment(index){
 		  $.ajax({
-				url:'/comments/reply',
+				url:'/comment/reply',
 				method:'post',
 				data : {
 					'groupNo' : $("#groupNo"+index).val(),
@@ -235,7 +235,7 @@
 	</table>
 </form>
 <div>
-	<form action="/comments/insert" method="post">
+	<form action="/comment/insert" method="post">
 	<input type="hidden" value="${interior.id}" name="imageId" id="imageId">
 		<table class="comments">
 			<tr>
@@ -243,13 +243,13 @@
 			</tr>
 		</table>
 	</form>
-	<form action="/comments/reply" method="post">
+	<form action="/comment/reply" method="post">
 		<table class="commentslist">
 			<c:forEach var="comment" items="${commentsList}" varStatus="status">
 			<input type="hidden" value="${comment.groupNo}" name="groupNo" id="groupNo${status.index}">
 			<input type="hidden" value="${comment.groupOrder}" name="groupOrder" id="groupOrder${status.index}">
 			<input type="hidden" value="${comment.depth}" name="depth" id="depth${status.index}">
-			
+			<input type="hidden" value="${comment.id}" name="id" id="id${status.index}">
 				<tr><td><input type="text" value="${comment.content}" name="content" id="content${status.index}" readonly ></td></tr>
 				<tr class="com">	
 					<td><button type="button" onclick="deleteComment(${comment.id});" >댓글 삭제</button></td>
