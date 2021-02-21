@@ -37,9 +37,15 @@ public class MemberController {
 	
 	@PostMapping("/sendMail")
 	@ResponseBody
-	public String sendMail(String mail) {
-		String key = memberService.sendMail(mail);
+	public String sendMail(String email) {
+		String key = memberService.sendMail(email);
 		return key;
+	}
+	
+	@PostMapping("/sign-up")
+	public String signUp(MemberDto memberDto){		
+		memberService.addMember(memberDto);
+		return "login/sign-in";
 	}
 
 }

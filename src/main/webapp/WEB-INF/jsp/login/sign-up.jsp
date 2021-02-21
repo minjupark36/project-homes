@@ -90,19 +90,19 @@ $(function() {
 	var key = "";
 		
 	$(".sendMail").click(function() {// 메일 입력 유효성 검사
-		var mail = $(".mail").val(); // 사용자의 이메일 입력값.
+		var email = $(".email").val(); // 사용자의 이메일 입력값.
 
-		if (mail == "") {
+		if (email == "") {
 			alert("메일 주소가 입력되지 않았습니다.");
 		} else {
-			mail = mail + "@" + $(".domain").val(); // 셀렉트 박스에 @뒤 값들을 더함.
+			email = email + "@" + $(".domain").val(); // 셀렉트 박스에 @뒤 값들을 더함.
 			$.ajax({
 				type : 'post',
 				url : '/sendMail',
 				dataType : 'text',
 				async : "false",
 				data : {
-					mail : mail
+					email : email
 				},
 				success : function(data) {
 					console.log(data);
@@ -147,7 +147,7 @@ $(function() {
 	<h2>회원가입</h2>
 	<form action="/sign-up" method="post">
 		<div class="title">이메일</div>
-		<input type="text" placeholder="E-Mail" name="mail" class="mail">@ 
+		<input type="text" placeholder="E-Mail" name="email" class="email">@ 
 		<select name="domain" class="domain">
 			<option value="gmail.com">gmail.com</option>
 			<option value="naver.com">naver.com</option>
@@ -159,8 +159,8 @@ $(function() {
 		</section>
 		
 		<div class="title">비밀번호</div>
-		<input type="password" placeholder="비밀번호를 입력하세요." name="pw" class="value" id="pw"><br>
-		<input type="password" placeholder="비밀번호를 확인해주세요." name="pwCheck" class="value" id="pwCheck">
+		<input type="password" placeholder="비밀번호를 입력하세요." name="password" class="value" id="pw"><br>
+		<input type="password" placeholder="비밀번호를 확인해주세요." class="value" id="pwCheck">
 		<div class="pw-compare" style="display: none">비밀번호가 일치하지 않습니다.</div><br> 
 		
 		<div class="title">이름</div>
