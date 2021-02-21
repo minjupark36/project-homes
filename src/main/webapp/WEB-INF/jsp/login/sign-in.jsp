@@ -67,13 +67,32 @@
 
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-<script>	
-
-	function login() {			
-		$("#login-form").submit();			
-	}	
-	
-	</script>
+<script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	function login() { 
+		
+		$.ajax({ 
+			url:'/sign-in', 
+			method:'post',
+			data: $('#login-form').serialize(),
+			dataType:'text',
+			success:function (res){
+				if(res.trim()=='true'){
+					alert("로그인에 성공했습니다.");
+					location.href = "/main"
+				}else {
+					alert("로그인에 실패했습니다.")
+					return false;
+				}
+			}, 
+			error:function(xhr, status, err){
+				alert(status+', '+err);
+			}
+		
+		});
+	}
+</script>
 </head>
 <body>
 
@@ -86,7 +105,7 @@
 		<input type="password" name="password" id="user_pw_login" size="40" placeholder="비밀번호" required><br>
 		<div class="warning"></div>
 		<div>
-			<button type="button" id="btn_login">LOGIN</button>
+			<button type="button" id="btn_login" onclick="login();">LOGIN</button>
 		</div>
 	
 	</form>

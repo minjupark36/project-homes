@@ -1,6 +1,5 @@
 package com.project.homes.app.common.member.controller;
 
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +24,15 @@ public class MemberController {
 	}
 	
 	@GetMapping("/sign-in")
-	public String loginUserForm(@RequestParam(name = "loginStatus", required = false) String loginStatus, Model model) {
+	public String loginForm(@RequestParam(name = "loginStatus", required = false) String loginStatus, Model model) {
 		model.addAttribute("loginStatus", loginStatus);
 		return "login/sign-in";
+	}
+	
+	@PostMapping("/sign-in")
+	@ResponseBody
+	public String login(MemberDto memberDto) {
+		return memberService.login(memberDto)+"";
 	}
 	
 	@GetMapping("/sign-up")
@@ -43,9 +48,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("/sign-up")
+	@ResponseBody
 	public String signUp(MemberDto memberDto){		
-		memberService.addMember(memberDto);
-		return "login/sign-in";
+		boolean res= memberService.addMember(memberDto);
+		System.out.println("=============");
+		System.out.println(res);
+		System.out.println("=============");
+		return res+"";
 	}
 
 }

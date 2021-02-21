@@ -1,5 +1,6 @@
 package com.project.homes.app.common.member.service;
 
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.mail.SimpleMailMessage;
@@ -39,9 +40,27 @@ public class MemberService {
 		return key;
 	}
 
-	public String addMember(MemberDto memberDto) {	
-		return memberMapper.addMember(memberDto)+"";
+	public boolean addMember(MemberDto memberDto) {	
 
+		int num = memberMapper.addMember(memberDto);
+		
+		if(num==1) {
+			return true;
+		}else {
+			return false;		
+		}
+
+	}
+
+	public boolean login(MemberDto memberDto) {
+		
+		Optional<MemberDto> member = Optional.empty();
+		member = memberMapper.login(memberDto);
+		if(member!=null) {
+			return true;
+		}else {
+			return false;
+		}		
 	}
 
 }

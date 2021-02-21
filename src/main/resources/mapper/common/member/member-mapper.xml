@@ -38,5 +38,19 @@
             , #{name}
             , #{gender} )
     </insert>
+    
+    <select id="login" 
+    parameterType="MemberDto" 
+    resultType="MemberDto">
+	SELECT 
+		<include refid="MemberColumns" />
+	FROM
+	 	members
+	 WHERE
+	 	email=#{email} 
+	 	AND
+	 	password=#{password}
+
+	</select>
 
 </mapper>
