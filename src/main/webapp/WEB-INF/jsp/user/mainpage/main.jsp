@@ -14,9 +14,25 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   
 <style type="text/css">
+
+	#login, #logout {
+		width:800px;
+		color:white;
+		text-align: right;
+		font-weight: bolder;
+		font-size: 1.5em;
+		text-decoration: none;
+	}
+	
+	a {
+		text-decoration: none;
+		color:white;
+	}
+	
 	.tag{
 		display:inline
 	}
+	
 	#home-icon {
 		width:30px;
 		height:30px;
@@ -143,8 +159,21 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/user/scrap">| 내 스크랩</a>
-    </li>
+    </li>    
   </ul>
+  <c:choose>
+  <c:when test="${sessionScope.loginCheck eq true}">
+	  <span id="logout">
+	  		<a href="/log-out">로그아웃</a>   
+	   </span>
+  </c:when>
+  <c:otherwise>
+ 	<span id="login">
+ 		<a href="/sign-in">로그인</a>    	
+    </span>
+  </c:otherwise>
+  </c:choose>
+   
 </nav>
 
 <!-- 하위 메뉴바 -->

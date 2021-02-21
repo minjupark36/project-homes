@@ -64,6 +64,12 @@ public class MemberController {
 		return key;
 	}
 	
-	
+	@GetMapping("/log-out")
+	public String logOut(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:main";
+	}
 
 }
