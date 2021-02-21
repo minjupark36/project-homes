@@ -43,6 +43,13 @@
 	.count{
 		  border-radius: 20px
 	}
+	.comment:read-only {
+	  background-color: white;
+	}
+	.comment{
+		border-radius: 20px
+	}
+	
 </style>
 <script>
 	function nextDetail(id,page){
@@ -296,7 +303,7 @@
 			<input type="hidden" value="${comment.groupOrder}" name="groupOrder" id="groupOrder${status.index}">
 			<input type="hidden" value="${comment.depth}" name="depth" id="depth${status.index}">
 			<input type="hidden" value="${comment.id}" name="id" id="id${status.index}">
-				<tr><td><input type="text" value="${comment.content}" name="content" id="content${status.index}" class="form-control" readonly ></td></tr>
+				<tr><td><input type="text" value="${comment.content}" name="content" id="content${status.index}" class="form-control comment" readonly ></td></tr>
 				<tr class="com">	
 					<td><button type="button" class="btn btn-outline-secondary" onclick="deleteComment(${comment.id});" >댓글 삭제</button></td>
 					<td><button type="button" class="btn btn-outline-secondary" onclick="editForm(${status.index});" id="editbtn${status.index}">댓글 수정</button></td>
