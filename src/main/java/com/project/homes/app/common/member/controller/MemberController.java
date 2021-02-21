@@ -1,13 +1,5 @@
 package com.project.homes.app.common.member.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,16 +8,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.homes.app.common.member.dto.MemberDto;
 import com.project.homes.app.common.member.service.MemberService;
-import com.project.homes.app.common.image.service.ImageService;
-import com.project.homes.app.user.mainpage.service.MainPageService;
-import com.project.homes.app.user.scrap.service.ScrapService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
 public class MemberController {
+	
+	private final MemberService memberService;
 	
 	@GetMapping("/")
 	public String index() {
@@ -41,6 +33,13 @@ public class MemberController {
 	@GetMapping("/sign-up")
 	public String userSignUpForm() {
 		return "login/sign-up";
+	}
+	
+	@PostMapping("/sendMail")
+	@ResponseBody
+	public String sendMail(String mail) {
+		String key = memberService.sendMail(mail);
+		return key;
 	}
 
 }

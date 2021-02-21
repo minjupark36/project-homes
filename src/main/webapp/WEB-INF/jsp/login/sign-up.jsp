@@ -6,90 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	div{
-		border:1px solid transparent;		
-		}
-		
-	.container.main-join{	
-	    margin-top: 100px;  
-	    text-align: center;
-	}
-	
-	.container.main-join > h1 {
-	    font-size: 4.0rem;
-	    color: #685547;
-	}
-	
-	.container.main-join > h2 {
-	    font-size: 2.0rem;
-	    margin-top: 20px;
-	    color: #685547;
-	}
-
-	#user_id_login, #user_name_login {
-	    height: 30px;
-	    width: 400px;	    
-	    font-size: 1.5rem;
-	    border: 0px;
-	    border-bottom: 1px solid black;
-	    background-color: transparent;
-	}
-	
-	#user_pw_login {
-	    
-	    height: 30px;
-	    width: 400px;
-	    font-size: 1.5rem;
-	    border: 0px;
-	    border-bottom: 1px solid black;
-	    background-color: transparent;
-	}
-	
-	#btn_login {
-	    align-items: center;
-	    width: 400px;
-	    height: 40px;
-	    background-color:  #fde982;
-	    margin-top: 30px;
-	    margin-bottom: 30px;
-	    color: #685547;
-	    font-size: 1.5rem;
-	    font-style: bold;
-	    border-color: transparent;
-	}
-	
-	#btn_login:hover{
-	    color: #f8f7e6;
-	    background-color: #685547;
-	    
-	}
-	.join, .find{
-	    display: inline;
-	    text-align: center;
-	}
-	.join{
-	    margin-right: 195px;
-	}
-	.join > a, .find > a{
-	    font-size: 1.5rem;
-	    color: #685547;
-	    font-style: bold;    
-	}
-	
-	.join > a:hover, .find > a:hover{
-	    border-bottom: 1px solid black;
-	}
-	
-	.join-member > hr {
-	    color: #685547;
-	}
   	
   	.section{
     width: max-content;
     height: max-content;
     margin: auto;
-    /* background-color: red; */
-    margin-top: 300px;
+    margin-top: 100px;
 	}
 	.section>h1{
 	    width: max-content;
@@ -110,16 +32,15 @@
 	}
 	form>input{
 	    margin-top: 10px;
-	    border:0px;
-	    border-bottom: 1px solid black;
 	}
 	.value{
 	    width: 100%;
 	}
+	
+	
   	
 </style>
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(function() {
 	var isCertification = false;
@@ -133,15 +54,15 @@ $(function() {
 			mail = mail + "@" + $(".domain").val(); // 셀렉트 박스에 @뒤 값들을 더함.
 			$.ajax({
 				type : 'post',
-				url : '/Meg/CheckMail',
-				dataType : 'json',
+				url : '/sendMail',
+				dataType : 'text',
 				async : "false",
 				data : {
 					mail : mail
 				},
 				success : function(data) {
-					console.log(data.key);
-					key = data.key;
+					console.log(data);
+					key = data;
 				}
 			});
 			alert("이메일을 확인하시기 바랍니다.");
@@ -152,7 +73,7 @@ $(function() {
 	
 	$(".compare").on("propertychange change keyup paste input", function() {
 		if ($(".compare").val() == key) {
-			$(".compare-text").text("인증 성공!").css("color", "black");
+			$(".compare-text").text("인증완료!").css("color", "black");
 			isCertification = true;
 		} else {
 			$(".compare-text").text("불일치!").css("color", "red");
@@ -161,67 +82,32 @@ $(function() {
 	});
 
 });
-	
-	function checkMail(){
-		
-		var email = $("#email").val();
-		
-		if (email == "") {
-			alert("메일 주소가 입력되지 않았습니다.");
-		} else {
-			email = email+"@"+$(".domain").val(); //셀렉트 박스에 @뒤 값들을 더함.
-			$.ajax({
-				type : 'post',
-				url : '/Meg/CheckMail',
-				data : {email:email},
-				dataType :'json',
-
-			});
-			alert("인증번호가 전송되었습니다.") 
-			isCertification=true; //추후 인증 여부를 알기위한 값
-		}
-	}
-	
-	$(".emailKey").on("propertychange change keyup paste input", function() {
-		var currval = $(".emailKey").val()
-		if (currval == key) {   //인증 키 값을 비교를 위해 텍스트인풋과 벨류를 비교
-			$(".compare-text").text("인증 성공!").css("color", "green");
-			isCertification = true;  //인증 성공여부 check
-		} else {
-			$(".compare-text").text("불일치!").css("color", "red");
-			isCertification = false; //인증 실패
-		}
-	});
-	
 </script>
+
 </head>
 <body>
-
-<div id="main">
-<div class="container main-join">
-	<h2>JOIN</h2>
-	<div class="login-wrap">
-	<form method="post" id="join">
-		<label for="email">EMAIL</label><br>
-		<input type="text" name="email" id="email" required>@
-		<select class="domain" name="domain">
-			<option value="gmail.com">gmail.com
-			<option value="naver.com">naver.com
-			<option value="hanmail.net">hanmail.net
-		</select>		
-		<button type="button" onclick="checkMail();">인증</button><br>	
-		<input type="text" name="emailKey" class="emailKey" placeholder="인증번호를 입력하세요" required>	
-		<span class="compare-text" style="display: none">불일치</span><br>
-		<label for="name">이름</label><br>
-		<input type="text" name="name" id="name" required><br>
-		<label for="gender">성별</label><br>
-		<input type="radio" name="gender" value="남성" checked>남성 
-		<input type="radio" name="gender" value="여성">여성 <br> 
-		<button type="submit">가입</button>				
-	</form>
-	</div>
-</div>
-</div>
-
+<section class="section">
+		<h1>회원 가입</h1>
+		<form action="/sendMail" method="POST">
+			<input type="text" placeholder="ID" name="id" class="value"><br>
+			<input type="password" placeholder="비밀번호" name="pw" class="value"><br>
+			<input type="password" placeholder="비밀번호 확인" name="pwCheck"
+				class="value"><br> <input type="text" placeholder="이름"
+				name="name" class="value"><br> <input type="text"
+				placeholder="E-Mail" name="mail" class="mail">@ <select
+				name="domain" class="domain">
+				<option value="gmail.com">gmail.com</option>
+				<option value="naver.com">naver.com</option>
+			</select> <input type="button" value="인증" class="sendMail"> <br>
+			<section class="check-section">
+				<input type="text" placeholder="인증 키 입력" style="display: none;"
+					class="compare"><span class="compare-text" style="display: none">불일치</span>
+			</section>
+			<input type="radio" name="sex" value="남성" checked>남성 
+			<input type="radio" name="sex" value="여성">여성 <br> 
+			<input type="submit" value="가입"> 
+			<input type="reset" value="취소">
+		</form>
+	</section>
 </body>
 </html>
