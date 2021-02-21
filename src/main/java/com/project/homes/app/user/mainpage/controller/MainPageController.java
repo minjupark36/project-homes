@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.homes.app.common.comment.service.CommentService;
+import com.project.homes.app.common.hashtag.service.HashtagService;
 import com.project.homes.app.common.image.dto.ImageDto;
 import com.project.homes.app.common.image.service.ImageService;
-import com.project.homes.app.user.mainpage.dto.MainPageDto;
 import com.project.homes.app.user.mainpage.mapper.MainPageMapper;
 import com.project.homes.app.user.mainpage.service.MainPageService;
 import com.project.homes.app.user.scrap.service.ScrapService;
@@ -30,6 +30,7 @@ public class MainPageController {
 	private final ImageService imageService;
 	private final ScrapService scrapService;
 	private final CommentService commentService;
+	private final HashtagService hashtagService;
 	
 	@Autowired
 	private MainPageMapper mainPageMapper;
@@ -40,7 +41,6 @@ public class MainPageController {
 		
 		model.addAttribute("interior",mainPageService.getInteriorImages());
 		model.addAttribute("deco",mainPageService.getDecoImages());
-//		model.addAttribute("hashtagList",hashtagService.selectHashtags());
 		
 		return "/user/mainpage/main";
 	}
@@ -51,7 +51,7 @@ public class MainPageController {
 			,@RequestParam(name="order", defaultValue="recent") String order) {
 
 		model.addAttribute("mainpageList",mainPageService.getImageList(order));
-//		model.addAttribute("hashtagList",hashtagService.selectHashtags());
+		model.addAttribute("hashtagList",hashtagService.selectHashtags());
 
 		return "/user/mainpage/mainImages";
 	}

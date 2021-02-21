@@ -194,8 +194,7 @@
 </div>
 <br>
 
-<div class="hashtags">
-	
+<div class="hashtags">	
 	<c:forEach var="tags" items="${hashtagList}">
 		<div class="tag">
 			<button type="button" class="btn btn-outline-secondary" onclick="location.href='/main/tag?hashtagsNames=${tags.name}'">#${tags.name}</button>
