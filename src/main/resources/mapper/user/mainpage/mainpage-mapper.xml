@@ -115,4 +115,78 @@
 			
 	</select>
 	
+	<select id="getInteriorDetail" 
+	resultType="ImageDto" 
+	parameterType="long" resultMap="ImageDto">
+		SELECT 
+			<include refid="ImageColumns"/>
+		FROM 
+			images 
+		WHERE 
+			id=#{id} and sort='interior'
+	</select>
+	
+	<select id="getDecoDetail" 
+	resultType="ImageDto" 
+	parameterType="long" resultMap="ImageDto">
+		SELECT 
+			<include refid="ImageColumns"/>
+		FROM 
+			images 
+		WHERE 
+			pnum=#{id} and sort='deco'
+	</select>
+	
+	<select id="getTagImageList" 
+	resultType="ImageDto" 
+	parameterType="String" resultMap="ImageDto">
+		SELECT 
+			<include refid="ImageColumns"/>
+		FROM 
+			images 
+		WHERE 
+			hashtags_names LIKE CONCAT('%',#{hashtagsNames},'%') and sort='interior'
+	</select>
+	
+	<select id="getNextDetail" resultType="ImageDto" parameterType="long" resultMap="ImageDto">
+		SELECT 
+			<include refid="ImageColumns"/>
+		FROM images
+		WHERE id IN 
+			(
+				SELECT min(id)
+				FROM images
+				WHERE id>#{id}
+				and sort='interior'
+			)
+			
+	</select>
+	
+	<select id="getPreDetail" resultType="ImageDto" parameterType="long" resultMap="ImageDto">
+		SELECT 
+			<include refid="ImageColumns"/>
+		FROM images
+		WHERE id IN 
+			(
+				SELECT max(id)
+				FROM images
+				WHERE #{id}>id
+				and sort='interior'
+			)
+			
+	</select>
+	
+	<update id="countView" 
+	parameterType="ImageDto">
+	
+		UPDATE 
+			images 
+		SET 
+			view = view + 1 
+		WHERE 
+			id = #{id}
+  			
+	</update>
+	
+	
 </mapper>

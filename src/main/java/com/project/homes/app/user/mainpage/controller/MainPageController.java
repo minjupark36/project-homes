@@ -1,14 +1,20 @@
 package com.project.homes.app.user.mainpage.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.homes.app.common.image.dto.ImageDto;
 import com.project.homes.app.common.image.service.ImageService;
+import com.project.homes.app.user.mainpage.dto.MainPageDto;
 import com.project.homes.app.user.mainpage.mapper.MainPageMapper;
 import com.project.homes.app.user.mainpage.service.MainPageService;
 import com.project.homes.app.user.scrap.service.ScrapService;
@@ -77,6 +83,40 @@ public class MainPageController {
 	public String termsAndConditions() {
 		
 		return "/user/terms/terms_and_conditions";
+	}
+	
+	
+	//메인페이지에서 인테리어 사진 클릭 -> 디테일 페이지
+	@GetMapping("/main/detail")
+	public String mainPageDetail(Model model,@RequestParam("id") long id) {
+		model.addAttribute("interiorImage",mainPageService.getMainPageDetail(id));
+		model.addAttribute("decoImage",mainPageService.getDecoDetail(id));
+		model.addAttribute("numberOfDeco",mainPageService.getDecoDetail(id).size());
+//		String imageTags = mainInteriorDetail.getHashtagsNames();
+//		List<String> tagList = Arrays.asList(imageTags.split("  "));
+//		model.addAttribute("tagList",tagList);
+		mainPageService.countView(id);
+		//model.addAttribute("commentsList",commentsService.commentsList(id));
+		return "/user/mainpage/mainDetail";
+	}
+	
+	
+	//다음(page=2) 혹은 이전(page=1) 게시판 보여주기
+	@PostMapping("/main/detail")
+	@ResponseBody
+	public String getNextDetail(@RequestParam("id") long id,@RequestParam("page") int page) {
+		String info=null;
+		if(page==2) {
+			ImageDto nextDetail=mainPageService.getNextDetail(id);
+			long nextId=nextDetail.getId();
+			info=nextId+"";
+		}
+		else if(page==1) {
+			ImageDto preDetail=mainPageService.getPreDetail(id);
+			long nextId=preDetail.getId();
+			info=nextId+"";
+		}
+		return info;
 	}
 	
 }
