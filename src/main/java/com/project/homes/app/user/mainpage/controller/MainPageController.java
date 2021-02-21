@@ -89,12 +89,13 @@ public class MainPageController {
 	//메인페이지에서 인테리어 사진 클릭 -> 디테일 페이지
 	@GetMapping("/main/detail")
 	public String mainPageDetail(Model model,@RequestParam("id") long id) {
-		model.addAttribute("interiorImage",mainPageService.getMainPageDetail(id));
+		ImageDto mainInteriorDetail = mainPageService.getMainPageDetail(id);
+		model.addAttribute("interiorImage",mainInteriorDetail);
 		model.addAttribute("decoImage",mainPageService.getDecoDetail(id));
 		model.addAttribute("numberOfDeco",mainPageService.getDecoDetail(id).size());
-//		String imageTags = mainInteriorDetail.getHashtagsNames();
-//		List<String> tagList = Arrays.asList(imageTags.split("  "));
-//		model.addAttribute("tagList",tagList);
+		String imageTags = mainInteriorDetail.getHashtagsNames();
+		List<String> tagList = Arrays.asList(imageTags.split("  "));
+		model.addAttribute("tagList",tagList);
 		mainPageService.countView(id);
 		//model.addAttribute("commentsList",commentsService.commentsList(id));
 		return "/user/mainpage/mainDetail";
