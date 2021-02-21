@@ -19,6 +19,34 @@
 			width:30px;
 			height:30px;
 	}
+	.category{
+		display:inline-block;
+		width:140px;
+		float:left;
+		
+	}
+	.detail{
+		float:left;
+		width:1400px;
+		margin-left:140px
+	}
+	.post{
+		clear:both;
+		margin-left:90%;
+	}
+	
+	#paging{
+		margin-left:45%
+	}
+	.cate{
+		 font-size:25px;
+		 color:black 
+	}
+	#write{
+		color:black;
+		font-size:20px;
+	}
+	
 	
 </style>
 </head>
@@ -60,7 +88,14 @@
 	  <h1>My First Bootstrap Page</h1>
 	  <p>Resize this responsive page to see the effect!</p> 
 	</div>
-<div>
+<div class="category">
+	<ul class="navbar-nav">
+		<li class="nav-item active"><a href="/user/board/1" class="nav-link cate">자유게시판</a></li>
+		<li class="nav-item active"><a href="/user/board/2" class="nav-link cate">FAQ</a></li>
+		<li class="nav-item active"><a href="/user/board/3" class="nav-link cate">공지사항</a></li>
+	</ul>
+</div>
+<div class="detail">
 <table class="table table-hover">
 <tr><th>No</th><th>Title</th><th>Date</th><th>View</th></tr>
 <c:forEach var="b" items="${pageInfo.list}" varStatus="status">	
@@ -73,13 +108,9 @@
 </c:forEach>
 </table>
 </div>
-<div class="category">
-	<a href="/user/board/1">자유게시판</a>
-	<a href="/user/board/2">FAQ</a>
-	<a href="/user/board/3">공지사항</a>
-</div>
-<div id="post">
-	<a href="/user/board/insert">게시판 작성</a>
+
+<div class="post">
+	<a href="/user/board/insert" id="write">글쓰기</a>
 </div>
 <div id="paging">
 <ul id="pagination" class="pagination">

@@ -126,7 +126,7 @@
 		<tr>
 			<td>카테고리</td>
 			<td> 
-				<select name="categoriesId">
+				<select name="categoriesId" class="form-control">
 					<option value=1 <c:if test="${d.categoriesId==1}">selected</c:if>>자유게시판</option>
 					<option value=2 <c:if test="${d.categoriesId==2}">selected</c:if>>FAQ</option>
 					<option value=3 <c:if test="${d.categoriesId==3}">selected</c:if>>공지사항</option>
