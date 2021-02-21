@@ -103,6 +103,14 @@ public class MainPageController {
 		return "/user/mainpage/mainDetail";
 	}
 	
+	//디테일 페이지에서 태그 누르면 해당 태그 포함된 인테리어 사진 리스트(메인 페이지)
+	@GetMapping("/main/tag")
+	public String getTagImageList(Model model,@RequestParam("hashtagsNames") String hashtagsNames) {
+		model.addAttribute("mainpageList",mainPageService.getTagImageList(hashtagsNames));
+		model.addAttribute("hashtagList",hashtagService.selectHashtags());
+		return "/user/mainpage/mainImages";
+	}
+	
 	
 	//다음(page=2) 혹은 이전(page=1) 게시판 보여주기
 	@PostMapping("/main/detail")

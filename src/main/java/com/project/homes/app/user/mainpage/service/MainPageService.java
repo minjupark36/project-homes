@@ -57,4 +57,8 @@ public class MainPageService {
 		return mainPageMapper.getPreDetail(id);
 	}
 
+	public List<ImageDto> getTagImageList(@RequestParam("hashtagsNames") String hashtagsNames) {		
+		return mainPageMapper.getTagImageList(hashtagsNames);
+	}
+
 }
