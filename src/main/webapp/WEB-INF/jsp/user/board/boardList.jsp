@@ -49,8 +49,35 @@
 	
 	
 </style>
+<script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	function write(num) { 
+		
+		$.ajax({ 
+			url:'/user/board/write', 
+			method:'post',
+			data: {'num' :num},
+			dataType:'text',
+			success:function (res){
+				if(res.trim()=='true'){
+					location.href="/user/board/insert"
+				}else {
+					alert("로그인 후, 글작성이 가능합니다.")
+					location.href="/sign-in";
+				}
+			}, 
+			error:function(xhr, status, err){
+				alert(status+', '+err);
+			}
+		
+		});
+	}
+</script>
 </head>
 <body>
+${sessionScope.user.name}님 안녕하세요
 <!-- 메인 메뉴바 -->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  <ul class="navbar-nav">
@@ -108,10 +135,19 @@
 </c:forEach>
 </table>
 </div>
+<c:choose>
+<c:when test="${sessionScope.loginCheck eq true}">
+	<div class="post">
+		<a id="write" href="javascript:write(1);">글쓰기</a>
+	</div>
+</c:when>
+<c:otherwise>
+	<div class="post">
+		<a id="write" href="javascript:write(2);">글쓰기</a>
+	</div>
+</c:otherwise>
+</c:choose>
 
-<div class="post">
-	<a href="/user/board/insert" id="write">글쓰기</a>
-</div>
 <div id="paging">
 <ul id="pagination" class="pagination">
 	<li class="page-item"><a class="page-link" href="javascript:search(1);">&lt&lt</a></li>

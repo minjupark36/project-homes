@@ -1,11 +1,9 @@
 package com.project.homes.app.user.board.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.project.homes.app.common.attach.service.AttachService;
+import com.project.homes.app.common.member.dto.MemberDto;
+import com.project.homes.app.common.member.service.MemberService;
 import com.project.homes.app.user.board.dto.BoardDto;
 import com.project.homes.app.user.board.service.BoardService;
 
@@ -30,6 +30,7 @@ public class BoardController {
 	
 	private final BoardService boardService;
 	private final AttachService attachService;
+	private final MemberService memberService;
 	
 	//게시판 전체 리스트 보이기
 	@GetMapping("/user/board")
@@ -121,10 +122,24 @@ public class BoardController {
 	}
 	//게시판 글쓰기form 보여주기
 	@GetMapping("/user/board/insert")
-	public String getinsertForm() {
-		
+	public String getinsertForm() {		
       return "user/board/insertBoard";
 	}
+	
+	@PostMapping("/user/board/write")
+	@ResponseBody
+	public String getinsertForm(@RequestParam("num") int num) {
+		System.out.println("================");
+		System.out.println(num);
+		System.out.println("================");
+		
+		if (num==1) {
+			return true+"";
+		}else {
+			return false+"";
+		}		
+	}
+	
 	//게시판 insert하기
 	@ResponseBody
 	@PostMapping("/user/board/insert")
