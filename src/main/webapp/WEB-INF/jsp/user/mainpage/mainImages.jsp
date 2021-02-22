@@ -45,10 +45,13 @@
   		display:inline-block;
   		margin:10px 10px;
   		width:250px;
+
   	}
   	
   	.card-img-top {
-  		width:100%;
+  		width:250px;
+  		height:250px;
+  		object-fit:cover
   	}
 
 	.scrapBtn {

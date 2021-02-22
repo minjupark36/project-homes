@@ -15,7 +15,6 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   
 <style type="text/css">
-
 	#login, #logout {
 		width:800px;
 		color:white;
@@ -49,7 +48,6 @@
 	.container {
 		margin-left:0px;
 	}
-
 	.main-container {
 		width: 1320px;
   		margin: auto auto;
@@ -63,9 +61,10 @@
   	}
   	
   	.card-img-top {
-  		width:100%;
+  		width:290px;
+  		height:290px;
+  		object-fit:cover
   	}
-
 	.scrapBtn {
 		height:25px; 
 		width:25px;
@@ -116,8 +115,6 @@
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-
-
 	function addScrapList(id){
 		
 		console.log(id)
@@ -141,7 +138,6 @@
 			
 			});	
 		}
-
 </script>	
 </head>
 <body>
