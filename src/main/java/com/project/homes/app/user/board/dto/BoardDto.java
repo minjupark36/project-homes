@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter
 public class BoardDto {
 	private Long id;
-	private Long memberId;
+	private Long membersId;
 	private String title;
 	private String content;
 	private LocalDate createDate;
