@@ -97,6 +97,7 @@
 	</div>
 <div>
 <form action="/user/board/insert" method="post" enctype="multipart/form-data" id="form" name="form">
+<input name="membersId" type="hidden" value="${sessionScope.user.id}">
 		
 	<table  class="table">
 		<tr>

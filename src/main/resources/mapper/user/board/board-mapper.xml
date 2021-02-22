@@ -129,12 +129,12 @@
 	<if test="id!=null">
 		INSERT INTO boards 			
 		VALUES 
-		(null,1,#{title},#{content},NOW(),null,#{categoriesId},0,#{id},0,0)
+		(null,#{membersId},#{title},#{content},NOW(),null,#{categoriesId},0,#{id},0,0)
 	</if>
 	<if test="id==null">
 		INSERT INTO boards 			
 		VALUES 
-		(null,1,#{title},#{content},NOW(),null,#{categoriesId},0,1,0,0)
+		(null,#{membersId},#{title},#{content},NOW(),null,#{categoriesId},0,1,0,0)
 	</if>
 	</insert> 
 	

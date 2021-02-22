@@ -147,10 +147,7 @@ public class BoardController {
 			, BoardDto boardDto
 			) {
 		boolean res=true;
-//		
-//		MemberDto memberDto = Utils.getMemberFromSession();
-//		boardDto.setMemberId(memberDto.getId());
-//		
+		
 		boardService.saveBoardAndAttach(boardDto, mfiles);		
 		return res+"";
 	}
