@@ -104,12 +104,23 @@
     <li class="nav-item active">
       <a class="nav-link" href="/main"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/user/board">| 커뮤니티</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/main/store">| 스토어</a>
-    </li>
+    <c:choose>
+    <c:when test="${sessionScope.user.role eq 'user'}">
+	    <li class="nav-item">
+	      <a class="nav-link" href="/user/board">| 커뮤니티</a>
+	    </li>
+     </c:when>
+     <c:otherwise>
+     	<li class="nav-item">
+	      <a class="nav-link" href="/admin/board">| 커뮤니티</a>
+	    </li>
+     </c:otherwise>
+    </c:choose>
+  
+	    <li class="nav-item">
+	      <a class="nav-link" href="/main/store">| 스토어</a>
+	    </li>
+   
     <li class="nav-item">
       <a class="nav-link" href="/user/scrap">| 내 스크랩</a>
     </li>

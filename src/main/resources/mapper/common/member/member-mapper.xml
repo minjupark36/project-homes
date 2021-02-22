@@ -13,7 +13,8 @@
 		create_date,
 		modified_date
 		pw_question,
-		pw_answer	
+		pw_answer,
+		role	
 	</sql>
 	
 	<resultMap type="MemberDto" id="MemberDto">
@@ -26,7 +27,7 @@
 		<result property="modifiedDate" column="modified_date"/>
 		<result property="pwQuestion" column="pw_question"/>
 		<result property="pwAnswer" column="pw_answer"/>
-
+		<result property="role" column="role"/>
 	</resultMap>
 	
 	
