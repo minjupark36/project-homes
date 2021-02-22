@@ -222,14 +222,14 @@
 				<a href="/main/detail?id=${main.id}">
 					<img class="card-img-top" src="${main.filepath}"/>
 				</a>
-			<div class="card-body">
+			<div class="card-body" >
 			
 				<c:choose>
 					<c:when test="${fn:length(main.hashtagsNames) > 40}">
-						<h4 class="card-title">${fn:substring(main.hashtagsNames,0,39)}..</h4>
+						<h4 class="card-title">#${fn:substring(fn:replace(main.hashtagsNames,"  ","#"),0,39)}..</h4>
 					</c:when>
 					<c:otherwise>
-                    	<h4 class="card-title">${main.hashtagsNames}</h4>
+                    	<h4 class="card-title">#${fn:replace(main.hashtagsNames,"  ","#")}</h4>
 			        </c:otherwise>
 			
 				</c:choose>
