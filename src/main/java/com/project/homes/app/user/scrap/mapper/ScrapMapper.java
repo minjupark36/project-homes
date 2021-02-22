@@ -13,7 +13,7 @@ import com.project.homes.app.user.scrap.dto.ScrapDto;
 public interface ScrapMapper {
 	
 	/*스크랩 리스트*/
-	List<ScrapDto> getScrapList(String sort, int limit);
+	List<ScrapDto> getScrapList(String sort, int limit,MemberDto memberDto);
 	
 	/*스크랩 추가 및 삭제*/
 	boolean addToScrap(long imagesId);

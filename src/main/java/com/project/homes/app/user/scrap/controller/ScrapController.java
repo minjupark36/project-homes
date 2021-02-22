@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.homes.app.common.member.dto.MemberDto;
+import com.project.homes.app.common.utils.Utils;
 import com.project.homes.app.user.scrap.mapper.ScrapMapper;
 import com.project.homes.app.user.scrap.service.ScrapService;
 
@@ -29,8 +31,8 @@ public class ScrapController {
 			) {
 		
 		int limit = 4;
-//		MemberDto memberDto = Utils.getMemberFromSession();		
-		model.addAttribute("scrapList",scrapService.getScrapList(sort,limit));
+		MemberDto memberDto = Utils.getMemberFromSession();		
+		model.addAttribute("scrapList",scrapService.getScrapList(sort,limit,memberDto));
 		return "user/scrap/scrapList";
 	}
 	

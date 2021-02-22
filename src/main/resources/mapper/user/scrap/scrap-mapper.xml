@@ -58,7 +58,7 @@
 		s.images_id = i.id
 	WHERE 
 		<!-- view에서 ${id}로 값 받기 or session값 -->
-		s.members_id = 7
+		s.members_id = #{memberDto.id}
 	<!-- 조건 만족시 내부쿼리 실행, 불만족시 전체쿼리 탈출 -->
 	<!-- 어떤 비교를 하던지 null체크 선행 要 -->
 	<choose>

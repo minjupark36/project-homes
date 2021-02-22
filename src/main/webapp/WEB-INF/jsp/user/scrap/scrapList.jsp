@@ -113,8 +113,10 @@
 		<button type="button" data-sort="interior" onclick="showList('interior')" class="btn btn-raised btn-primary btn-round waves-effect">Interior</button>
 		<button type="button" data-sort="deco" onclick="showList('deco')" class="btn btn-raised btn-primary btn-round waves-effect">Deco</button>
 	</div><br><br>
-
+	
 <!-- MyScrap images list -->
+<c:choose>
+<c:when test="${sessionScope.loginCheck eq true}">
 <c:set var="i" value="0" />
 <c:set var="j" value="4" />
 	<div id="list">
@@ -145,6 +147,10 @@
 		</table>
 		<div><input type="hidden" id="lastRow" name="lastRow" value="4"></div>
 	</div>	
-	
+</c:when>
+<c:otherwise>
+로그인이 필요한 서비스입니다.
+</c:otherwise>
+</c:choose>	
 </body>
 </html>
