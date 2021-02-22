@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<title>My Scrap Page</title>
 	<style>
-		.scrapImage {height: 200px; width: 300px; margin-left: 50px; margin-bottom: 30px;}
+		.scrapImage {height: 250px; width: 250px; margin-left: 50px; margin-bottom: 30px;object-fit:cover}
 		.scrapBtn {height: 30px; width:30px;cursor:pointer;transform: translate(20%,20%)}
 		 
 		 #list {width:100%; position: relative;}

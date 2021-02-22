@@ -226,7 +226,7 @@
 			
 				<c:choose>
 					<c:when test="${fn:length(main.hashtagsNames) > 40}">
-						<h4 class="card-title">${fn:substring(main.hashtagsNames,0,39)}</h4>
+						<h4 class="card-title">${fn:substring(main.hashtagsNames,0,39)}..</h4>
 					</c:when>
 					<c:otherwise>
                     	<h4 class="card-title">${main.hashtagsNames}</h4>
