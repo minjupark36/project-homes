@@ -32,6 +32,9 @@ public class ScrapController {
 		
 		int limit = 4;
 		MemberDto memberDto = Utils.getMemberFromSession();		
+		System.out.println("================================");
+		System.out.println(memberDto);
+		System.out.println("================================");
 		model.addAttribute("scrapList",scrapService.getScrapList(sort,limit,memberDto));
 		return "user/scrap/scrapList";
 	}
@@ -41,17 +44,14 @@ public class ScrapController {
 	@ResponseBody
 	public boolean addToScrap(@RequestParam("imagesId") long imagesId
 			) {
-		
-//		ScrapDto scrapDto = new ScrapDto();
-//		ImagesDto imagesDto = new ImagesDto();
-//		
-//		MemberDto memberDto = Utils.getMemberFromSession();
+
+		MemberDto memberDto = Utils.getMemberFromSession();
 		
 		System.out.println("================================");
 		System.out.println(imagesId);
 		System.out.println("================================");
 		
-		boolean res = scrapService.addToScrap(imagesId);
+		boolean res = scrapService.addToScrap(imagesId,memberDto);
 		scrapService.countScrap(imagesId);
 		
 		return res;		

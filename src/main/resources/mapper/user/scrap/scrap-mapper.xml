@@ -84,7 +84,7 @@
 		INSERT 
 			INTO scrap_images
 		VALUES 
-			(Null,7,${imagesId},NOW())
+			(Null,${memberDto.id},${imagesId},NOW())
 	</insert>
 	
 	<delete id="deleteScrap" 

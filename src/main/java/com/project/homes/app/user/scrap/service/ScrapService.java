@@ -17,12 +17,12 @@ public class ScrapService {
 	
 	private final ScrapMapper scrapMapper;
 
-	public List<ScrapDto> getScrapList(String sort, int limit,MemberDto memberDto) {		
+	public List<ScrapDto> getScrapList(String sort, int limit, MemberDto memberDto) {		
 		return scrapMapper.getScrapList(sort,limit,memberDto);
 	}
 	
-	public boolean addToScrap(long imagesId) {
-		return scrapMapper.addToScrap(imagesId);		
+	public boolean addToScrap(long imagesId, MemberDto memberDto) {
+		return scrapMapper.addToScrap(imagesId, memberDto);		
 	}
 	
 	public boolean deleteScrap(long id) {

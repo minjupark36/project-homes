@@ -24,7 +24,7 @@ public class MemberController {
 	
 	@GetMapping("/")
 	public String index() {
-		return "redirect:sign-in";
+		return "redirect:main";
 	}
 	
 	@GetMapping("/sign-in")
