@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.homes.app.admin.board.mapper.AdminBoardMapper">
+	<sql id="boardColumns">
+		id,
+		members_id,
+		title,
+		content,
+		create_date,
+		modified_date,
+		categories_id,
+		view,
+		group_no,
+		group_order,
+		depth
+	</sql>	
+	
+	<resultMap type="AdminBoardDto" id="adminBoardDto">	
+		<id property="id" column="id"/>
+		<result property="memberId" column="members_id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="createDate" column="create_date"/>
+		<result property="modifiedDate" column="modified_date"/>
+		<result property="categoriesId" column="categories_id"/>
+		<result property="view" column="view"/>
+		<result property="groupNo" column="group_no"/>
+		<result property="groupOrder" column="group_order"/>
+		<result property="depth" column="depth"/>
+	</resultMap>
+	
+	<select id="addAndGetKey" resultType="Integer">
+  		SELECT last_insert_id()
+  	</select>
+	
+	<select id="getBoardList" 
+		parameterType="java.util.HashMap"
+		resultMap="adminBoardDto">
+				
+		SELECT
+			<include refid="boardColumns" />
+		FROM 
+			boards  b
+		<if test="searchMap != null and searchMap.searchAs != null">
+	      <where>
+	      	AND 
+	      		${searchMap.searchAs} 
+	      	LIKE CONCAT
+	      		('%',#{searchMap.search},'%')
+	      </where>
+      	</if>
+      	<!-- 
+      	JOIN
+      		members m
+      	ON 
+      		b.members_id = m.id
+      	 -->	
+      	ORDER BY
+      		id desc
+	</select>
+	
+	
+</mapper>
