@@ -10,11 +10,13 @@ import com.project.homes.app.common.member.dto.MemberDto;
 @Repository
 @Mapper
 public interface MemberMapper {
-
+	
 	int addMember(MemberDto memberDto);
 
 	MemberDto loginCheck(MemberDto memberDto);
 
 	MemberDto getUser(MemberDto memberDto);
+
+	String findPw(MemberDto memberDto);
 
 }

@@ -70,4 +70,31 @@ public class MemberService {
 		return member;
 	}
 
+	public boolean findPw(MemberDto memberDto) {
+		
+		String password = memberMapper.findPw(memberDto);
+		
+		if(password != null) {			
+			return true;
+		}else {
+			return false;		
+		}
+	}
+
+	public boolean sendPwMail(MemberDto memberDto) {
+		
+		
+		String email = memberDto.getEmail();
+		String password = memberMapper.findPw(memberDto);
+		
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(email);
+		
+		message.setSubject("홈즈 비밀번호 확인메일 입니다.");
+		message.setText("고객님의 비밀번호는 "+password+" 입니다.\n감사합니다.");
+		javaMailSender.send(message);
+		
+		return true;
+	}
+
 }

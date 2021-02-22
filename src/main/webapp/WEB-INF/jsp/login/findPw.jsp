@@ -34,25 +34,18 @@
 	    color: #685547;
 	}
 	
-	#user_id_login {
-	    height: 30px;
-	    width: 400px;
-	    margin-top: 80px;
-	    font-size: 1rem;
-	    border: 0px;
-	    border-bottom: 1px solid black;
-	    background-color: transparent;
+	.title {
+		margin-top:20px;
 	}
 	
-	#user_pw_login {
-	    
-	    height: 30px;
-	    width: 400px;
+	form>input {
 	    margin-top: 20px;
-	    font-size: 1rem;
-	    border: 0px;
-	    border-bottom: 1px solid black;
-	    background-color: transparent;
+	    border:0px;
+	    border-bottom: 1px solid #685547;
+	}
+	
+	.value {
+	    width: 100%;
 	}
 	
 	#btn_login {
@@ -73,46 +66,34 @@
 	    background-color: #685547;
 	}
 	
-	.join, .find{
-		display:inline;
-		text-align: center;
-	}
-	
-	.join >a, .find >a {
-		font-size: 1em;
-		color: #685547;
-	}
-	    
-	.join{
-		margin-right:195px;
-	}
-	
-	.find {
-		margin-left:35px
-	}
-	
-	a {
-		text-decoration: none;
-	}
-
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-	function login() { 
+	function findPw() { 
+		
+		var email = $("#email").val();
+		var pwQuestion = $('#pwQuestion').val();
+		var pwAnswer = $("#pwAnswer").val();
+		
+		var formData = {
+				email : email,
+				pwQuestion : pwQuestion,
+				pwAnswer : pwAnswer
+		}
 		
 		$.ajax({ 
-			url:'/sign-in', 
+			url:'/findPw', 
 			method:'post',
-			data: $('#login-form').serialize(),
+			data: formData,
 			dataType:'text',
 			success:function (res){
 				if(res.trim()=='true'){
-					alert("로그인에 성공했습니다.");
-					location.href="/main";
+					alert("비밀번호를 이메일로 전송해드렸습니다. 이메일을 확인해주세요.");
+					location.href="/sign-in";
 				}else {
-					alert("로그인에 실패했습니다.")
+					alert("이메일 전송에 실패했습니다.")
 					return false;
 				}
 			}, 
@@ -127,20 +108,23 @@
 <body>
 
 <section class="section">
-	<h1>LOGIN</h1>
-	<h2>로그인</h2>
+	<h1>FIND PW</h1>
+	<h2>비밀번호 찾기</h2>
 	<form id="login-form">
-		<input type="email" name="email" id="user_id_login" size="40" placeholder="이메일 아이디" required><br>
-		<input type="password" name="password" id="user_pw_login" size="40" placeholder="비밀번호" required><br>
-		<div class="warning"></div>
-		<div>
-			<button type="button" id="btn_login" onclick="login();">LOGIN</button>
-		</div>
-		<div class="join">
-			<a href="/sign-up">회원가입</a>
-		</div>
-		<div class="find"> 
-			<a href="/findPw">비밀번호 찾기</a>
+		<div class="title">가입당시 이메일을 입력해주세요.</div>
+		<input type="text" placeholder="E-Mail" name="email" class="value" id="email" required="required">
+		
+		<div class="title">비밀번호 확인 질문</div>
+		<select name="pwQuestion" id="pwQuestion" class="value" style="height:30px;margin-top:10px">
+			<option value="1">자신의 인생 좌우명은?</option>
+			<option value="2">가장 친한 친구이름은?</option>
+			<option value="3">자신이 두번째로 존경하는 인물은?</option>
+			<option value="4">자신의 보물 1호는?</option>
+			<option value="5">가장 기억에 남는 선생님 성함은?</option>
+		</select> <br>
+		<input type="text" id="pwAnswer" name="pwAnswer" placeholder="답변을 입력해주세요" class="value">
+			<div>
+			<button type="button" id="btn_login" onclick="findPw();">JOIN</button>
 		</div>
 	
 	</form>	

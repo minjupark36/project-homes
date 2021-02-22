@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -73,6 +74,25 @@ public class MemberController {
         session.invalidate();
         return "redirect:main";
 	}
-
+	
+	@GetMapping("/findPw")
+	public String findPwForm() {
+		return "login/findPw";		
+	}
+	
+	@PostMapping("/findPw")
+	@ResponseBody
+	public boolean findPw(MemberDto memberDto) {
+		System.out.println("=================");
+		System.out.println(memberDto);
+		System.out.println("=================");
+		
+		if(memberService.findPw(memberDto)==true) {
+			return memberService.sendPwMail(memberDto);
+			
+		}else {
+			return false;
+		}
+	}
 
 }

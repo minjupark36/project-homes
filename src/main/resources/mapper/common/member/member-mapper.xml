@@ -11,7 +11,9 @@
 		password,
 		gender,
 		create_date,
-		modified_date	
+		modified_date
+		pw_question,
+		pw_answer	
 	</sql>
 	
 	<resultMap type="MemberDto" id="MemberDto">
@@ -22,6 +24,8 @@
 		<result property="gender" column="gender"/>
 		<result property="createDate" column="create_date"/>
 		<result property="modifiedDate" column="modified_date"/>
+		<result property="pwQuestion" column="pw_question"/>
+		<result property="pwAnswer" column="pw_answer"/>
 
 	</resultMap>
 	
@@ -32,11 +36,15 @@
 	    	members(  email 
 	  				, password 
 	  				, name
-	  				, gender )
+	  				, gender
+	  				, pw_question
+	  				, pw_answer )
     VALUES( #{email} 
             , #{password}
             , #{name}
-            , #{gender} )
+            , #{gender}
+            , #{pwQuestion}
+            , #{pwAnswer} )
     </insert>
     
     <select id="loginCheck" 
@@ -66,6 +74,23 @@
 	 	email=#{email} 
 	 	AND
 	 	password=#{password}
+
+	</select>
+	
+	<select id="findPw" 
+    parameterType="MemberDto" 
+    resultType="String">
+    
+	SELECT 
+		password
+	FROM
+	 	members
+	 WHERE
+	 	email=#{email} 
+	 	AND
+	 	pw_question=#{pwQuestion}
+	 	AND
+	 	pw_answer=#{pwAnswer}
 
 	</select>
 

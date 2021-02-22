@@ -21,10 +21,12 @@ public class MemberDto {
 	private String gender;
 	private LocalDate createDate;
 	private LocalDate modifiedDate;
+	private Long pwQuestion;
+	private String pwAnswer;
 	
 	@Builder
 	public MemberDto(Long id, String email, String password, String name, String gender, LocalDate createDate,
-			LocalDate modifiedDate) {
+			LocalDate modifiedDate, Long pwQuestion, String pwAnswer) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -33,7 +35,10 @@ public class MemberDto {
 		this.gender = gender;
 		this.createDate = createDate;
 		this.modifiedDate = modifiedDate;
+		this.pwQuestion = pwQuestion;
+		this.pwAnswer = pwAnswer;
 	}
+	
 
 	
 }

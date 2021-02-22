@@ -61,6 +61,11 @@
 	    border:0px;
 	    border-bottom: 1px solid #685547;
 	}
+	
+	.gender {
+		font-size:5px
+	}
+	
 	.value {
 	    width: 100%;
 	}
@@ -81,6 +86,8 @@
 	#btn_login:hover{
 	    color: #f8f7e6;
 	    background-color: #685547;
+	}  
+
   	
 </style>
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
@@ -146,12 +153,16 @@ $(function() {
 		var password = $('#password').val();
 		var name = $('#name').val();		
 		var gender = $(":input:radio[name=gender]:checked").val();
+		var pwQuestion = $('#pwQuestion').val();
+		var pwAnswer = $("#pwAnswer").val();
 		
 		var formData = {
 				email : email,
 				password : password,
 				name : name,
-				gender: gender 
+				gender: gender ,
+				pwQuestion : pwQuestion,
+				pwAnswer : pwAnswer
 		}
 		
 		console.log(formData);
@@ -208,8 +219,19 @@ $(function() {
 		<input type="text" placeholder="이름을 입력하세요." name="name" class="value" id="name"><br> 
 		
 		<div class="title">성별</div>
-		<input type="radio" name="gender" value="남성" class="gender">남성 
+		<input type="radio" name="gender" value="남성" class="gender" checked>남성 
 		<input type="radio" name="gender" value="여성" class="gender">여성<br>
+		
+		<div class="title">비밀번호 확인 질문</div>
+		<select name="pwQuestion" id="pwQuestion" class="value" style="height:30px;margin-top:10px">
+			<option value="1">자신의 인생 좌우명은?</option>
+			<option value="2">가장 친한 친구이름은?</option>
+			<option value="3">자신이 두번째로 존경하는 인물은?</option>
+			<option value="4">자신의 보물 1호는?</option>
+			<option value="5">가장 기억에 남는 선생님 성함은?</option>
+		</select> <br>
+		<input type="text" id="pwAnswer" name="pwAnswer" placeholder="답변을 입력해주세요" class="value">
+		
 		<div>
 			<button type="button" id="btn_login" onclick="signUp();">JOIN</button>
 		</div>
