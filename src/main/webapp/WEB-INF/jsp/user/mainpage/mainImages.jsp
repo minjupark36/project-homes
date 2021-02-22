@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -221,7 +223,16 @@
 					<img class="card-img-top" src="${main.filepath}"/>
 				</a>
 			<div class="card-body">
-				<h4 class="card-title">${main.hashtagsNames}</h4>
+			
+				<c:choose>
+					<c:when test="${fn:length(main.hashtagsNames) > 40}">
+						<h4 class="card-title">${fn:substring(main.hashtagsNames,0,39)}</h4>
+					</c:when>
+					<c:otherwise>
+                    	<h4 class="card-title">${main.hashtagsNames}</h4>
+			        </c:otherwise>
+			
+				</c:choose>
 			    <p class="card-text">
 			    	<i class='fas fa-eye'></i> ${main.view}
 			    	<i class='fas fa-heart'> ${main.scrap}</i> 
