@@ -27,7 +27,7 @@
 	.tag{display:inline-block}
 	table{border-collapse: separate}
 	.next{
-		display:inline-block;
+		display:inline;
 		margin-left:1800px;
 	}
 	
@@ -333,10 +333,6 @@
 		</table>
 	</form>
 </div>
-
-<button type="button" class="btn btn-outline-secondary" onclick="preDetail(${interior.id},1)">이전글</button>
-<button type="button" class="btn btn-outline-secondary next" onclick="nextDetail(${interior.id},2)">다음글</button>
-	
 	
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
 <div class="sideBanner">
@@ -345,6 +341,8 @@
 		<li class="nav-item active"><a href="javascript:addScrap(${interior.id});">Scrap 34</a></li>
 		<li class="nav-item active">View ${interior.view}</li>
 		<li class="nav-item active"><a href="javascript:fnMove();">Comment${countComment}</a></li>
+		<li class="nav-item active"><a href="javascript:preDetail(${interior.id},1);">이전글</a></li>
+		<li class="nav-item active"><a href="javascript:nextDetail(${interior.id},2);">다음글</a></li>
 	</ul>
 </div>
 </body>
