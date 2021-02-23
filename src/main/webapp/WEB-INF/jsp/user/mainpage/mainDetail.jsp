@@ -342,7 +342,7 @@
 <div class="sideBanner">
 	<ul class="navbar-nav">
 		<li class="nav-item active"><a href="/user/scrap" class="myScrap">My Scrap</a></li>
-		<li class="nav-item active">Scrap 34</li>
+		<li class="nav-item active"><a href="javascript:addScrap(${interior.id});">Scrap 34</a></li>
 		<li class="nav-item active">View ${interior.view}</li>
 		<li class="nav-item active"><a href="javascript:fnMove();">Comment${countComment}</a></li>
 	</ul>
@@ -369,7 +369,28 @@
         var offset = $(".comment").offset();
         $('html, body').animate({scrollTop : offset.top}, 400);
     }
-
+	
+	function addScrap(id){
+		console.log(id)
+			$.ajax({ 
+				url:'/scrap/add', 
+				method:'post',
+				data: {'imagesId':id },
+				dataType:'text',
+				success:function(res){
+					if(res.trim()=='true'){
+						alert("내 스크랩 페이지에 추가되었습니다")
+					}
+					else{
+						alert("스크랩에 실패했습니다")
+					}
+				},
+				error:function(xhr, status, err){
+					alert(status+', '+err);
+				}
+			
+			});	
+		}
 
 </script>
 </html>
