@@ -5,6 +5,8 @@
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -23,6 +25,7 @@
 		display:inline-block;
 		width:140px;
 		float:left;
+		margin-left:50px
 		
 	}
 	.detail{
@@ -39,12 +42,14 @@
 		margin-left:45%
 	}
 	.cate{
-		 font-size:25px;
-		 color:black 
+		 font-size:30px;
+		 color:black;
+		 font-family:sunflower
 	}
 	#write{
 		color:black;
 		font-size:20px;
+		font-family:sunflower
 	}
 	#search-form{
 		width:1000px;
