@@ -239,10 +239,10 @@
 		<div class="listToChange">
 		</c:if>
 			<div class="button">
-					<a href="javascript:void(0);" onclick="addScrapList(${interior.id})">
-						<img class="scrapBtn" 
-						src="https://pics.freeicons.io/uploads/icons/png/13732025981547546480-512.png">	
-					</a>
+				<a href="javascript:void(0);" onclick="addScrapList(${interior.id})">
+					<img class="scrapBtn" 
+					src="https://pics.freeicons.io/uploads/icons/png/13732025981547546480-512.png">	
+				</a>
 			</div>
 			<div class="card">
 				<a href="/main/detail?id=${interior.id}">

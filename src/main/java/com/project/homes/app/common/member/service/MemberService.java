@@ -3,9 +3,6 @@ package com.project.homes.app.common.member.service;
 import java.util.Optional;
 import java.util.Random;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;

@@ -46,6 +46,10 @@
 		color:black;
 		font-size:20px;
 	}
+	#search-form{
+		width:1000px;
+		margin-left:400px
+	}
 	
 	
 </style>
