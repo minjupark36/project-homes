@@ -366,7 +366,7 @@
 	}).scroll();
 	
 	function fnMove(){
-        var offset = $(".comment").offset();
+        var offset = $(".comments").offset();
         $('html, body').animate({scrollTop : offset.top}, 400);
     }
 	
