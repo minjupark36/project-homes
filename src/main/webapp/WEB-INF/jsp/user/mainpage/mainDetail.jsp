@@ -338,7 +338,7 @@
 <div class="sideBanner">
 	<ul class="navbar-nav">
 		<li class="nav-item active"><a href="/user/scrap" class="myScrap">My Scrap</a></li>
-		<li class="nav-item active"><a href="javascript:addScrap(${interior.id});">Scrap 34</a></li>
+		<li class="nav-item active"><a href="javascript:addScrap(${interior.id});">Scrap ${interior.scrap}</a></li>
 		<li class="nav-item active">View ${interior.view}</li>
 		<li class="nav-item active"><a href="javascript:fnMove();">Comment${countComment}</a></li>
 		<li class="nav-item active"><a href="javascript:preDetail(${interior.id},1);">이전글</a></li>
