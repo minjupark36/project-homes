@@ -98,9 +98,9 @@ public class MainPageController {
 		String imageTags = mainInteriorDetail.getHashtagsNames();
 		List<String> tagList = Arrays.asList(imageTags.split("  "));
 		model.addAttribute("tagList",tagList);
-		mainPageService.countView(id);
 		model.addAttribute("commentsList",commentService.commentList(id));
 		model.addAttribute("countComment",commentService.countComment(id));
+		model.addAttribute("view",mainPageService.countView(id));
 		return "/user/mainpage/mainDetail";
 	}
 	

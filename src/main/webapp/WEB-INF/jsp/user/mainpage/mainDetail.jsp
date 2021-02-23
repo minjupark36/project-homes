@@ -26,7 +26,10 @@
 	.commentslist{margin-left:40%;width:500px;height:300px}
 	.tag{display:inline-block}
 	table{border-collapse: separate}
-	
+	.next{
+		display:inline-block;
+		margin-left:1800px;
+	}
 	
 	
 	.ScrollButton {
@@ -48,6 +51,19 @@
 	}
 	.comment{
 		border-radius: 20px
+	}
+	.sideBanner {
+	  position: absolute;
+	  width: 150px;
+	  height: 200px;
+	  left:1700px;
+	  top: 400px;
+	  background-color: white;
+	  color: black;
+	  font-size:25px
+	}
+	.myScrap:hover{
+		 text-decoration: none;
 	}
 	
 </style>
@@ -317,12 +333,43 @@
 		</table>
 	</form>
 </div>
-<div class="banner">
-	<div><button type="button" class="btn btn-outline-secondary" onclick="preDetail(${interior.id},1)">이전글</button></div>
-	<div><button type="button" class="btn btn-outline-secondary" onclick="nextDetail(${interior.id},2)">다음글</button></div>
-	<div><img src="https://www.iconpacks.net/icons/1/free-icon-heart-917.png">${interior.scrap}</div>
-</div>	
-<a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
 
+<button type="button" class="btn btn-outline-secondary" onclick="preDetail(${interior.id},1)">이전글</button>
+<button type="button" class="btn btn-outline-secondary next" onclick="nextDetail(${interior.id},2)">다음글</button>
+	
+	
+<a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
+<div class="sideBanner">
+	<ul class="navbar-nav">
+		<li class="nav-item active"><a href="/user/scrap" class="myScrap">My Scrap</a></li>
+		<li class="nav-item active">Scrap 34</li>
+		<li class="nav-item active">View ${interior.view}</li>
+		<li class="nav-item active"><a href="javascript:fnMove();">Comment${countComment}</a></li>
+	</ul>
+</div>
 </body>
+<script>
+	var floatPosition = parseInt($(".sideBanner").css('top'))
+	
+	//scroll 인식
+	$(window).scroll(function() {
+	
+	 // 현재 스크롤 위치
+	 var currentTop = $(window).scrollTop();
+	 var bannerTop = currentTop + floatPosition + "px";
+	
+	 //이동 애니메이션
+	 $(".sideBanner").stop().animate({
+	   "top" : bannerTop
+	 }, 500);
+	
+	}).scroll();
+	
+	function fnMove(){
+        var offset = $(".comment").offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+
+
+</script>
 </html>

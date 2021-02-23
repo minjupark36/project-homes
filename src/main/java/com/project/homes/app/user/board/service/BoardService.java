@@ -87,7 +87,7 @@ public class BoardService {
 		}
 		return id;
 	}
-
+	//조회수 
 	public long countView(long id) {
 		
 		return boardMapper.countView(id);
