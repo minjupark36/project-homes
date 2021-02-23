@@ -111,6 +111,17 @@
 	 .comment {
 	 	margin-left:1100px
 	 }
+	 .ScrollButton {
+			  position: fixed;   /* 버튼의 위치 고정 */
+			  right: 10px;       /* x 위치 입력 */
+			  cursor: pointer;   /* 호버링 했을 때 커서 모양 변경 */
+			  z-index: 10;       /* 다른 태그에 가려지지 않게 우선순위 변경 */
+			  display: none;     /* 스크롤 위치에 상관없이 보이게 하려면 생략 */
+			  font-size:20px		}
+				/* 두 태그에 각각 y 위치 입력 */
+	#TopButton {
+	  	  bottom: 108px;        
+	}
 	 
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -138,6 +149,21 @@
 			
 			});	
 		}
+	$(function() {
+	    $(window).scroll(function() {
+	        if ($(this).scrollTop() > 10) {
+	            $('.ScrollButton').fadeIn();
+	        } else {
+	            $('.ScrollButton').fadeOut();
+	        }
+	    });
+	        
+	    $("#TopButton").click(function() {
+	        $('html').animate({scrollTop : 0}, 600);
+	    });
+	 
+	    
+	});
 </script>	
 </head>
 <body>
@@ -312,6 +338,6 @@
 	    <p>너무너무 애용하고 있어요~</p>
  	</div>
 </div>
-
+<a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
 </body>
 </html>
