@@ -65,6 +65,11 @@
   		height:290px;
   		object-fit:cover
   	}
+  	
+  	.card-body > h4 {
+  		font-size: 12px;
+  		font-weight: bold;
+  	}
 	.scrapBtn {
 		height:25px; 
 		width:25px;
@@ -175,7 +180,7 @@
       <a class="nav-link" href="/main"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
     </li>
      <c:choose>
-    <c:when test="${sessionScope.user.role eq 'admin'}">
+    <c:when test="${sessionScope.user.role eq 'ADMIN'}">
 	    <li class="nav-item">
 	      <a class="nav-link" href="/admin/board">| 커뮤니티</a>
 	    </li>
