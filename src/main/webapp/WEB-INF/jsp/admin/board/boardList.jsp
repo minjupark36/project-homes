@@ -87,6 +87,8 @@
 			<th>Title</th>
 			<th>Date</th>
 			<th>Views</th>
+			<th>수정</th>
+			
 		</tr>
 	
 		<c:forEach var="list" items="${pageInfo.list}">	
@@ -102,7 +104,12 @@
 					</a>		
 				</td>
 				<td>${list.createDate}</td>
-				<td>${list.view}</td>    		
+				<td>${list.view}</td>    	
+				<c:choose>
+				<c:when test="${list.membersId eq 7}">
+					<td><a href="/admin/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}">수정</a></td>
+				</c:when>
+				</c:choose>	
 			</tr>	
 		</c:forEach>
 	

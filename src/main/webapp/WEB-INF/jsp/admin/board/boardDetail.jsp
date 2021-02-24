@@ -5,29 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Board Detail</title>
-<script>
 
-	function deleteBoard(id){
-		$.ajax({
-			url:'/admin/board/detail',
-			method:'delete',
-			data:{'id': id},    
-			dataType:'text',
-			success:function(res){
-				if(confirm("게시글을 삭제하시겠습니까?")){
-					alert("삭제되었습니다")
-					location.href="/admin/board";
-				}else{
-					return false;
-				} 				
-			},
-			error:function(xhr, status, err){
-				alert(status+','+err);	
-			}
-		});   
-	}
-	
-</script>
 </head>
 <body>
 <c:set var="b" value="${board}"></c:set>
@@ -49,8 +27,6 @@
 	</table>
 </div>
 <div>
-	<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="deleteBoard(${b.id})">삭제</button>
-	<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/admin/board/edit?id=${b.id}&categoriesId=${b.categoriesId}'">수정</button>
 	<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/admin/board'">목록</button>
 </div>
 </body>
