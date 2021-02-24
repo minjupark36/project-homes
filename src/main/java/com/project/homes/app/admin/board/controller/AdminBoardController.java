@@ -3,6 +3,8 @@ package com.project.homes.app.admin.board.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -127,4 +129,33 @@ public class AdminBoardController {
 		return boardService.editBoard(boardDto, mfiles)+"";
 		
 	}
+	
+	/*답글form */
+	@GetMapping("/admin/board/reply")
+	public String getReplyForm(@RequestParam("pid") long id
+				  ,@RequestParam("groupOrder") long groupOrder  
+			      ,@RequestParam("depth") long depth
+			      ,@RequestParam("categoriesId") long categoriesId
+			      ,Model model) {
+		model.addAttribute("id",id);
+		model.addAttribute("groupOrder",groupOrder);
+		model.addAttribute("depth",depth);
+		model.addAttribute("categoriesId",categoriesId);
+		return "admin/board/replyForm";
+	}
+	
+	/*답글 insert*/
+	@ResponseBody
+	@PostMapping("/admin/board/reply")
+	public String insertReply(HttpServletRequest request
+							  , @RequestParam("files") MultipartFile[] mfiles
+			                  ,BoardDto boardDto
+			                  ,@RequestParam("id") long id
+			                  ,@RequestParam("groupOrder") long groupOrder
+			                  ,@RequestParam("categoriesId") long categoriesId) {
+		boolean res=true;		
+		boardService.insertReply(mfiles,boardDto,id,groupOrder,categoriesId);		
+		return res+"";
+	}
+		
 }

@@ -28,6 +28,7 @@
 </div>
 <div>
 	<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/admin/board'">목록</button>
+	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/admin/board/reply?pid=${b.groupNo}&groupOrder=${b.groupOrder}&depth=${b.depth}&categoriesId=${b.categoriesId}'">답글</button>
 </div>
 </body>
 </html>
