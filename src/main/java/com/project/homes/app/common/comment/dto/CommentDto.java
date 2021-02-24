@@ -2,6 +2,8 @@ package com.project.homes.app.common.comment.dto;
 
 import java.time.LocalDate;
 
+import com.project.homes.app.common.member.dto.MemberDto;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +13,7 @@ import lombok.Setter;
 @Getter
 public class CommentDto {
 	private Long id;
-	private Long memberId;
+	private Long membersId;
 	private Long imageId;
 	private String content;
 	private LocalDate createDate;
@@ -19,4 +21,5 @@ public class CommentDto {
 	private Long groupNo;
 	private Long groupOrder;
 	private Long depth;
+	private MemberDto memberDto;
 }

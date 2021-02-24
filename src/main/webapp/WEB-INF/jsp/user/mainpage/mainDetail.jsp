@@ -216,6 +216,11 @@
 				}
 			});   
 	  }
+	  
+	  function login(){
+		  alert("로그인이 필요한 서비스입니다");
+		  location.href="/sign-in";
+	  }
 </script>
 
 </head>
@@ -305,9 +310,17 @@
 <div>
 	<form action="/comment/insert" method="post">
 	<input type="hidden" value="${interior.id}" name="imageId" id="imageId">
+	<input type="hidden" value="${sessionScope.user.id}" name="membersId">
 		<table class="comments">
 			<tr>
-				<td><input type="text" name="content" id="content" class="form-control"></td><td><button type="submit" class="btn btn-outline-secondary">답글 등록</button></td>
+			<c:choose>
+				<c:when test="${sessionScope.loginCheck eq true}">
+				<td><input type="text" name="content" id="content" class="form-control"></td><td><button type="submit" class="btn btn-outline-secondary">댓글 등록</button></td>
+				</c:when>
+				<c:otherwise>
+				<td><input type="text" name="content" id="content" class="form-control"></td><td><button type="button" onclick="login()" class="btn btn-outline-secondary">댓글 등록</button></td>
+				</c:otherwise>
+			</c:choose>
 			</tr>
 		</table>
 	</form>
@@ -319,7 +332,11 @@
 			<input type="hidden" value="${comment.groupOrder}" name="groupOrder" id="groupOrder${status.index}">
 			<input type="hidden" value="${comment.depth}" name="depth" id="depth${status.index}">
 			<input type="hidden" value="${comment.id}" name="id" id="id${status.index}">
-				<tr><td><input type="text" value="${comment.content}" name="content" id="content${status.index}" class="form-control comment" readonly ></td></tr>
+			
+				<tr>
+				<td>${comment.memberDto.name}</td>
+				<td><input type="text" value="${comment.content}" name="content" id="content${status.index}" class="form-control comment" readonly ></td>
+				</tr>
 				<tr class="com">	
 					<td><button type="button" class="btn btn-outline-secondary" onclick="deleteComment(${comment.id});" >댓글 삭제</button></td>
 					<td><button type="button" class="btn btn-outline-secondary" onclick="editForm(${status.index});" id="editbtn${status.index}">댓글 수정</button></td>
