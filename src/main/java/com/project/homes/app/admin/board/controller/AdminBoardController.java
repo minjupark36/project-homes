@@ -110,5 +110,21 @@ public class AdminBoardController {
 		return "admin/board/boardDetail";
 	}
 	
+	/*게시판 수정 @목록페이지*/
+	@GetMapping("/admin/board/edit")
+	public String getEditForm(@RequestParam("id") long id,
+							  @RequestParam("categoriesId") long categoriesId,
+							  Model model) {
+		model.addAttribute("attachList",attachService.getAttachById(id));
+		model.addAttribute("board",boardService.getBoardDetail(id));
+		return "admin/board/editBoard";
+	}
 	
+	@ResponseBody
+	@PostMapping("/admin/board/edit")
+	public String editBoard(@RequestParam("files") MultipartFile[] mfiles
+			, BoardDto boardDto) {		
+		return boardService.editBoard(boardDto, mfiles)+"";
+		
+	}
 }

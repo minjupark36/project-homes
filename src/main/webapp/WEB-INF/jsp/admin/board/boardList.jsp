@@ -107,7 +107,7 @@
 				<td>${list.view}</td>    	
 				<c:choose>
 				<c:when test="${list.membersId eq 7}">
-					<td><a href="/admin/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}">수정</a></td>
+					<td><a href="/admin/board/edit?id=${list.id}&categoriesId=${list.categoriesId}">수정</a></td>
 				</c:when>
 				</c:choose>	
 			</tr>	

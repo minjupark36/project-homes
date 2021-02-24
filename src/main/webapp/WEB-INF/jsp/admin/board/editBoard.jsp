@@ -9,7 +9,8 @@
  	input,textarea{border:none}
  	#btn{margin-left:85%}
 </style>
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <script>
 function editBoard(){
 	
@@ -54,9 +55,7 @@ function editBoard(){
 			<td>카테고리</td>
 			<td>
 				<select name="categoriesId">
-					<option value=10>공지사항</option>
-					<option value=11>FAQ</option>
-					<option value=12>문의게시판</option>
+					<option value=3>공지사항</option>
 				</select>
     		</td>
 		</tr>
