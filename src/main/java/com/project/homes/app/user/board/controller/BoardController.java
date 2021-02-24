@@ -40,7 +40,6 @@ public class BoardController {
 							){
 		PageHelper.startPage(num,15);
 		PageInfo<BoardDto> pageInfo=new PageInfo<>(boardService.getBoardList(searchMap));
-		model.addAttribute("name",boardService.getBoardList(null));
 		model.addAttribute("pageInfo",pageInfo);
 		model.addAttribute("searchMap", searchMap);
 		return "user/board/boardList";

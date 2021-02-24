@@ -104,7 +104,10 @@
 	 
 	    
 	});
-	
+	function login(){
+		alert("로그인이 필요한 서비스입니다");
+		location.href="/sign-in";
+	}
 	
 
 </script>
@@ -172,9 +175,18 @@
 	<button type="button" class="btn btn-outline-danger" onclick="showPreBoard(${d.id},1)">이전글</button>
 	<button type="button" id="nextBoard" class="btn btn-outline-danger" onclick="showNextBoard(${d.id},2)">다음글</button>
 </div>
-<div>
-<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/reply?pid=${d.groupNo}&groupOrder=${d.groupOrder}&depth=${d.depth}&categoriesId=${d.categoriesId}'">답글</button>	
-</div>
+<c:choose>
+<c:when test="${sessionScope.loginCheck eq true}">
+	<div>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/reply?pid=${d.groupNo}&groupOrder=${d.groupOrder}&depth=${d.depth}&categoriesId=${d.categoriesId}'">답글</button>	
+	</div>
+</c:when>
+<c:otherwise>
+	<div>
+		<button type="button" class="btn btn-outline-secondary" onclick="login()">답글</button>	
+	</div>
+</c:otherwise>
+</c:choose>
 <div>
 	<table class="table table-hover">	
 	<c:forEach var="r" items="${replyList}">		
