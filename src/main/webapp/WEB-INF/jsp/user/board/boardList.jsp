@@ -137,7 +137,7 @@ ${sessionScope.user.name}님 안녕하세요
 <c:forEach var="b" items="${pageInfo.list}" varStatus="status">	
 	<tr onclick="location.href='/user/board/detail?id=${b.id}&categoriesId=${b.categoriesId}'">
 		<td>${status.count}</td>
-		<td>${sessionScope.user.name}</td>
+		<td>${b.memberDto.name}</td>
 		<td>${b.title}</td>
 		<td>${b.createDate}</td>
 		<td>${b.view}</td>    
