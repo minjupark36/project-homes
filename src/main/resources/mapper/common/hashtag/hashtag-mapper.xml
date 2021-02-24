@@ -26,6 +26,16 @@
 		FROM hashtags
 			
 	</select>
+	
+	<delete id="deleteTag" parameterType="long">
+		DELETE FROM hashtags WHERE id=#{id}
+	</delete>
+	
+	<update id="editTag" parameterType="HashtagDto">
+		UPDATE hashtags
+		SET name=#{name}, create_date=NOW()
+		where id=#{id}
+	</update>
 
 
 

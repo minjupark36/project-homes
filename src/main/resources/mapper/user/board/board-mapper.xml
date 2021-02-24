@@ -179,7 +179,7 @@
 	<insert id="insertReply" parameterType="BoardDto">
 		INSERT INTO boards 			
 		VALUES 
-		(null,1,#{title},#{content},NOW(),null,#{categoriesId},0,#{id},#{groupOrder}+1,#{depth}+1)
+		(null,#{membersId},#{title},#{content},NOW(),null,#{categoriesId},0,#{id},#{groupOrder}+1,#{depth}+1)
 	</insert>
 	
 	<update id="groupOrderUpdate" parameterType="long">

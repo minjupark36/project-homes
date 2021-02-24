@@ -12,15 +12,43 @@
 			width:30px;
 			height:30px;
 	}
-	table,tr,td{
-		border:1px solid black;
+	
+	td,th{
+		text-align:center
 	}
 	table{
-		margin-left:40%;
-		width:500px;
-		height:800px
+		margin-left:400px;
+		height:600px;
+		width:1200px
+	}
+	.add{
+		margin-left:1500px
 	}
 </style>
+<script>
+	function editTag(id){
+	
+	}
+	function deleteTag(id){
+		$.ajax({
+			url:'/admin/hashtag/delete',
+			method:'delete',
+			data:{'id': id},    
+			dataType:'text',
+			success:function(res){
+				if(confirm("태그를 삭제하시겠습니까?")){
+					alert("삭제되었습니다")
+					location.href="/admin/hashtag";
+				}else{
+					return false;
+				} 				
+			},
+			error:function(xhr, status, err){
+				alert(status+','+err);	
+			}
+		});   
+	}
+</script>
 </head>
 <body>
 <!-- 메인 메뉴바 -->
@@ -59,12 +87,18 @@
   <h1>My First Bootstrap Page</h1>
   <p>Resize this responsive page to see the effect!</p> 
 </div>
+<a href="javascript:addTag()" class="add">태그 추가</a>
 <form>
-	<table>
+	<table class="table-striped">
+		<tr>
+			<th>번호</th><th>태그명</th><th>수정</th><th>삭제</th>
+		</tr>
 		<c:forEach var="tag" items="${tagList}" varStatus="status">
 			<tr>
-				<td>${status.index}</td>
+				<td>${status.count}</td>
 				<td>${tag.name}</td>
+				<td><a href="javascript:editTag(${tag.id})">수정</a></td>
+				<td><a href="javascript:deleteTag(${tag.id})">X</a></td>
 			</tr>
 		</c:forEach>
 	</table>
