@@ -8,11 +8,13 @@
 <title>Insert title here</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
   
 <style type="text/css">
 	#login, #logout {
@@ -37,13 +39,13 @@
 		width:30px;
 		height:30px;
 	}
-	
 	.header {
 		width: 100%;
 		height:300px;
 		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";
 		
 	}
+	
 	
 	.container {
 		margin-left:0px;
@@ -127,10 +129,37 @@
 	#TopButton {
 	  	  bottom: 108px;        
 	}
+	
+	.sideBanner {
+	  position: absolute;
+	  width: 150px;
+	  height: 200px;
+	  left:1800px;
+	  top: 400px;
+	  background-color: white;
+	  color: black;
+	  font-size:25px
+	}
 	 
 </style>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+	var floatPosition = parseInt($(".sideBanner").css('top'))
+	
+	//scroll 인식
+	$(window).scroll(function() {
+	
+	 // 현재 스크롤 위치
+	 var currentTop = $(window).scrollTop();
+	 var bannerTop = currentTop + floatPosition + "px";
+	
+	 //이동 애니메이션
+	 $(".sideBanner").stop().animate({
+	   "top" : bannerTop
+	 }, 500);
+	
+	}).scroll();
+
+
 	function addScrapList(id){
 		
 		console.log(id)
@@ -169,6 +198,9 @@
 	 
 	    
 	});
+	
+	
+	
 </script>	
 </head>
 <body>
@@ -255,8 +287,8 @@
 				</a>
 			<div class="card-body">
 				<c:choose>
-					<c:when test="${fn:length(interior.hashtagsNames) > 40}">
-						<h4 class="card-title">#${fn:substring(fn:replace(interior.hashtagsNames,"  ","#"),0,39)}..</h4>
+					<c:when test="${fn:length(interior.hashtagsNames) > 43}">
+						<h4 class="card-title">#${fn:substring(fn:replace(interior.hashtagsNames,"  ","#"),0,42)}..</h4>
 					</c:when>
 					<c:otherwise>
                     	<h4 class="card-title">#${fn:replace(interior.hashtagsNames,"  ","#")}</h4>
@@ -316,6 +348,17 @@
 	<c:set var="i" value="${i+1}"/>
 	</c:forEach>
 </div><br>
+
+<div class="sideBanner">
+	<ul class="navbar-nav">
+		<li class="nav-item active">1</li>
+		<li class="nav-item active">2</li>
+		<li class="nav-item active">3</li>
+		<li class="nav-item active">4</li>
+		<li class="nav-item active">5</li>
+		<li class="nav-item active">6</li>
+	</ul>
+</div>
 
 <h2 class="todays">고객 코멘트</h2>
 <div class="comment">
