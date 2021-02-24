@@ -96,4 +96,18 @@ public class AdminBoardController {
 		return res+"";
 	}
 	
+	/*게시글 detail페이지*/
+		@GetMapping("/admin/board/detail")
+		public String getBoardDetail(Model model
+					,@RequestParam("id") long id
+					,@RequestParam("categoriesId") long categoriesId
+					) {
+			model.addAttribute("board",boardService.getBoardDetail(id));
+			model.addAttribute("categoriesId",categoriesId);
+			model.addAttribute("replyList",boardService.getReplyList(id));
+			model.addAttribute("view", boardService.countView(id));
+			
+			return "admin/board/boardDetail";
+		}
+	
 }

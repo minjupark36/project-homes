@@ -35,7 +35,7 @@
 <input type="hidden" value="${b.id}" id="id"/> 
 	<table class="table">
 		<tr>
-			<th>작성자</th><td>${b.memberId}</td>
+			<th>작성자</th><td>${b.membersId}</td>
 		</tr>
 		<tr>
 			<th>카테고리</th><td>${category}</td>
