@@ -23,22 +23,9 @@ public class AdminBoardService {
 	private final AdminBoardMapper adminBoardMapper;
 	private final AttachService attachService;
 	
+	/*게시글 리스트*/
 	public List<AdminBoardDto> getBoardList(Map<String, Object> searchMap){
 		return adminBoardMapper.getBoardList(searchMap);
-	}
-	
-	/*게시글 추가*/
-	@Transactional
-	public int saveBoardAndAttach(AdminBoardDto adminBoardDto
-			, MultipartFile[] mfiles) {
-		int id = 0;
-		try {
-			id = adminBoardMapper.insertBoard(adminBoardDto);
-			attachService.insertAttach(mfiles, id);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return id;
 	}
 
 	/*게시글 삭제*/

@@ -32,7 +32,7 @@ public class AdminBoardController {
 	private final AttachService attachService;
 	private final MemberService memberService;
 	
-	/*게시판 메인페이지*/
+	/*게시판 전체리스트*/
 	@GetMapping("/admin/board")
 	public String boardList(Model model
 			, @RequestParam(required = false) Map<String, Object> searchMap
@@ -40,25 +40,25 @@ public class AdminBoardController {
 			){
 		
 		PageHelper.startPage(num,15);
-		PageInfo<AdminBoardDto> pageInfo = new PageInfo<> (adminBoardService.getBoardList(searchMap));
+		PageInfo<BoardDto> pageInfo = new PageInfo<> (boardService.getBoardList(searchMap));
 		model.addAttribute("pageInfo",pageInfo);
 		model.addAttribute("searchMap", searchMap);
 		return "admin/board/boardList";
 	}
 	
-	/*페이징*/
-	@GetMapping("/admin/board/{num}")
-	public String getBoardPage(Model model
-			, @PathVariable int num
-			, @RequestParam(required = false) Map<String, Object> searchMap) {		
-
-		PageHelper.startPage(num,10);
-		PageInfo<AdminBoardDto> pageInfo=new PageInfo<>(adminBoardService.getBoardList(searchMap));
+	/*카테고리별 게시판 페이지*/
+	@GetMapping("/admin/board/{categoriesId}")
+	public String boardByCategory(Model model
+					, @RequestParam(required = false) Map<String, Object> searchMap
+					, @RequestParam(name="num", defaultValue="1") int num
+					, @PathVariable Long categoriesId
+					){
+		PageHelper.startPage(num,15);
+		PageInfo<BoardDto> pageInfo=new PageInfo<>(boardService.boardByCategory(searchMap,categoriesId));
 		model.addAttribute("pageInfo",pageInfo);
-		
+		model.addAttribute("searchMap", searchMap);
 		return "admin/board/boardList";
-		
-	}
+		}
 	
 	/*게시글 리스트 삭제*/
 	@ResponseBody
@@ -95,6 +95,5 @@ public class AdminBoardController {
 		boardService.saveBoardAndAttach(boardDto, mfiles);		
 		return res+"";
 	}
-	
 	
 }

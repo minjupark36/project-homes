@@ -67,6 +67,14 @@
 </script>
 </head>
 <body>
+<!-------- category list --------->
+<div class="category">
+	<ul class="navbar-nav">
+		<li class="nav-item active"><a href="/admin/board/1" class="nav-link cate">자유게시판</a></li>
+		<li class="nav-item active"><a href="/admin/board/2" class="nav-link cate">FAQ</a></li>
+		<li class="nav-item active"><a href="/admin/board/3" class="nav-link cate">공지사항</a></li>
+	</ul>
+</div>
 <!-------- board list --------->
 <div>
 	<table class="table table-hover">

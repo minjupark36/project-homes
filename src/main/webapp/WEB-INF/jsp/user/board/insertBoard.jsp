@@ -112,7 +112,6 @@
 				<select name="categoriesId" class="form-control">
 					<option value=1>자유게시판</option>
 					<option value=2>FAQ</option>
-					<option value=3>공지사항</option>
 				</select>
     		</td>
 		</tr>
