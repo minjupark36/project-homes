@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.project.homes.app.admin.board.dto.AdminBoardDto;
+import com.project.homes.app.user.board.dto.BoardDto;
 
 @Repository
 @Mapper
@@ -18,5 +19,8 @@ public interface AdminBoardMapper {
 	
 	/*게시글 삭제*/
 	boolean deleteBoard(int id);
+	
+	/*게시글 추가*/
+	int insertBoard(AdminBoardDto adminBoardDto);
 
 }

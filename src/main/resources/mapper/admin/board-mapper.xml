@@ -59,8 +59,21 @@
       		id desc
 	</select>
 	
-		<delete id="deleteBoard"
-		parameterType="Integer">
+	<insert id="insertBoard" 
+	parameterType="AdminBoardDto" 
+	useGeneratedKeys="true" 
+	keyProperty="id">
+		
+		INSERT INTO 
+			boards 
+		VALUES 
+			(Null,#{membersId},#{title},#{content},NOW(),null,#{categoriesId},0,#{id},0,0)
+
+	</insert>
+	
+	<delete id="deleteBoard"
+	parameterType="Integer">
+	
 		DELETE FROM 
 			boards 
 		WHERE 
