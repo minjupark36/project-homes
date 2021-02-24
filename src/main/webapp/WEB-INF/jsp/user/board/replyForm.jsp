@@ -97,7 +97,7 @@
 	</div>
 <div>
 <form method="post" action="/user/board/reply" enctype="multipart/form-data" id="form" >
-	
+	<input name="membersId" type="hidden" value="${sessionScope.user.id}">	
 	<input type="hidden" value="${id}" name="id" id="id"/> 
 	<input type="hidden" value="${groupOrder}" name="groupOrder" id="groupOrder"/> 
 	<input type="hidden" value="${depth}" name="depth" id="depth"/> 
