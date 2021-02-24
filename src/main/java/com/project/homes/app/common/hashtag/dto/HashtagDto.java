@@ -12,9 +12,10 @@ import lombok.Setter;
 @Getter
 public class HashtagDto {
 	
-	private int id;
+	private long id;
 	private String name;
 	private LocalDate createDate;
+	private long clicks;
 	
 
 	
