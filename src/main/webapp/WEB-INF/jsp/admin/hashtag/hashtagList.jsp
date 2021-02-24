@@ -26,8 +26,27 @@
 	}
 </style>
 <script>
-	function editTag(id){
-	
+	function editForm(index){
+		document.getElementById("editForm"+index).readOnly = false;
+		$("#editedBtn"+index).removeAttr("style");
+		document.getElementById("editBtn"+index).style.display = "none";
+		
+	}
+	function editTag(index){
+		$.ajax({
+			url:'/admin/hashtag/edit',
+			method:'post',
+			data:{'id' : $("#id"+index).val(),
+				'name' : $("#editForm"+index).val()},    
+			dataType:'text',
+			success:function(res){
+				alert("수정이 완료되었습니다");
+				location.reload();				
+			},
+			error:function(xhr, status, err){
+				alert(status+','+err);	
+			}
+		});   
 	}
 	function deleteTag(id){
 		$.ajax({
@@ -94,10 +113,14 @@
 			<th>번호</th><th>태그명</th><th>수정</th><th>삭제</th>
 		</tr>
 		<c:forEach var="tag" items="${tagList}" varStatus="status">
-			<tr>
+			<input type="hidden" value="${tag.id}" id="id${status.count}">
+			<tr>	
 				<td>${status.count}</td>
-				<td>${tag.name}</td>
-				<td><a href="javascript:editTag(${tag.id})">수정</a></td>
+				<td><input type="text" value="${tag.name}" id="editForm${status.count}" readonly></td>
+				<td>
+					<div id="editBtn${status.count}"><a href="javascript:editForm(${status.count})">수정</a></div>
+					<div style="display:none" id="editedBtn${status.count}"><a href="javascript:editTag(${status.count})">수정완료</a></div>
+				</td>
 				<td><a href="javascript:deleteTag(${tag.id})">X</a></td>
 			</tr>
 		</c:forEach>
