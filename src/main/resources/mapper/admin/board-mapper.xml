@@ -17,7 +17,7 @@
 	
 	<resultMap type="AdminBoardDto" id="adminBoardDto">	
 		<id property="id" column="id"/>
-		<result property="memberId" column="members_id"/>
+		<result property="membersId" column="members_id"/>
 		<result property="title" column="title"/>
 		<result property="content" column="content"/>
 		<result property="createDate" column="create_date"/>
@@ -58,6 +58,15 @@
       	ORDER BY
       		id desc
 	</select>
+	
+		<delete id="deleteBoard"
+		parameterType="Integer">
+		DELETE FROM 
+			boards 
+		WHERE 
+			id=#{id}
+			
+	</delete>
 	
 	
 </mapper>

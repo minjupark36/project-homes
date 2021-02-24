@@ -87,7 +87,7 @@
 					<input type="checkbox" class="selectEach" name="selectEach" data-id="${list.id}">
 				</td>
 				<td>${list.id}</td>
-				<td>${list.memberId}</td>
+				<td>${list.membersId}</td>
 				<td>
 					<a href ="/admin/board/detail?id=${list.id}&categoriesId=${list.categoriesId}" onclick="countView(${list.id});">
 						${list.title}

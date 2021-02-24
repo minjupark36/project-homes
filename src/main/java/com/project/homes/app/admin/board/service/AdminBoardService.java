@@ -25,4 +25,10 @@ public class AdminBoardService {
 	public List<AdminBoardDto> getBoardList(Map<String, Object> searchMap){
 		return adminBoardMapper.getBoardList(searchMap);
 	}
+
+	/*게시글 삭제*/
+	public boolean deleteBoard(int id) {
+		return adminBoardMapper.deleteBoard(id);
+		
+	}
 }

@@ -1,5 +1,6 @@
 package com.project.homes.app.admin.board.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,6 +60,24 @@ public class AdminBoardController {
 		
 		return "admin/board/boardList";
 		
+	}
+	
+	/*게시글 리스트 삭제*/
+	@ResponseBody
+	@PostMapping("admin/board")
+	public String massiveDelete(@RequestParam("idArr[]") List<String> idArr) {
+		
+		System.out.println("=============================================");
+		System.out.println(idArr);
+		System.out.println("=============================================");
+		
+		int boardId = 0;
+		
+		for(String i : idArr) {
+			boardId = Integer.parseInt(i);
+			adminBoardService.deleteBoard(boardId);
+		}
+		return adminBoardService.deleteBoard(boardId)+"";
 	}
 	
 	
