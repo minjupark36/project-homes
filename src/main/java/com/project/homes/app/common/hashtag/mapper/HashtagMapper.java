@@ -18,4 +18,7 @@ public interface HashtagMapper {
 	
 	//선택한 태그 편집하기
 	boolean editTag(HashtagDto hastagDto);
+	
+	//태그 추가하기
+	boolean insertTag(HashtagDto hastagDto);
 }

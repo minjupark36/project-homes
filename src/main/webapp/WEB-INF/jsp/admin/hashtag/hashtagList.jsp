@@ -16,14 +16,22 @@
 	td,th{
 		text-align:center
 	}
-	table{
+	.table{
 		margin-left:400px;
-		height:600px;
 		width:1200px
 	}
-	.add{
-		margin-left:1500px
+	#name{
+		width:300px
 	}
+	.tag:read-only{
+		background-color:white
+	}
+	.delBtn{
+		color:red
+	}
+	
+	
+	
 </style>
 <script>
 	function editForm(index){
@@ -61,6 +69,22 @@
 				}else{
 					return false;
 				} 				
+			},
+			error:function(xhr, status, err){
+				alert(status+','+err);	
+			}
+		});   
+	}
+	function addTag(){
+		$.ajax({
+			url:'/admin/hashtag/insert',
+			method:'post',
+			data:{'name':$('#name').val()},    
+			dataType:'text',
+			success:function(res){
+				alert("태그가 추가되었습니다");
+				location.reload();
+				
 			},
 			error:function(xhr, status, err){
 				alert(status+','+err);	
@@ -106,9 +130,12 @@
   <h1>My First Bootstrap Page</h1>
   <p>Resize this responsive page to see the effect!</p> 
 </div>
-<a href="javascript:addTag()" class="add">태그 추가</a>
+
+<input type="text" placeholder="추가할 태그를 입력해주세요." name="name" id="name" class="form-control">
+<a href="javascript:addTag()" class="btn btn-outline-secondary">태그 추가</a>
+
 <form>
-	<table class="table-striped">
+	<table class="table">
 		<tr>
 			<th>번호</th><th>태그명</th><th>수정</th><th>삭제</th>
 		</tr>
@@ -116,12 +143,12 @@
 			<input type="hidden" value="${tag.id}" id="id${status.count}">
 			<tr>	
 				<td>${status.count}</td>
-				<td><input type="text" value="${tag.name}" id="editForm${status.count}" readonly></td>
+				<td><input type="text" value="${tag.name}" id="editForm${status.count}" class="form-control tag" readonly></td>
 				<td>
-					<div id="editBtn${status.count}"><a href="javascript:editForm(${status.count})">수정</a></div>
-					<div style="display:none" id="editedBtn${status.count}"><a href="javascript:editTag(${status.count})">수정완료</a></div>
+					<div id="editBtn${status.count}"><a href="javascript:editForm(${status.count})" class="btn btn-outline-secondary">수정</a></div>
+					<div style="display:none" id="editedBtn${status.count}"><a href="javascript:editTag(${status.count})" class="btn btn-outline-secondary">수정완료</a></div>
 				</td>
-				<td><a href="javascript:deleteTag(${tag.id})">X</a></td>
+				<td><a href="javascript:deleteTag(${tag.id})" class="delBtn">X</a></td>
 			</tr>
 		</c:forEach>
 	</table>

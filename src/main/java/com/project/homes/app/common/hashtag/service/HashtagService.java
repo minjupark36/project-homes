@@ -31,4 +31,9 @@ public class HashtagService {
 		return hashtagMapper.editTag(hashtagDto)+"";
 	}
 	
+	//태그 추가
+	public String insertTag(HashtagDto hashtagDto) {
+		return hashtagMapper.insertTag(hashtagDto)+"";
+	}
+	
 }

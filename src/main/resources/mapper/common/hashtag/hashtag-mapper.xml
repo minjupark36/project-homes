@@ -38,6 +38,12 @@
 		SET name=#{name}, create_date=NOW()
 		where id=#{id}
 	</update>
+	
+	<insert id="insertTag" parameterType="HashtagDto">
+		INSERT INTO hashtags		
+		VALUES 
+		(null,#{name},NOW(),0)
+	</insert>
 
 
 
