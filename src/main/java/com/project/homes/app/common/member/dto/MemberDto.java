@@ -24,10 +24,11 @@ public class MemberDto {
 	private Long pwQuestion;
 	private String pwAnswer;
 	private String role;
+	private String hashtagPreference;
 	
 	@Builder
 	public MemberDto(Long id, String email, String password, String name, String gender, LocalDate createDate,
-			LocalDate modifiedDate, Long pwQuestion, String pwAnswer, String role) {
+			LocalDate modifiedDate, Long pwQuestion, String pwAnswer, String role, String hashtagPreference) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -39,8 +40,9 @@ public class MemberDto {
 		this.pwQuestion = pwQuestion;
 		this.pwAnswer = pwAnswer;
 		this.role = role;
+		this.hashtagPreference = hashtagPreference;
 	}
-
+	
 	
 	
 }

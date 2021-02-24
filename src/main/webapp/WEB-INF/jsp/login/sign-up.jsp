@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-  	
+
   	.section{
-    width: max-content;
+    width: 400px;
     height: max-content;
     margin: auto;
     margin-top: 70px;
@@ -42,7 +42,7 @@
 		margin-top:10px;
 		display:flex;
 	}
-	.check-section>span{
+	.check-section>div{
 		margin-left:15px;
 		color:red;
 	}
@@ -87,6 +87,24 @@
 	    color: #f8f7e6;
 	    background-color: #685547;
 	}  
+	
+	.hashtags {
+		display:inline;
+		border-radius:1em;
+		background-color : rgb(253, 249, 169);
+		font-size:1em;
+		padding:5px 10px 5px 10px;
+		margin-bottom:20px;
+		border: solid 1px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		box-sizing: border-box;
+	}
+	
+	.on {
+		color :#f8f7e6;
+		background-color : #685547;
+	}
 
   	
 </style>
@@ -96,6 +114,12 @@
 $(function() {
 	var isCertification = false;
 	var key = "";
+     
+    $(".hashtags").click(function(e){
+        var obj = $(e.target);
+        obj.toggleClass("on");
+        
+    });
 		
 	$(".sendMail").click(function() {// 메일 입력 유효성 검사
 		var email = $(".email").val(); // 사용자의 이메일 입력값.
@@ -155,6 +179,17 @@ $(function() {
 		var gender = $(":input:radio[name=gender]:checked").val();
 		var pwQuestion = $('#pwQuestion').val();
 		var pwAnswer = $("#pwAnswer").val();
+		var hashtagPreference = new Array();
+		
+		$.each($('.hashtags'),function(index,item){		
+            if($(item).hasClass("on") === true){
+            	hashtagPreference.push(index);
+        	}                    
+		
+	      	$("#hashtagPreference").val(hashtagPreference);
+	        $("#hashtagPreference").val(hashtagPreference[0]);
+	        
+   		 });
 		
 		var formData = {
 				email : email,
@@ -162,7 +197,8 @@ $(function() {
 				name : name,
 				gender: gender ,
 				pwQuestion : pwQuestion,
-				pwAnswer : pwAnswer
+				pwAnswer : pwAnswer,
+				hashtagPreference : hashtagPreference
 		}
 		
 		console.log(formData);
@@ -188,7 +224,6 @@ $(function() {
 		});
 
 	}
-
 
 </script>
 
@@ -231,7 +266,37 @@ $(function() {
 			<option value="5">가장 기억에 남는 선생님 성함은?</option>
 		</select> <br>
 		<input type="text" id="pwAnswer" name="pwAnswer" placeholder="답변을 입력해주세요" class="value">
+		<input type="hidden" name="hashtagPreference" value="all">
+		<div class="title">평소에 좋아하는 인테리어 컨셉을 선택하세요.</div>	
+		<div class="hashtags-container">
+			<div class="hashtags">빈티지</div>
+			<div class="hashtags">화이트</div>
+			<div class="hashtags">우드</div>
+			<div class="hashtags">키덜트</div>
+			<div class="hashtags">레트로</div>
+			<div class="hashtags">하이틴</div>
+			<div class="hashtags">홈카페</div>
+			<div class="hashtags">라탄</div>
+			<div class="hashtags">홈캉스</div>
+			<div class="hashtags">복층</div>
+		</div>
 		
+		<div class="title">평소에 좋아하는 인테리어 소품을 선택하세요.</div>	
+		<div class="hashtags-container">
+			<div class="hashtags">조명</div>
+			<div class="hashtags">포스터</div>
+			<div class="hashtags">액자</div>
+			<div class="hashtags">러그</div>
+			<div class="hashtags">오브제</div>
+			<div class="hashtags">쿠션</div>
+			<div class="hashtags">쇼파</div>
+			<div class="hashtags">테이블</div>
+			<div class="hashtags">캔들</div>
+			<div class="hashtags">화분</div>
+			<div class="hashtags">벽난로</div>
+			<div class="hashtags">커튼</div>
+		</div>
+
 		<div>
 			<button type="button" id="btn_login" onclick="signUp();">JOIN</button>
 		</div>

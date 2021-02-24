@@ -14,7 +14,8 @@
 		modified_date
 		pw_question,
 		pw_answer,
-		role	
+		role,
+		hashtag_preference
 	</sql>
 	
 	<resultMap type="MemberDto" id="MemberDto">
@@ -28,6 +29,7 @@
 		<result property="pwQuestion" column="pw_question"/>
 		<result property="pwAnswer" column="pw_answer"/>
 		<result property="role" column="role"/>
+		<result property="hashtagPreference" column="hashtag_preference"/>
 	</resultMap>
 	
 	
@@ -39,13 +41,15 @@
 	  				, name
 	  				, gender
 	  				, pw_question
-	  				, pw_answer )
+	  				, pw_answer
+	  				, hashtag_preference )
     VALUES( #{email} 
             , #{password}
             , #{name}
             , #{gender}
             , #{pwQuestion}
-            , #{pwAnswer} )
+            , #{pwAnswer}
+            , #{hashtagPreference} )
     </insert>
     
     <select id="loginCheck" 

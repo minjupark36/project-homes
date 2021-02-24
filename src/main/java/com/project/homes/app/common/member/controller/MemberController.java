@@ -55,7 +55,7 @@ public class MemberController {
 	public String signUp(MemberDto memberDto){		
 		boolean res= memberService.addMember(memberDto);
 		System.out.println("=============");
-		System.out.println(res);
+		System.out.println(memberDto.getHashtagPreference());
 		System.out.println("=============");
 		return res+"";
 	}
