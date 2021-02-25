@@ -149,4 +149,10 @@ public class MainPageController {
 		return info;
 	}
 	
+	//관리자 사이트관리 페이지
+		@GetMapping("/admin/manage")
+		public String managingPageForAdmin() {
+			return "/user/mainpage/managingPage";
+		}
+	
 }

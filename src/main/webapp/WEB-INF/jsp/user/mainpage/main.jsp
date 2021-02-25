@@ -255,6 +255,13 @@
     </li>  
     </c:otherwise>
     </c:choose> 
+    <c:choose>
+    <c:when test="${sessionScope.user.role eq 'ADMIN'}">
+    <li class="nav-item">
+    	<a class="nav-link" href="/admin/manage">| 사이트관리</a>
+    </li>
+    </c:when>
+    </c:choose>
   </ul>
   <c:choose>
   <c:when test="${sessionScope.loginCheck eq true}">
