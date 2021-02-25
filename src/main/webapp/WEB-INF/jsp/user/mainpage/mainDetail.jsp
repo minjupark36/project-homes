@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css" >
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 <style>
 	#home-icon {
@@ -41,7 +43,7 @@
 			  font-size:20px		}
 				/* 두 태그에 각각 y 위치 입력 */
 	#TopButton {
-	  	  bottom: 108px;        
+	  	  bottom: 10px;        
 	}
 	.count{
 		  border-radius: 20px
@@ -67,6 +69,10 @@
 	}
 	.content{
 		text-align:center
+	}
+	.Btn{
+		text-decoration: none;
+		color:black
 	}
 </style>
 <script>
@@ -345,16 +351,20 @@
 		</table>
 	</form>
 </div>
-	
-<a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
+<a id="TopButton" class="ScrollButton"><i class="material-icons" style="font-size:50px">vertical_align_top</i></a>
 <div class="sideBanner">
 	<ul class="navbar-nav">
-		<li class="nav-item active"><a href="/user/scrap" class="myScrap">My Scrap</a></li>
-		<li class="nav-item active"><a href="javascript:addScrap(${interior.id});">Scrap ${interior.scrap}</a></li>
-		<li class="nav-item active">View ${interior.view}</li>
-		<li class="nav-item active"><a href="javascript:fnMove();">Comment${countComment}</a></li>
-		<li class="nav-item active"><a href="javascript:preDetail(${interior.id},1);">이전글</a></li>
-		<li class="nav-item active"><a href="javascript:nextDetail(${interior.id},2);">다음글</a></li>
+		<li class="nav-item active"><a href="/user/scrap" class="Btn myScrap">My Scrap</a></li>
+		<li><br></li>
+		<li class="nav-item active"><a href="javascript:addScrap(${interior.id});" class="Btn"><i class='far fa-bookmark' style='font-size:36px'></i></a> ${interior.scrap}</li>
+		<li><br></li>
+		<li class="nav-item active"><i class='far fa-eye' style='font-size:36px'></i> ${interior.view}</li>
+		<li><br></li>
+		<li class="nav-item active"><a href="javascript:fnMove();" class="Btn"><i class='far fa-comment-dots' style='font-size:36px'></i></a> ${countComment}</li>
+		<li><br></li>
+		<li class="nav-item active"><a href="javascript:preDetail(${interior.id},1);" class="Btn"><i class="material-icons" style="font-size:36px">skip_previous</i></a> PRE</li>
+		<li><br></li>
+		<li class="nav-item active"><a href="javascript:nextDetail(${interior.id},2);" class="Btn"><i class="material-icons" style="font-size:36px">skip_next</i></a> NEXT</li>
 	</ul>
 </div>
 </body>
