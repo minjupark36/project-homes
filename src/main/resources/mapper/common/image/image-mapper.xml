@@ -31,12 +31,19 @@
 		<result property="content" column="content"/>
 	</resultMap>
 	
-	<insert id="insertImage" parameterType="ImageDto">
-	<selectKey keyProperty="id" resultType="long" order="AFTER">
+	<insert id="insertInteriorImage" parameterType="ImageDto">
+	<selectKey keyProperty="id" resultType="long" order="BEFORE">
 		SELECT MAX(id)+1 from images
 	</selectKey>
 		INSERT INTO images 			
 		VALUES 
-		(null,#{hashtagsNames},#{filepath},'interior'+#{id},null,'interior',NOW(),#{id},0,0,#{content})
+		(null,#{hashtagsNames},#{filepath},CONCAT('interior',#{id}),null,'interior',NOW(),#{id},0,0,#{content})
 	</insert>
+	
+	<select id="getMaxIdInteriorImage" resultType="ImageDto">
+		SELECT
+		<include refid="ImageColumns"/>
+		FROM images
+		WHERE id=(SELECT MAX(id) FROM images)
+	</select>
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,13 +28,19 @@
 		margin-left:600px;
 		width:600px
 	}
+	#interiorImg{
+		width:300px;
+		height:300px
+	}
 </style>
 <script>
 	function addForm(){
 		var clone = $("#decoForm").clone(true);
 		clone.appendTo('#decoform');
-		
-		
+	}
+	
+	function showImage(){
+		$('#interiorImg').removeAttr('style');
 	}
 </script>
 </head>
@@ -93,7 +100,11 @@
 	<button type="submit" class="btn btn-outline-secondary uploadBtn">인테리어 사진 업로드</button>
 </form>
 <button type="button" onclick="addForm()" class="btn btn-outline-secondary addForm">+</button>
-
+<c:set var="img" value="${interiorImage}"/>
+<div>
+	<button type="button" onclick="showImage()">인테리어 사진 확인</button>
+	<img src="${img.filepath}" style="display:none" id="interiorImg">	
+</div>
 <form id="decoForm">
 	<table class="table">
 		<tr>

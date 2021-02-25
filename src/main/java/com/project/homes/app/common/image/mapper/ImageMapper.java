@@ -12,5 +12,6 @@ import com.project.homes.app.common.image.dto.ImageDto;
 public interface ImageMapper {
 	
 	List<ImageDto> getMainImages(String order);
-	long insertImage(ImageDto imageDto);
+	long insertInteriorImage(ImageDto imageDto);
+	ImageDto getMaxIdInteriorImage();
 }

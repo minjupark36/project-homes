@@ -22,8 +22,13 @@ public class ImageService {
 	}	
 	
 	//메인 이미지 insert
-	public long insertImage(ImageDto imageDto) {
-		return imageMapper.insertImage(imageDto);
+	public long insertInteriorImage(ImageDto imageDto) {
+		return imageMapper.insertInteriorImage(imageDto);
+	}
+	
+	//가장 최근에 insert한 인테리어 사진 
+	public ImageDto getMaxIdInteriorImage() {
+		return imageMapper.getMaxIdInteriorImage();
 	}
 
 }
