@@ -116,7 +116,6 @@
 	 
 	 .todays {
 	 	text-align: center;
-	 	font-family: fantasy;
 	 }
 	 
 	 .comment {
@@ -293,14 +292,20 @@
 </div>
 
 <!-------회원가입시 선택한 hashtags--------------->
+<c:choose>
+<c:when test="${sessionScope.loginCheck eq true}">
 <div class="hashtags">	
-	<h2 class="todays">나의 최애템</h2><br>
+	<h2 class="todays">${sessionScope.user.name}님's hashtags</h2><br>
 	<c:forEach var="tags" items="${tagList}">
 		<div class="tags">
 			<button type="button" class="btn btn-outline-secondary" onclick="location.href='/main/tag?hashtagsNames=${tags}'">#${tags}</button>
 		</div>		
 	</c:forEach>
 </div><br>
+</c:when>
+<c:otherwise></c:otherwise>
+</c:choose>
+
 
 <h2 class="todays">오늘의 인테리어</h2><br>
 
