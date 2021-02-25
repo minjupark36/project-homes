@@ -37,6 +37,7 @@
 		<result property="pnum" column="pnum"/>
 		<result property="view" column="view"/>
 		<result property="scrap" column="scrap"/>
+		<result property="content" column="content"/>
 	</resultMap>
 	
 <!-- 개인 스크랩 이미지 리스트 가져오기 -->	

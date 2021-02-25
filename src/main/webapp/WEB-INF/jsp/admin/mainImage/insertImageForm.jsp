@@ -75,19 +75,19 @@
   <p>Resize this responsive page to see the effect!</p> 
 </div>
 
-<form>
+<form action="/admin/image/insert" method="post">
 	<table class="table">
 		<tr>
 			<td colspan=2>인테리어사진</td>
 		</tr>
 		<tr>
-			<th>HashTag</th><td><input type="text" name="" placeholder="태그를 입력해주세요(각 태그는 공백으로 구분해주세요)" class="form-control"></td>
+			<th>HashTag</th><td><input type="text" name="hashtagsNames" placeholder="태그를 입력해주세요(각 태그는 공백 두칸으로 구분해주세요)" class="form-control"></td>
 		</tr>
 		<tr>
-			<th>Image</th><td><input type="text" name="" placeholder="인테리어 사진의 filepath를 입력해주세요" class="form-control"></td>
+			<th>Image</th><td><input type="text" name="filepath" placeholder="인테리어 사진의 filepath를 입력해주세요" class="form-control"></td>
 		</tr>
 		<tr>
-			<th>Content</th><td><textarea name="" placeholder="내용을 입력해주세요" class="form-control"></textarea></td>
+			<th>Content</th><td><textarea name="content" placeholder="내용을 입력해주세요" class="form-control"></textarea></td>
 		</tr>
 	</table>
 	<button type="submit" class="btn btn-outline-secondary uploadBtn">인테리어 사진 업로드</button>

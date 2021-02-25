@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.homes.app.common.image.mapper.ImageMapper">
+	<sql id="ImageColumns">
+		id,
+		hashtags_names,
+		filepath,
+		original_filename,
+		url,
+		sort,
+		create_date,
+		pnum,
+		view,
+		scrap,
+		content
+	</sql>
+	
+	<resultMap type="ImageDto" id="ImageDto">
+		<id property="id" column="id"/>
+		<result property="hashtagsNames" column="hashtags_names"/>
+		<result property="filepath" column="filepath"/>
+		<result property="originalFilename" column="original_filename"/>
+		<result property="url" column="url"/>
+		<result property="sort" column="sort"/>
+		<result property="createDate" column="create_date"/>
+		<result property="pnum" column="pnum"/>
+		<result property="view" column="view"/>
+		<result property="scrap" column="scrap"/>
+		<result property="content" column="content"/>
+	</resultMap>
+	
+	<insert id="insertImage" parameterType="ImageDto">
+	<selectKey keyProperty="id" resultType="long" order="AFTER">
+		SELECT MAX(id)+1 from images
+	</selectKey>
+		INSERT INTO images 			
+		VALUES 
+		(null,#{hashtagsNames},#{filepath},'interior'+#{id},null,'interior',NOW(),#{id},0,0,#{content})
+	</insert>
+</mapper>

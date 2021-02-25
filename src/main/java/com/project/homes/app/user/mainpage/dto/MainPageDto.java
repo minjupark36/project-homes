@@ -19,4 +19,5 @@ public class MainPageDto {
 	private int pnum;
 	private int view;
 	private int scrap;
+	private String content;
 }

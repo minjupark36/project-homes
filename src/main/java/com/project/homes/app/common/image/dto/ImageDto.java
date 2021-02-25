@@ -22,21 +22,22 @@ public class ImageDto {
 	private long pnum;
 	private long view;
 	private long scrap;
+	private String content;
 	
-	@Builder
-	public ImageDto(long id, String hashtagsNames, String filepath, String originalFilename, String url, String sort,
-			LocalDate createDate, long pnum, long view, long scrap) {
-		
-		this.id = id;
-		this.hashtagsNames = hashtagsNames;
-		this.filepath = filepath;
-		this.originalFilename = originalFilename;
-		this.url = url;
-		this.sort = sort;
-		this.createDate = createDate;
-		this.pnum = pnum;
-		this.view = view;
-		this.scrap = scrap;
-	}
+//	@Builder
+//	public ImageDto(long id, String hashtagsNames, String filepath, String originalFilename, String url, String sort,
+//			LocalDate createDate, long pnum, long view, long scrap) {
+//		
+//		this.id = id;
+//		this.hashtagsNames = hashtagsNames;
+//		this.filepath = filepath;
+//		this.originalFilename = originalFilename;
+//		this.url = url;
+//		this.sort = sort;
+//		this.createDate = createDate;
+//		this.pnum = pnum;
+//		this.view = view;
+//		this.scrap = scrap;
+//	}
 			
 }

@@ -20,5 +20,10 @@ public class ImageService {
 	public List<ImageDto> getMainImages(String order) {
 		return imageMapper.getMainImages(order) ;
 	}	
+	
+	//메인 이미지 insert
+	public long insertImage(ImageDto imageDto) {
+		return imageMapper.insertImage(imageDto);
+	}
 
 }
