@@ -49,25 +49,16 @@ public class MainPageController {
 	}
 	
 	/*메인추천 페이지*/
-	@GetMapping("/mainRecommendation")
+	@GetMapping("/main/customized")
 	public String mainRecommendedList(Model model) {
 		
 		MemberDto memberDto = Utils.getMemberFromSession();
 		String imageTags = memberDto.getHashtagPreference();		
 		List<String> tagList = Arrays.asList(imageTags.split(","));
-		
-		List<Integer> newList = tagList.stream()
-                					.map(s -> Integer.parseInt(s))
-                					.collect(Collectors.toList());
 	
 		model.addAttribute("tagList",tagList);
-		model.addAttribute("interior",mainPageService.getRecommendedInteriorImages(newList));
-		model.addAttribute("deco",mainPageService.getRecommendedDecoImages(newList));	
-		
-		System.out.println("=============================");
-		System.out.println(mainPageService.getRecommendedInteriorImages(newList));
-		System.out.println(mainPageService.getRecommendedDecoImages(newList));
-		System.out.println("=============================");
+		model.addAttribute("interior",mainPageService.getInteriorImages());
+		model.addAttribute("deco",mainPageService.getDecoImages());	
 	
 		return "/user/mainpage/main";
 	}

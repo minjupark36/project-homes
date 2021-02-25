@@ -35,6 +35,10 @@
 		display:inline
 	}
 	
+	.tags{
+		display:inline
+	}
+	
 	#home-icon {
 		width:30px;
 		height:30px;
@@ -287,6 +291,16 @@
   <h1>My First Bootstrap Page</h1>
   <p>Resize this responsive page to see the effect!</p> 
 </div>
+
+<!-------회원가입시 선택한 hashtags--------------->
+<div class="hashtags">	
+	<h2 class="todays">나의 최애템</h2><br>
+	<c:forEach var="tags" items="${tagList}">
+		<div class="tags">
+			<button type="button" class="btn btn-outline-secondary" onclick="location.href='/main/tag?hashtagsNames=${tags}'">#${tags}</button>
+		</div>		
+	</c:forEach>
+</div><br>
 
 <h2 class="todays">오늘의 인테리어</h2><br>
 
