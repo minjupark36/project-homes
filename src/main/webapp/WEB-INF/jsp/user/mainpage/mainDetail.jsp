@@ -65,7 +65,9 @@
 	.myScrap:hover{
 		 text-decoration: none;
 	}
-	
+	.content{
+		text-align:center
+	}
 </style>
 <script>
 	function nextDetail(id,page){
@@ -286,7 +288,6 @@
 		</tr>
 		<tr><td></td></tr>
 		<tr><td></td></tr>
-		<tr><td></td></tr>
 		<tr>
 			<td>
 				<%--이미지 관련 태그 --%>
@@ -299,15 +300,9 @@
 				</c:forEach>
 			</td>
 		</tr>
-		<tr>
-			<td>
-			
-
-			</td>
-		</tr>
 	</table>
 </form>
-<div>
+<div class="content">${interior.content}</div>
 	<form action="/comment/insert" method="post">
 	<input type="hidden" value="${interior.id}" name="imageId" id="imageId">
 	<input type="hidden" value="${sessionScope.user.id}" name="membersId">
