@@ -15,7 +15,7 @@
 		pw_question,
 		pw_answer,
 		role,
-		hashtag_preference
+		hashtagPreference
 	</sql>
 	
 	<resultMap type="MemberDto" id="MemberDto">
@@ -29,7 +29,7 @@
 		<result property="pwQuestion" column="pw_question"/>
 		<result property="pwAnswer" column="pw_answer"/>
 		<result property="role" column="role"/>
-		<result property="hashtagPreference" column="hashtag_preference"/>
+		<result property="hashtagPreference" column="hashtagPreference"/>
 	</resultMap>
 	
 	
@@ -42,7 +42,7 @@
 	  				, gender
 	  				, pw_question
 	  				, pw_answer
-	  				, hashtag_preference )
+	  				, hashtagPreference )
     VALUES( #{email} 
             , #{password}
             , #{name}

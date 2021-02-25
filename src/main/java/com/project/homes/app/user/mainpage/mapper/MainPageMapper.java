@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.homes.app.common.image.dto.ImageDto;
 import com.project.homes.app.common.info.dto.InfoDto;
+import com.project.homes.app.common.member.dto.MemberDto;
 import com.project.homes.app.user.mainpage.dto.MainPageDto;
 
 @Repository
@@ -19,6 +20,11 @@ public interface MainPageMapper {
 	List<ImageDto> getDecoImages();
 	List<ImageDto> getImageList(String order);
 	List<InfoDto> getInfoList(String searchAs);
+	
+	/*메인 추천 페이지*/
+	MemberDto getMemberInto(int userId);
+	List<ImageDto> getRecommendedInteriorImages(List<Integer> newList);
+	List<ImageDto> getRecommendedDecoImages(List<Integer> newList);
 	
 	/*디테일 페이지*/
 	ImageDto getInteriorDetail(long id);	
@@ -34,5 +40,7 @@ public interface MainPageMapper {
 	/*다음글 이전글*/
 	ImageDto getNextDetail(long id);
 	ImageDto getPreDetail(long id);
+
+	
 
 }

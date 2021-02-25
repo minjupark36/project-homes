@@ -180,16 +180,18 @@ $(function() {
 		var pwQuestion = $('#pwQuestion').val();
 		var pwAnswer = $("#pwAnswer").val();
 		var hashtagPreference = new Array();
+		var hashtag = new Array();
+		var hashtagVal = new Array();
 		
-		$.each($('.hashtags'),function(index,item){		
-            if($(item).hasClass("on") === true){
-            	hashtagPreference.push(index);
+		$.each($('.hashtags'),function(item){		
+            if($(this).hasClass("on") === true){
+            	hashtag.push($(this).text());
+  				$("#hashtagPreference").val(hashtag);
         	}                    
-		
-	      	$("#hashtagPreference").val(hashtagPreference);
-	        $("#hashtagPreference").val(hashtagPreference[0]);
-	        
+            
    		 });
+		
+		hashtagPreference = $('#hashtagPreference').val();
 		
 		var formData = {
 				email : email,
@@ -268,7 +270,7 @@ $(function() {
 		<input type="text" id="pwAnswer" name="pwAnswer" placeholder="답변을 입력해주세요" class="value">
 				
 		<div class="title">평소에 좋아하는 인테리어 컨셉을 선택하세요.</div>	
-		<input type="hidden" name="hashtagPreference" value="all">
+		<input type="hidden" name="hashtagPreference" id="hashtagPreference" value="all">
 		<div class="hashtags-container">
 			<div class="hashtags">빈티지</div>
 			<div class="hashtags">화이트</div>

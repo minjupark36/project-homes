@@ -2,6 +2,8 @@ package com.project.homes.app.common.image.dto;
 
 import java.time.LocalDate;
 
+import com.project.homes.app.common.hashtag.dto.HashtagDto;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,21 +25,26 @@ public class ImageDto {
 	private long view;
 	private long scrap;
 	private String content;
+	private HashtagDto hashtagDto;
 	
-//	@Builder
-//	public ImageDto(long id, String hashtagsNames, String filepath, String originalFilename, String url, String sort,
-//			LocalDate createDate, long pnum, long view, long scrap) {
-//		
-//		this.id = id;
-//		this.hashtagsNames = hashtagsNames;
-//		this.filepath = filepath;
-//		this.originalFilename = originalFilename;
-//		this.url = url;
-//		this.sort = sort;
-//		this.createDate = createDate;
-//		this.pnum = pnum;
-//		this.view = view;
-//		this.scrap = scrap;
-//	}
+	@Builder
+	public ImageDto(long id, String hashtagsNames, String filepath, String originalFilename, String url, String sort,
+			LocalDate createDate, long pnum, long view, long scrap, String content, HashtagDto hashtagDto) {
+		super();
+		this.id = id;
+		this.hashtagsNames = hashtagsNames;
+		this.filepath = filepath;
+		this.originalFilename = originalFilename;
+		this.url = url;
+		this.sort = sort;
+		this.createDate = createDate;
+		this.pnum = pnum;
+		this.view = view;
+		this.scrap = scrap;
+		this.content = content;
+		this.hashtagDto = hashtagDto;
+	}
+	
+
 			
 }

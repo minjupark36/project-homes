@@ -32,6 +32,13 @@
 		<result property="content" column="content"/>
 	</resultMap>
 	
+	<resultMap type="HashtagDto" id="HashtagDto">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="createDate" column="create_date"/>
+		<result property="clicks" column="clicks"/>
+	</resultMap>
+	
 	<resultMap type="InfoDto" id="InfoDto">
 		<id property="id" column="id"/>
 		<result property="title" column="title"/>
@@ -70,6 +77,50 @@
 			sort='deco'
 		ORDER BY
 			view desc
+		LIMIT 4
+		
+	</select>
+	
+	<select id="getRecommendedInteriorImages"
+	parameterType="java.util.List"
+	resultMap="ImageDto">
+	
+		SELECT
+			i.id
+		FROM 
+			images i
+		JOIN
+			hashtags h
+		ON 
+			<foreach collection="list" item="item" separator=",">
+				h.id = #{item}
+			</foreach>
+		WHERE 
+			i.sort='interior'			
+		ORDER BY
+			i.view desc
+		LIMIT 4
+		
+	</select>
+	
+	<select id="getRecommendedDecoImages"
+	parameterType="java.util.List"
+	resultMap="ImageDto">
+	
+		SELECT
+			i.id
+		FROM 
+			images i
+		JOIN
+			hashtags h
+		ON 
+			<foreach collection="list" item="item" separator=",">
+				h.id = #{item}
+			</foreach>
+		WHERE 
+			i.sort='deco'			
+		ORDER BY
+			i.view desc
 		LIMIT 4
 		
 	</select>
@@ -189,6 +240,5 @@
 			id = #{id}
   			
 	</update>
-	
 	
 </mapper>

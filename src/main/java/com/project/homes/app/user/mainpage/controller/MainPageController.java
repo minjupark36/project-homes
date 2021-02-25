@@ -2,6 +2,7 @@ package com.project.homes.app.user.mainpage.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ import com.project.homes.app.common.comment.service.CommentService;
 import com.project.homes.app.common.hashtag.service.HashtagService;
 import com.project.homes.app.common.image.dto.ImageDto;
 import com.project.homes.app.common.image.service.ImageService;
+import com.project.homes.app.common.member.dto.MemberDto;
+import com.project.homes.app.common.utils.Utils;
 import com.project.homes.app.user.mainpage.mapper.MainPageMapper;
 import com.project.homes.app.user.mainpage.service.MainPageService;
 import com.project.homes.app.user.scrap.service.ScrapService;
@@ -38,10 +41,34 @@ public class MainPageController {
 	/*메인 페이지*/
 	@GetMapping("/main")
 	public String mainPageList(Model model) {
-		
+	
 		model.addAttribute("interior",mainPageService.getInteriorImages());
-		model.addAttribute("deco",mainPageService.getDecoImages());
+		model.addAttribute("deco",mainPageService.getDecoImages());	
+	
+		return "/user/mainpage/main";
+	}
+	
+	/*메인추천 페이지*/
+	@GetMapping("/mainRecommendation")
+	public String mainRecommendedList(Model model) {
 		
+		MemberDto memberDto = Utils.getMemberFromSession();
+		String imageTags = memberDto.getHashtagPreference();		
+		List<String> tagList = Arrays.asList(imageTags.split(","));
+		
+		List<Integer> newList = tagList.stream()
+                					.map(s -> Integer.parseInt(s))
+                					.collect(Collectors.toList());
+	
+		model.addAttribute("tagList",tagList);
+		model.addAttribute("interior",mainPageService.getRecommendedInteriorImages(newList));
+		model.addAttribute("deco",mainPageService.getRecommendedDecoImages(newList));	
+		
+		System.out.println("=============================");
+		System.out.println(mainPageService.getRecommendedInteriorImages(newList));
+		System.out.println(mainPageService.getRecommendedDecoImages(newList));
+		System.out.println("=============================");
+	
 		return "/user/mainpage/main";
 	}
 	
