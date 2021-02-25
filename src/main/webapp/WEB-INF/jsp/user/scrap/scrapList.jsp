@@ -205,9 +205,6 @@
 		<div><input type="hidden" id="lastRow" name="lastRow" value="4"></div>
 	</div>	
 </c:when>
-<c:otherwise>
-로그인이 필요한 서비스입니다.
-</c:otherwise>
 </c:choose>	
 </body>
 </html>

@@ -234,7 +234,7 @@ $(function() {
 	<h2>회원가입</h2>
 	<form action="/sign-up" method="post">
 		<div class="title">이메일</div>
-		<input type="text" placeholder="E-Mail" name="email" class="email" id="email" required="required">@ 
+		<input type="text" placeholder="E-Mail" name="email" class="email" id="email">@ 
 		<select name="domain" class="domain">
 			<option value="gmail.com">gmail.com</option>
 			<option value="naver.com">naver.com</option>
@@ -266,8 +266,9 @@ $(function() {
 			<option value="5">가장 기억에 남는 선생님 성함은?</option>
 		</select> <br>
 		<input type="text" id="pwAnswer" name="pwAnswer" placeholder="답변을 입력해주세요" class="value">
-		<input type="hidden" name="hashtagPreference" value="all">
+				
 		<div class="title">평소에 좋아하는 인테리어 컨셉을 선택하세요.</div>	
+		<input type="hidden" name="hashtagPreference" value="all">
 		<div class="hashtags-container">
 			<div class="hashtags">빈티지</div>
 			<div class="hashtags">화이트</div>

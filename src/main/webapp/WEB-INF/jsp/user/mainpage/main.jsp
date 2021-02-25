@@ -199,6 +199,11 @@
 	    
 	});
 	
+	function callFunction(){
+		alert("로그인이 필요한 서비스입니다.")
+		location.href = "/sign-in"
+	}
+	
 	
 	
 </script>	
@@ -226,9 +231,18 @@
     <li class="nav-item">
       <a class="nav-link" href="/main/store">| 스토어</a>
     </li>
+    <c:choose>
+    <c:when test="${sessionScope.loginCheck eq true}">
     <li class="nav-item">
       <a class="nav-link" href="/user/scrap">| 내 스크랩</a>
-    </li>    
+    </li>   
+    </c:when>
+    <c:otherwise>
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:callFunction();">| 내 스크랩</a>
+    </li>  
+    </c:otherwise>
+    </c:choose> 
   </ul>
   <c:choose>
   <c:when test="${sessionScope.loginCheck eq true}">
