@@ -14,4 +14,5 @@ public interface ImageMapper {
 	List<ImageDto> getMainImages(String order);
 	long insertInteriorImage(ImageDto imageDto);
 	ImageDto getMaxIdInteriorImage();
+	long insertDecoImage(ImageDto imageDto);
 }

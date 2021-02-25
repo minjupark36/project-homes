@@ -105,16 +105,17 @@
 	<button type="button" onclick="showImage()">인테리어 사진 확인</button>
 	<img src="${img.filepath}" style="display:none" id="interiorImg">	
 </div>
-<form id="decoForm">
+<form id="decoForm" action="/admin/image/insertDeco" method="post">
+<input type="hidden" name="id" value="${img.id}">
 	<table class="table">
 		<tr>
 			<td colspan=2>소품사진</td>
 		</tr>
 		<tr>
-			<th>Image</th><td><input type="text" name="" placeholder="소품 사진의 filepath를 입력해주세요" class="form-control"></td>
+			<th>Image</th><td><input type="text" name="filepath" placeholder="소품 사진의 filepath를 입력해주세요" class="form-control"></td>
 		</tr>
 		<tr>
-			<th>Url</th><td><input type="text" name="" placeholder="소품 구매 사이트 url을 연결해주세요" class="form-control"></td>
+			<th>Url</th><td><input type="text" name="url" placeholder="소품 구매 사이트 url을 연결해주세요" class="form-control"></td>
 		</tr>
 	</table>
 	<button type="submit" class="btn btn-outline-secondary uploadBtn">소품 사진 업로드</button>

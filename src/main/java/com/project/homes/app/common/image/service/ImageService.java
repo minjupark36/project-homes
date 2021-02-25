@@ -21,7 +21,7 @@ public class ImageService {
 		return imageMapper.getMainImages(order) ;
 	}	
 	
-	//메인 이미지 insert
+	//interior 이미지 insert
 	public long insertInteriorImage(ImageDto imageDto) {
 		return imageMapper.insertInteriorImage(imageDto);
 	}
@@ -30,5 +30,9 @@ public class ImageService {
 	public ImageDto getMaxIdInteriorImage() {
 		return imageMapper.getMaxIdInteriorImage();
 	}
-
+	
+	//deco image insert
+	public long insertDecoImage(ImageDto imageDto) {
+		return imageMapper.insertDecoImage(imageDto);
+	}
 }

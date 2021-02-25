@@ -44,6 +44,12 @@
 		SELECT
 		<include refid="ImageColumns"/>
 		FROM images
-		WHERE id=(SELECT MAX(id) FROM images)
+		WHERE id=(SELECT MAX(id) FROM images WHERE sort='interior')
 	</select>
+	
+	<insert id="insertDecoImage" parameterType="ImageDto">
+		INSERT INTO images
+		VALUES
+		(null,null,#{filepath},CONCAT('deco',#{id}),#{url},'deco',NOW(),#{id},0,0,null)
+	</insert>
 </mapper>

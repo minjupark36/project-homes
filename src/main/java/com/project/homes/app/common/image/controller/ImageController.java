@@ -29,11 +29,20 @@ public class ImageController {
 		return "admin/mainImage/insertImageForm";
 	}
 	
-	//image insert
+	//interior image insert
 	@PostMapping("/admin/image/insert")
-	public String insertImage(ImageDto imageDto) {
+	public String insertInteriorImage(ImageDto imageDto) {
 		imageService.insertInteriorImage(imageDto);
 		return "redirect:/admin/image";
 	
 	}
+	
+	//deco image insert
+	@PostMapping("/admin/image/insertDeco")
+	public String insertDecoImage(ImageDto imageDto) {
+		imageService.insertDecoImage(imageDto);
+		return "redirect:/admin/image";
+	}
+	
+	
 }
