@@ -45,5 +45,11 @@ public class HashtagController {
 	public String insertTag(HashtagDto hashtagDto) {
 		return hashtagService.insertTag(hashtagDto);
 	}
+	
+	@ResponseBody
+	@PostMapping("/hashtag/click")
+	public long countTag(@RequestParam("id") long id) {
+		return hashtagService.countTag(id);
+	}
 
 }

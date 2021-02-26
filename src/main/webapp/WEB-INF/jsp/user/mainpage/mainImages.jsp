@@ -171,6 +171,22 @@
 	 
 	    
 	});
+	
+	function tagCount(id){
+		$.ajax({ 
+			url:'/hashtag/click', 
+			method:'post',
+			data: {'id':id },
+			dataType:'text',
+			success:function(res){
+				
+			},
+			error:function(xhr, status, err){
+				alert(status+', '+err);
+			}
+		
+		});	
+	}
 </script>	
 </head>
 <body>
@@ -251,7 +267,8 @@
 <div class="hashtags">	
 	<c:forEach var="tags" items="${hashtagList}">
 		<div class="tag">
-			<button type="button" class="btn btn-outline-secondary" onclick="location.href='/main/tag?hashtagsNames=${tags.name}'">#${tags.name}</button>
+			<a href="javascript:tagCount(${tags.id})"><button type="button" class="btn btn-outline-secondary" onclick="location.href='/main/tag?hashtagsNames=${tags.name}'">#${tags.name}</button></a>
+			
 		</div>		
 	</c:forEach>
 </div>

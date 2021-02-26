@@ -21,4 +21,7 @@ public interface HashtagMapper {
 	
 	//태그 추가하기
 	boolean insertTag(HashtagDto hastagDto);
+	
+	//태그 클릭 수 추가
+	long countTag(long id);
 }

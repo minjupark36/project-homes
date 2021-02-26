@@ -36,4 +36,9 @@ public class HashtagService {
 		return hashtagMapper.insertTag(hashtagDto)+"";
 	}
 	
+	//태그 클릭 시 +1
+	public long countTag(@RequestParam("id") long id) {
+		return hashtagMapper.countTag(id);
+	}
+	
 }

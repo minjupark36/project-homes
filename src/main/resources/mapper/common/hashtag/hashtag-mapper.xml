@@ -44,6 +44,16 @@
 		VALUES 
 		(null,#{name},NOW(),0)
 	</insert>
+	
+	<update id="countTag" parameterType="long">
+		UPDATE 
+			hashtags
+		SET 
+			clicks = clicks + 1 
+		WHERE 
+			id = #{id}
+  			
+	</update>
 
 
 
