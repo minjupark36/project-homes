@@ -22,12 +22,14 @@
 		width:100%;
 		height:500px;
 		
+		
 	}
 	
 	.main-container {
 		width:100%;
 		margin: 0 0;
 		padding: 0 30px;
+		
 		
 	}
 
@@ -37,6 +39,7 @@
 		background-repeat:no-repeat;
 		background-position: center bottom;
 	}
+	
 	#login, #logout {
 		width:800px;
 		color:white;
@@ -78,10 +81,6 @@
 		width: 1320px;
   		margin: auto auto;
   		padding: 0 15px;	 		
-  	}
-  	
-  	h2 {
-  		margin-top: 30px;
   	}
   		
   	.card {
@@ -441,22 +440,9 @@
 	<div class="media-body">
 	    <h4>Megan Lee <small><i>Posted on February 07, 2021</i></small></h4>
 	    <p>구해줘 홈즈 최고에요!</p>
-	    <div class="media p-3">
-        <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png"  class="mr-3 mt-3 rounded-circle" style="width:45px;">
-        <div class="media-body">
-          <h4>Kim <small><i>Posted on February 07, 2021</i></small></h4>
-          <p>저희 구해줘 홈즈를 이용해주셔서 감사합니다. 앞으로 더욱 발전하는 모습 보이겠습니다.</p>
-        </div>
-      </div>
  	</div>
 </div>
-<div class="media border p-3">
-	<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-	<div class="media-body">
-	    <h4>Chloe Park<small><i>Posted on February 07, 2021</i></small></h4>
-	    <p>너무너무 애용하고 있어요~</p>
- 	</div>
-</div>
+
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
 </body>
 </html>
