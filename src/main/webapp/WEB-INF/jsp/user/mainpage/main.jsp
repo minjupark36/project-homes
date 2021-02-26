@@ -139,6 +139,7 @@
 	 
 	 .todays {
 	 	text-align: center;
+	 	margin-top: 30px;
 	 }
 	 
 	 .comment {
@@ -165,6 +166,15 @@
 	  background-color: white;
 	  color: black;
 	  font-size:25px
+	}
+	
+	.media-body {
+		display:inline;
+		
+	}
+	
+	#feedback-img {
+		display:inline;
 	}
 	 
 </style>
@@ -435,12 +445,12 @@
 	<a href="/main/comment" class="btn btn-warning btn-sm">코멘트 남기기</a>
 </div><br>
 
-<div class="media border p-3">
+<div class="feedback">
 	<c:forEach var="feedback" items="${feedback}">
-	<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+	<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" class="mr-3 mt-3 rounded-circle" id="feedback-img" style="width:60px;">
 	<div class="media-body">
 	    <h4>${feedback.writer} <small><i>Posted on ${feedback.createDate}</i></small></h4>
-	    <p>${feedback.content}</p>
+	    <p><i class='fas fa-quote-left' style='font-size:24px'></i>${feedback.content}<i class='fas fa-quote-right' style='font-size:24px'></i></p>
  	</div>
  	</c:forEach>
 </div>
