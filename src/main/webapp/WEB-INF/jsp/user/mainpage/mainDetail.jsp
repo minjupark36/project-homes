@@ -73,9 +73,16 @@
 	.Btn{
 		text-decoration: none;
 		color:black
+		
 	}
 	.delImgBtn{
 		margin-left:1600px;
+	}
+	.Button{
+		border-radius:30px
+	}
+	.userName{
+		font-weight:bolder
 	}
 </style>
 <script>
@@ -273,7 +280,13 @@
   <h1>My First Bootstrap Page</h1>
   <p>Resize this responsive page to see the effect!</p> 
 </div>
-	
+<c:choose>
+<c:when test="${sessionScope.user.role eq 'ADMIN'}">
+<div>
+<button onclick="deleteInteriorImage(${interior.id})" class="delImgBtn btn btn-outline-secondary">사진 삭제</button>
+</div>
+</c:when>
+</c:choose>	
 <form>
 	
 	<c:set var="interior" value="${interiorImage}"></c:set>		
@@ -303,7 +316,7 @@
 				<%--클릭하면 관려 태그 포함된 사진 리스트 가지고 메인으로 --%>
 				<c:forEach var="hashtagsNames" items="${tagList}">
 					<div class="tag">
-						<button type="button" class="btn btn-outline-secondary" onclick="location.href='/main/tag?hashtagsNames=${hashtagsNames}'">#${hashtagsNames}</button>
+						<button type="button" class="btn btn-outline-secondary Button" onclick="location.href='/main/tag?hashtagsNames=${hashtagsNames}'">#${hashtagsNames}</button>
 						
 					</div>		
 				</c:forEach>
@@ -338,14 +351,14 @@
 			<input type="hidden" value="${comment.id}" name="id" id="id${status.index}">
 			
 				<tr>
-				<td>${comment.memberDto.name}</td>
+				<td class="userName">${comment.memberDto.name}</td>
 				<td><input type="text" value="${comment.content}" name="content" id="content${status.index}" class="form-control comment" readonly ></td>
+				<td><a href="javascript:deleteComment(${comment.id});"><i class="material-icons" style="color:black">delete</i></a></td>
+				<td><a href="javascript:editForm(${status.index});" id="editbtn${status.index}"><i class="material-icons" style="color:black">edit</i></a></td>
+				<td><a href="javascript:replyForm(${status.index})" id="${status.index}"><i class="fa fa-paper-plane" style="color:black"></i></a></td>
 				</tr>
 				<tr class="com">	
-					<td><button type="button" class="btn btn-outline-secondary" onclick="deleteComment(${comment.id});" >댓글 삭제</button></td>
-					<td><button type="button" class="btn btn-outline-secondary" onclick="editForm(${status.index});" id="editbtn${status.index}">댓글 수정</button></td>
-					<td><button style="display: none" class="btn btn-outline-secondary" type="button" onclick="editComment(${status.index});" id="editedbtn${status.index}">수정완료</button></td>
-					<td><button type="button" class="btn btn-outline-secondary" onclick="replyForm(${status.index})" id="${status.index}">답글 달기</button>
+					<td><button style="display: none" class="btn btn-outline-secondary Button" type="button" onclick="editComment(${status.index});" id="editedbtn${status.index}">수정완료</button></td>
 					<td id="replytd${status.index}" style="display: none"><input type="text" name="reply" id="reply${status.index}">
 					<button type="button" class="btn btn-outline-secondary" onclick="replyComment(${status.index})">답글 작성완료</button></td>
 				</tr>		
@@ -370,13 +383,6 @@
 		<li class="nav-item active"><a href="javascript:nextDetail(${interior.id},2);" class="Btn"><i class="material-icons" style="font-size:36px">skip_next</i></a> NEXT</li>
 	</ul>
 </div>
-<c:choose>
-<c:when test="${sessionScope.user.role eq 'ADMIN'}">
-<div>
-<button onclick="deleteInteriorImage(${interior.id})" class="delImgBtn btn btn-outline-secondary">사진 삭제</button>
-</div>
-</c:when>
-</c:choose>
 </body>
 <script>
 	var floatPosition = parseInt($(".sideBanner").css('top'))
