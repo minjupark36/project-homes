@@ -7,6 +7,133 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+	#login, #logout {
+		width:800px;
+		color:white;
+		text-align: right;
+		font-weight: bolder;
+		font-size: 1.5em;
+		text-decoration: none;
+	}
+	
+	a {
+		text-decoration: none;
+		color:white;
+	}
+	
+	.tag{
+		display:inline
+	}
+	
+	.tags{
+		display:inline
+	}
+	
+	#home-icon {
+		width:30px;
+		height:30px;
+	}
+	.header {
+		width: 100%;
+		height:300px;
+		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";
+		
+	}
+	
+	
+	.container {
+		margin-left:0px;
+	}
+	.main-container {
+		width: 1320px;
+  		margin: auto auto;
+  		padding: 0 15px;	 		
+  	}
+  		
+  	.card {
+  		display:inline-block;
+  		margin:10px 10px;
+  		width:290px;
+  	}
+  	
+  	.card-img-top {
+  		width:290px;
+  		height:290px;
+  		object-fit:cover
+  	}
+  	
+  	.card-body > h4 {
+  		font-size: 12px;
+  		font-weight: bold;
+  	}
+	.scrapBtn {
+		height:25px; 
+		width:25px;
+		cursor:pointer;
+		transform: translate(20%,20%);
+		position: absolute;
+		z-index: 1;
+		margin-top: 10px;
+		margin-left: -40px
+	}
+	
+	 #list {
+	 	width:100%; 
+	 	position: relative;
+	 }
+	 
+	 #list .button {
+	 	position: absolute; 
+	 	display: inline-block; 
+	 	height: 200px; 
+	 	width: 300px; 
+	 	margin-left: 50px; 
+	 	margin-bottom: 30px;
+	 }
+	 
+	 .scrapBtn:hover {
+	 	-webkit-filter: opacity(.5) drop-shadow(0 0 0 gray);
+	 	filter: opacity(.5) drop-shadow(0 0 0 gray);
+	 }
+		 			
+	 .sort, .hashtags, #pagination {
+	 	text-align: center;
+	 }
+	 
+	 i{
+	 	margin-left:5px;
+	 }
+	 
+	 .todays {
+	 	text-align: center;
+	 }
+	 
+	 .comment {
+	 	margin-left:1100px
+	 }
+	 .ScrollButton {
+			  position: fixed;   /* 버튼의 위치 고정 */
+			  right: 10px;       /* x 위치 입력 */
+			  cursor: pointer;   /* 호버링 했을 때 커서 모양 변경 */
+			  z-index: 10;       /* 다른 태그에 가려지지 않게 우선순위 변경 */
+			  display: none;     /* 스크롤 위치에 상관없이 보이게 하려면 생략 */
+			  font-size:20px		}
+				/* 두 태그에 각각 y 위치 입력 */
+	#TopButton {
+	  	  bottom: 108px;        
+	}
+	
+	.sideBanner {
+	  position: absolute;
+	  width: 150px;
+	  height: 200px;
+	  left:1800px;
+	  top: 400px;
+	  background-color: white;
+	  color: black;
+	  font-size:25px
+	}
+
 	.section{
 	    width: max-content;
 	    height: max-content;
@@ -125,6 +252,92 @@
 </script>
 </head>
 <body>
+<!-- 메인 메뉴바 -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+  <c:choose>
+    <c:when test="${sessionScope.loginCheck eq true}">
+	    <li class="nav-item active">
+	      <a class="nav-link" href="/mainRecommendation?userId=${sessionScope.user.id}"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
+	    </li>
+    </c:when>
+    <c:otherwise>
+	    <li class="nav-item active">
+	      <a class="nav-link" href="/main"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
+	    </li>
+    </c:otherwise>
+    </c:choose>
+    
+    
+     <c:choose>
+    <c:when test="${sessionScope.user.role eq 'ADMIN'}">
+	    <li class="nav-item">
+	      <a class="nav-link" href="/admin/board">| 커뮤니티</a>
+	    </li>
+     </c:when>
+     <c:otherwise>
+     	<li class="nav-item">
+	      <a class="nav-link" href="/user/board">| 커뮤니티</a>
+	    </li>
+     </c:otherwise>
+    </c:choose>
+    <li class="nav-item">
+      <a class="nav-link" href="/main/store">| 스토어</a>
+    </li>
+    <c:choose>
+    <c:when test="${sessionScope.loginCheck eq true}">
+    <li class="nav-item">
+      <a class="nav-link" href="/user/scrap">| 내 스크랩</a>
+    </li>   
+    </c:when>
+    <c:otherwise>
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:callFunction();">| 내 스크랩</a>
+    </li>  
+    </c:otherwise>
+    </c:choose> 
+    <c:choose>
+    <c:when test="${sessionScope.user.role eq 'ADMIN'}">
+    <li class="nav-item">
+    	<a class="nav-link" href="/admin/manage">| 사이트관리</a>
+    </li>
+    </c:when>
+    </c:choose>
+  </ul>
+  <c:choose>
+  <c:when test="${sessionScope.loginCheck eq true}">
+	  <span id="logout">
+	  		<a href="/log-out">로그아웃</a>   
+	   </span>
+  </c:when>
+  <c:otherwise>
+ 	<span id="login">
+ 		<a href="/sign-in">로그인</a>    	
+    </span>
+  </c:otherwise>
+  </c:choose>
+   
+</nav>
+
+<!-- 하위 메뉴바 -->
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="/main">홈</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/main/images">사진</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/main/info">정보</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
 
 <section class="section">
 	<h1>LOGIN</h1>
