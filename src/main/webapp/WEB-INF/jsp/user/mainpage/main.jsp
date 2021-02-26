@@ -17,6 +17,26 @@
 
   
 <style type="text/css">
+
+	.main-visual{
+		width:100%;
+		height:500px;
+		
+	}
+	
+	.main-container {
+		width:100%;
+		margin: 0 0;
+		padding: 0 30px;
+		
+	}
+
+	.visual-container {
+		height:500px;
+		background-image: url("https://webstockreview.net/images/furniture-clipart-interior-design.png");
+		background-repeat:no-repeat;
+		background-position: center bottom;
+	}
 	#login, #logout {
 		width:800px;
 		color:white;
@@ -58,6 +78,10 @@
 		width: 1320px;
   		margin: auto auto;
   		padding: 0 15px;	 		
+  	}
+  	
+  	h2 {
+  		margin-top: 30px;
   	}
   		
   	.card {
@@ -293,10 +317,8 @@
   </ul>
 </nav>
 
-<div class="jumbotron text-center">
-  <h1>My First Bootstrap Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
-</div>
+<div class="main-visual">
+<div class="main-container visual-container"></div>
 
 <!-------회원가입시 선택한 hashtags--------------->
 <c:choose>
