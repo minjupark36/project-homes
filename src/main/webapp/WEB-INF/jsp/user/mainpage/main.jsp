@@ -436,11 +436,13 @@
 </div><br>
 
 <div class="media border p-3">
+	<c:forEach var="feedback" items="${feedback}">
 	<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" class="mr-3 mt-3 rounded-circle" style="width:60px;">
 	<div class="media-body">
-	    <h4>Megan Lee <small><i>Posted on February 07, 2021</i></small></h4>
-	    <p>구해줘 홈즈 최고에요!</p>
+	    <h4>${feedback.writer} <small><i>Posted on ${feedback.createDate}</i></small></h4>
+	    <p>${feedback.content}</p>
  	</div>
+ 	</c:forEach>
 </div>
 
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>

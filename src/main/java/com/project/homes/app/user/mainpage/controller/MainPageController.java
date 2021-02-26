@@ -19,6 +19,7 @@ import com.project.homes.app.common.image.dto.ImageDto;
 import com.project.homes.app.common.image.service.ImageService;
 import com.project.homes.app.common.member.dto.MemberDto;
 import com.project.homes.app.common.utils.Utils;
+import com.project.homes.app.user.feedback.service.FeedbackService;
 import com.project.homes.app.user.mainpage.mapper.MainPageMapper;
 import com.project.homes.app.user.mainpage.service.MainPageService;
 import com.project.homes.app.user.scrap.service.ScrapService;
@@ -34,6 +35,7 @@ public class MainPageController {
 	private final ScrapService scrapService;
 	private final CommentService commentService;
 	private final HashtagService hashtagService;
+	private final FeedbackService feedbackService;
 	
 	@Autowired
 	private MainPageMapper mainPageMapper;
@@ -43,7 +45,8 @@ public class MainPageController {
 	public String mainPageList(Model model) {
 	
 		model.addAttribute("interior",mainPageService.getInteriorImages());
-		model.addAttribute("deco",mainPageService.getDecoImages());	
+		model.addAttribute("deco",mainPageService.getDecoImages());
+		model.addAttribute("feedback",feedbackService.getFeedbackList());
 	
 		return "/user/mainpage/main";
 	}
