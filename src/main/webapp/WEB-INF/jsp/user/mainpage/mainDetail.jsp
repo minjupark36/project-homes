@@ -74,6 +74,9 @@
 		text-decoration: none;
 		color:black
 	}
+	.delImgBtn{
+		margin-left:1600px;
+	}
 </style>
 <script>
 	function nextDetail(id,page){
@@ -367,6 +370,13 @@
 		<li class="nav-item active"><a href="javascript:nextDetail(${interior.id},2);" class="Btn"><i class="material-icons" style="font-size:36px">skip_next</i></a> NEXT</li>
 	</ul>
 </div>
+<c:choose>
+<c:when test="${sessionScope.user.role eq 'ADMIN'}">
+<div>
+<button onclick="deleteInteriorImage(${interior.id})" class="delImgBtn btn btn-outline-secondary">사진 삭제</button>
+</div>
+</c:when>
+</c:choose>
 </body>
 <script>
 	var floatPosition = parseInt($(".sideBanner").css('top'))
@@ -411,6 +421,25 @@
 			
 			});	
 		}
+	function deleteInteriorImage(id){
+		$.ajax({ 
+			url:'/admin/image/delete', 
+			method:'delete',
+			data: {'id':id },
+			dataType:'text',
+			success:function(res){
+				if(confirm("사진을 삭제하시겠습니까?")){
+					alert("삭제되었습니다")
+					location.href="/main";
+				} 
+			},
+			error:function(xhr, status, err){
+				alert(status+', '+err);
+			}
+		
+		});	
+		
+	}
 
 </script>
 </html>
