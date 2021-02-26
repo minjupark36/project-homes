@@ -3,8 +3,10 @@ package com.project.homes.app.common.image.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.homes.app.common.image.dto.ImageDto;
@@ -42,6 +44,13 @@ public class ImageController {
 	public String insertDecoImage(ImageDto imageDto) {
 		imageService.insertDecoImage(imageDto);
 		return "redirect:/admin/image";
+	}
+	
+	//delete interior image in form page
+	@ResponseBody
+	@DeleteMapping("/admin/image/delete")
+	public long deleteInteriorImage(@RequestParam("id") long id) {
+		return imageService.deleteInteriotImage(id);
 	}
 	
 	

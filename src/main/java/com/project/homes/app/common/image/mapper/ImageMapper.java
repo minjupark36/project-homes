@@ -15,4 +15,5 @@ public interface ImageMapper {
 	long insertInteriorImage(ImageDto imageDto);
 	ImageDto getMaxIdInteriorImage();
 	long insertDecoImage(ImageDto imageDto);
+	long deleteInteriorImage(long id);
 }

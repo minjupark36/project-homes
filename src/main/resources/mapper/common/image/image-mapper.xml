@@ -52,4 +52,8 @@
 		VALUES
 		(null,null,#{filepath},CONCAT('deco',#{id}),#{url},'deco',NOW(),#{id},0,0,null)
 	</insert>
+	
+	<delete id="deleteInteriorImage" parameterType="long">
+		DELETE FROM images WHERE id=#{id}
+	</delete>
 </mapper>

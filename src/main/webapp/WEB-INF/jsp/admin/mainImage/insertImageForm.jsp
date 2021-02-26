@@ -28,10 +28,12 @@
 		margin-left:600px;
 		width:600px
 	}
-	#interiorImg{
+	#checkingImage{
 		width:300px;
-		height:300px
+		height:300px;
+		object-fit:cover
 	}
+	
 </style>
 <script>
 	function addForm(){
@@ -41,6 +43,23 @@
 	
 	function showImage(){
 		$('#interiorImg').removeAttr('style');
+	}
+	
+	function deleteInteriorImage(id){
+		$.ajax({ 
+			url:'/admin/image/delete', 
+			method:'delete',
+			data: {'id':id },
+			dataType:'text',
+			success:function(res){
+				location.reload();
+			},
+			error:function(xhr, status, err){
+				alert(status+', '+err);
+			}
+		
+		});	
+		
 	}
 </script>
 </head>
@@ -103,7 +122,10 @@
 <c:set var="img" value="${interiorImage}"/>
 <div>
 	<button type="button" onclick="showImage()">인테리어 사진 확인</button>
-	<img src="${img.filepath}" style="display:none" id="interiorImg">	
+	<div id="interiorImg" style="display:none">
+	<img src="${img.filepath}" id="checkingImage">
+	<button onclick="deleteInteriorImage(${img.id})">X</button>
+	</div>
 </div>
 <form id="decoForm" action="/admin/image/insertDeco" method="post">
 <input type="hidden" name="id" value="${img.id}">

@@ -4,6 +4,7 @@ package com.project.homes.app.common.image.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.homes.app.common.image.dto.ImageDto;
 import com.project.homes.app.common.image.mapper.ImageMapper;
@@ -34,5 +35,9 @@ public class ImageService {
 	//deco image insert
 	public long insertDecoImage(ImageDto imageDto) {
 		return imageMapper.insertDecoImage(imageDto);
+	}
+	
+	public long deleteInteriotImage(@RequestParam("id") long id) {
+		return imageMapper.deleteInteriorImage(id);
 	}
 }
