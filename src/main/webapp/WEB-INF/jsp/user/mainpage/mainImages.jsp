@@ -32,8 +32,9 @@
 		
 	}
 	
-	.container {
-		margin-left:0px;
+	.sorting {
+		width:1100px;
+		margin: auto auto ;
 	}
 
 	.main-container {
@@ -53,6 +54,11 @@
   		width:250px;
   		height:250px;
   		object-fit:cover
+  	}
+  	
+  	.card-body > h4 {
+  		font-size: 15px;
+  		font-weight: bold;
   	}
 
 	.scrapBtn {
@@ -113,6 +119,29 @@
 	  color: black;
 	  font-size:25px
 	}
+	
+	.images-container {
+		width:1100px;
+		margin: auto auto;
+	}
+	
+	.hashtags {
+		width:900px;
+		margin: auto auto;
+	}
+	
+	.btn-circle.btn-sm { 
+            width: 70px; 
+            height: 30px; 
+            padding: 3px 0px; 
+            border-radius: 15px; 
+            text-align: center; 
+            color :gray;
+        } 
+        
+     a:hover {
+     	text-decoration: none;
+     }
 
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -227,7 +256,7 @@
 </div>
 
 <!------------- 정렬필터 -------------->
-<div class="container">
+<div class="sorting">
 	<i class='fas fa-filter' style="font-size: 24px"></i>
   <div class="btn-group">
     <button type="button" class="btn btn-light">날짜</button>
@@ -261,11 +290,14 @@
 </div>
 <br>
 
+<div class="images-container">
 <div class="hashtags">	
 	<c:forEach var="tags" items="${hashtagList}">
 		<div class="tag">
-			<a href="javascript:tagCount(${tags.id})"><button type="button" class="btn btn-outline-secondary" onclick="location.href='/main/tag?hashtagsNames=${tags.name}'">#${tags.name}</button></a>
-			
+			<a href="javascript:tagCount(${tags.id})">
+				<button type="button" class="btn btn-outline-warning btn-circle btn-sm" onclick="location.href='/main/tag?hashtagsNames=${tags.name}'">#${tags.name}
+				</button>
+			</a>			
 		</div>		
 	</c:forEach>
 </div>
@@ -315,12 +347,7 @@
 		</c:forEach>
 	</div>	
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
-<div class="sideBanner">
-	<ul class="navbar-nav">
-		<li class="nav-item active">2</li>
-		<li class="nav-item active">3</li>
-		<li class="nav-item active">4</li>
-	</ul>
+
 </div>
 	
 </body>
