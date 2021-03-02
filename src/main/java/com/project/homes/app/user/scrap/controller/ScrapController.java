@@ -30,7 +30,7 @@ public class ScrapController {
 			, @RequestParam(value="sort", defaultValue="all") String sort			
 			) {
 		
-		int limit = 4;
+		int limit = 20;
 		MemberDto memberDto = Utils.getMemberFromSession();		
 		System.out.println("================================");
 		System.out.println(memberDto);
@@ -61,7 +61,6 @@ public class ScrapController {
 	@DeleteMapping("/user/scrap")
 	@ResponseBody
 	public String deleteScrap(@RequestParam("id") long id) {
-//		MemberDto memberDto = Utils.getMemberFromSession();
 		return scrapService.deleteScrap(id)+"";
 	}
 	
