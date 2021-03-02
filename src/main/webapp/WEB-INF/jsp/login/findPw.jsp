@@ -8,7 +8,27 @@
 <link href="/resources/static/css/main.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 
-		#login, #logout {
+	.main-visual{
+		width:100%;
+		height:500px;
+		
+	}
+	
+	.main-container {
+		width:100%;
+		margin: 0 0;
+		padding: 0 30px;
+		
+	}
+
+	.visual-container {
+		height:500px;
+		background-image: url("https://webstockreview.net/images/furniture-clipart-interior-design.png");
+		background-repeat:no-repeat;
+		background-position: center bottom;
+	}
+
+	#login, #logout {
 		width:800px;
 		color:white;
 		text-align: right;
@@ -263,9 +283,6 @@
 	    </li>
      </c:otherwise>
     </c:choose>
-    <li class="nav-item">
-      <a class="nav-link" href="/main/store">| 스토어</a>
-    </li>
     <c:choose>
     <c:when test="${sessionScope.loginCheck eq true}">
     <li class="nav-item">
@@ -316,9 +333,9 @@
   </ul>
 </nav>
 
-<div class="jumbotron text-center">
-  <h1>My First Bootstrap Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
+<div class="main-visual">
+<div class="main-container visual-container"></div>
+
 </div>
 
 <section class="section">
@@ -338,7 +355,7 @@
 		</select> <br>
 		<input type="text" id="pwAnswer" name="pwAnswer" placeholder="답변을 입력해주세요" class="value">
 			<div>
-			<button type="button" id="btn_login" onclick="findPw();">JOIN</button>
+			<button type="button" id="btn_login" onclick="findPw();">SEND EMAIL</button>
 		</div>
 	
 	</form>	

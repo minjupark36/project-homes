@@ -116,10 +116,6 @@
 	    </li>
      </c:otherwise>
     </c:choose>
-  
-	    <li class="nav-item">
-	      <a class="nav-link" href="/main/store">| 스토어</a>
-	    </li>
    
     <li class="nav-item">
       <a class="nav-link" href="/user/scrap">| 내 스크랩</a>

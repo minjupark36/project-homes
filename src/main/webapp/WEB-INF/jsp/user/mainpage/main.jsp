@@ -273,9 +273,6 @@
 	    </li>
      </c:otherwise>
     </c:choose>
-    <li class="nav-item">
-      <a class="nav-link" href="/main/store">| 스토어</a>
-    </li>
     <c:choose>
     <c:when test="${sessionScope.loginCheck eq true}">
     <li class="nav-item">
