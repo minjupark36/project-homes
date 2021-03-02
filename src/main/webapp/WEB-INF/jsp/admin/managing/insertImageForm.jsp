@@ -33,13 +33,12 @@
 		height:300px;
 		object-fit:cover
 	}
-	
+	.checkImg{
+		margin-left:40%
+	}
 </style>
 <script>
-	function addForm(){
-		var clone = $("#decoForm").clone(true);
-		clone.appendTo('#decoform');
-	}
+	
 	
 	function showImage(){
 		$('#interiorImg').removeAttr('style');
@@ -118,15 +117,17 @@
 	</table>
 	<button type="submit" class="btn btn-outline-secondary uploadBtn">인테리어 사진 업로드</button>
 </form>
-<button type="button" onclick="addForm()" class="btn btn-outline-secondary addForm">+</button>
+
+<br>
 <c:set var="img" value="${interiorImage}"/>
-<div>
-	<button type="button" onclick="showImage()">인테리어 사진 확인</button>
+<div class="checkImg">
+	<button type="button" onclick="showImage()" class="btn btn-outline-secondary">인테리어 사진 확인</button>
 	<div id="interiorImg" style="display:none">
 	<img src="${img.filepath}" id="checkingImage">
-	<button onclick="deleteInteriorImage(${img.id})">X</button>
+	<button onclick="deleteInteriorImage(${img.id})" class="btn btn-outline-secondary">X</button>
 	</div>
 </div>
+<br>
 <form id="decoForm" action="/admin/image/insertDeco" method="post">
 <input type="hidden" name="id" value="${img.id}">
 	<table class="table">

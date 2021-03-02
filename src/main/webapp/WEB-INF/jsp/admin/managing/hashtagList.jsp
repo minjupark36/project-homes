@@ -30,6 +30,10 @@
 		color:red
 	}
 	
+	.insert{
+		margin-left:45%
+	}
+	
 	
 	
 </style>
@@ -130,10 +134,12 @@
   <h1>My First Bootstrap Page</h1>
   <p>Resize this responsive page to see the effect!</p> 
 </div>
-
+<div class="insert">
 <input type="text" placeholder="추가할 태그를 입력해주세요." name="name" id="name" class="form-control">
+<br>
 <a href="javascript:addTag()" class="btn btn-outline-secondary">태그 추가</a>
-
+</div>
+<br>
 <form>
 	<table class="table">
 		<tr>

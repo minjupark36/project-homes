@@ -22,7 +22,7 @@ public class HashtagController {
 	@GetMapping("/admin/hashtag")
 	public String getTagList(Model model) {
 		model.addAttribute("tagList",hashtagService.selectHashtags());
-		return "admin/hashtag/hashtagList";
+		return "admin/managing/hashtagList";
 	}
 	
 	//태그 삭제

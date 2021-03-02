@@ -28,7 +28,7 @@ public class ImageController {
 	@GetMapping("/admin/image")
 	public String getInsertForm(Model model) {
 		model.addAttribute("interiorImage",imageService.getMaxIdInteriorImage());
-		return "admin/mainImage/insertImageForm";
+		return "admin/managing/insertImageForm";
 	}
 	
 	//interior image insert
