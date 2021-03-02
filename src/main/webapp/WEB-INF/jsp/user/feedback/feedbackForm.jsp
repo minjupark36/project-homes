@@ -179,27 +179,11 @@
 	 
 </style>
 <script>
-	var floatPosition = parseInt($(".sideBanner").css('top'))
-	
-	//scroll 인식
-	$(window).scroll(function() {
-	
-	 // 현재 스크롤 위치
-	 var currentTop = $(window).scrollTop();
-	 var bannerTop = currentTop + floatPosition + "px";
-	
-	 //이동 애니메이션
-	 $(".sideBanner").stop().animate({
-	   "top" : bannerTop
-	 }, 500);
-	
-	}).scroll();
-	function addScrapList(id){
-		
-		console.log(id)
-		
+
+	function addFeedback(){
+
 			$.ajax({ 
-				url:'/scrap/add', 
+				url:'/add/feedback', 
 				method:'post',
 				data: {'imagesId':id },
 				dataType:'text',
@@ -217,28 +201,6 @@
 			
 			});	
 		}
-	$(function() {
-	    $(window).scroll(function() {
-	        if ($(this).scrollTop() > 10) {
-	            $('.ScrollButton').fadeIn();
-	        } else {
-	            $('.ScrollButton').fadeOut();
-	        }
-	    });
-	        
-	    $("#TopButton").click(function() {
-	        $('html').animate({scrollTop : 0}, 600);
-	    });
-	 
-	    
-	});
-	
-	function callFunction(){
-		alert("로그인이 필요한 서비스입니다.")
-		location.href = "/sign-in"
-	}
-	
-	
 	
 </script>	
 </head>
@@ -326,120 +288,13 @@
 <div class="main-visual">
 <div class="main-container visual-container"></div>
 
-<!-------회원가입시 선택한 hashtags--------------->
-<c:choose>
-<c:when test="${sessionScope.loginCheck eq true}">
-<div class="hashtags">	
-	<h2 class="todays">${sessionScope.user.name}님's hashtags</h2><br>
-	<c:forEach var="tags" items="${tagList}">
-		<div class="tags">
-			<button type="button" class="btn btn-outline-secondary" onclick="location.href='/main/tag?hashtagsNames=${tags}'">#${tags}</button>
-		</div>		
-	</c:forEach>
-</div><br>
-</c:when>
-<c:otherwise></c:otherwise>
-</c:choose>
-
-
-<h2 class="todays">오늘의 인테리어</h2><br>
-
-<c:set var="i" value="0" />
-<c:set var="j" value="4" />
-<div class="main-container">
-	<div id="list">
-		<c:forEach var="interior" items="${interior}">
-		<c:if test="${i%j==0}">
-		<div class="listToChange">
-		</c:if>
-			<div class="button">
-				<a href="javascript:void(0);" onclick="addScrapList(${interior.id})">
-					<img class="scrapBtn" 
-					src="https://pics.freeicons.io/uploads/icons/png/13732025981547546480-512.png">	
-				</a>
-			</div>
-			<div class="card">
-				<a href="/main/detail?id=${interior.id}">
-					<img class="card-img-top" src="${interior.filepath}"/>
-				</a>
-			<div class="card-body">
-				<c:choose>
-					<c:when test="${fn:length(interior.hashtagsNames) > 43}">
-						<h4 class="card-title">#${fn:substring(fn:replace(interior.hashtagsNames,"  ","#"),0,42)}..</h4>
-					</c:when>
-					<c:otherwise>
-                    	<h4 class="card-title">#${fn:replace(interior.hashtagsNames,"  ","#")}</h4>
-			        </c:otherwise>
-			
-				</c:choose>
-			    <p class="card-text">
-			    	<i class='fas fa-eye'></i> ${interior.view}
-			    	<i class='fas fa-heart'> ${interior.scrap}</i> 
-			    	<i class='fas fa-calendar-alt'> ${interior.createDate}</i> 
-			    	
-			    </p>
-			    <a href="/main/detail?id=${interior.id}" class="btn btn-warning btn-sm" onclick="countView(${interior.id});">+더보기</a>
-			</div>
-			</div>
-			<c:if test="${i%j==j-1}">
-		</div>	
-		</c:if>		
-		<c:set var="i" value="${i+1}"/>
-		</c:forEach>
-	</div><br>
-	
-<h2 class="todays">오늘의 소품</h2><br>
-	
-<c:set var="i" value="0" />
-<c:set var="j" value="4" />
-
-<div id="list">
-	<c:forEach var="deco" items="${deco}">
-	<c:if test="${i%j==0}">
-	<div class="listToChange">
-	</c:if>
-		<div class="button">
-			<a href="javascript:void(0);" onclick="addScrapList(${deco.id})">
-				<img class="scrapBtn" 
-				src="https://pics.freeicons.io/uploads/icons/png/13732025981547546480-512.png">	
-			</a>		
-		</div>
-		<div class="card">
-			<a href="${deco.url}">
-				<img class="card-img-top" src="${deco.filepath}"/>
-			</a>
-		<div class="card-body">
-			<h4 class="card-title">${deco.hashtagsNames}</h4>
-		    <p class="card-text">
-		    	<i class='fas fa-eye'></i> ${deco.view}
-		    	<i class='fas fa-heart'> ${deco.scrap}</i> 
-		    	<i class='fas fa-calendar-alt'> ${deco.createDate}</i> 
-		    	
-		    </p>
-		    <a href="/main/detail?id=${deco.id}" class="btn btn-warning btn-sm" onclick="countView(${deco.id});">+더보기</a>
-		</div>
-		</div>
-		<c:if test="${i%j==j-1}">
-	</div>	
-	</c:if>		
-	<c:set var="i" value="${i+1}"/>
-	</c:forEach>
-</div><br>
-
-<div class="sideBanner">
-	<ul class="navbar-nav">
-		<li class="nav-item active">1</li>
-		<li class="nav-item active">2</li>
-		<li class="nav-item active">3</li>
-		<li class="nav-item active">4</li>
-		<li class="nav-item active">5</li>
-		<li class="nav-item active">6</li>
-	</ul>
-</div>
-
-<h2 class="todays">고객 코멘트</h2>
-<div class="comment">
-	<a href="/user/feedback" class="btn btn-warning btn-sm">코멘트 남기기</a>
+<h2 class="todays">홈즈에 대한 후기를 남겨주세요</h2>
+<div>
+	<form>
+	<input name="writer" value="${sessionScope.user.name}" readonly>
+	<input name="content">
+	<button type="button" onclick="addFeedback();">저장</button>
+	</form>
 </div><br>
 
 <div class="feedback">

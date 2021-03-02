@@ -157,5 +157,12 @@ public class MainPageController {
 		public String managingPageForAdmin() {
 			return "/user/mainpage/managingPage";
 		}
+
+	/*코멘트 form*/
+	@GetMapping("/user/feedback")
+	public String writeFeedback(Model model){
+		model.addAttribute("feedback",feedbackService.getFeedbackList());
+		return "/user/feedback/feedbackForm";
+	}
 	
 }
