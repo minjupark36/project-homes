@@ -33,4 +33,14 @@
 	
 	</select>
 	
+	<insert id="addFeedback"
+	parameterType="FeedbackDto">
+	
+	INSERT INTO
+			feedback
+	VALUES
+		(Null,#{writer},now(),#{content})
+		
+	</insert>
+	
 </mapper>

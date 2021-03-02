@@ -19,6 +19,7 @@ import com.project.homes.app.common.image.dto.ImageDto;
 import com.project.homes.app.common.image.service.ImageService;
 import com.project.homes.app.common.member.dto.MemberDto;
 import com.project.homes.app.common.utils.Utils;
+import com.project.homes.app.user.feedback.dto.FeedbackDto;
 import com.project.homes.app.user.feedback.service.FeedbackService;
 import com.project.homes.app.user.mainpage.mapper.MainPageMapper;
 import com.project.homes.app.user.mainpage.service.MainPageService;
@@ -160,9 +161,16 @@ public class MainPageController {
 
 	/*코멘트 form*/
 	@GetMapping("/user/feedback")
-	public String writeFeedback(Model model){
+	public String feedback(Model model){
 		model.addAttribute("feedback",feedbackService.getFeedbackList());
 		return "/user/feedback/feedbackForm";
+	}
+	
+	/*코멘트 추가*/
+	@RequestMapping("/add/feedback")
+	@ResponseBody
+	public String addFeedback(FeedbackDto feedbackDto){
+		return feedbackService.addFeedback(feedbackDto)+"";
 	}
 	
 }

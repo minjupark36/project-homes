@@ -185,14 +185,15 @@
 			$.ajax({ 
 				url:'/add/feedback', 
 				method:'post',
-				data: {'imagesId':id },
+				data: $("#feedback").serialize(),
 				dataType:'text',
 				success:function(res){
 					if(res.trim()=='true'){
-						alert("내 스크랩 페이지에 추가되었습니다")
+						alert("고객님의 소중한 피드백이 전달되었습니다")
+						location.href = "/main"
 					}
 					else{
-						alert("스크랩에 실패했습니다")
+						alert("피드백 전송에 실패했습니다")
 					}
 				},
 				error:function(xhr, status, err){
@@ -290,7 +291,7 @@
 
 <h2 class="todays">홈즈에 대한 후기를 남겨주세요</h2>
 <div>
-	<form>
+	<form id="feedback" method="post">
 	<input name="writer" value="${sessionScope.user.name}" readonly>
 	<input name="content">
 	<button type="button" onclick="addFeedback();">저장</button>

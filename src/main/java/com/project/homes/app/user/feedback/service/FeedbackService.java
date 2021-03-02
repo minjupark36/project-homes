@@ -20,5 +20,8 @@ public class FeedbackService {
 		return feedbackMapper.getFeedbackList();
 	}
 
-
+	public boolean addFeedback(FeedbackDto feedbackDto) {
+		return feedbackMapper.addFeedback(feedbackDto);
+		
+	}
 }
