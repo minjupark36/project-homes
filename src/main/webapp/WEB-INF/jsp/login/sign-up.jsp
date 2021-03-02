@@ -222,8 +222,7 @@
 		padding:5px 10px 5px 10px;
 		margin-bottom:20px;
 		border: solid 1px;
-		margin-top: 20px;
-		margin-bottom: 20px;
+
 		box-sizing: border-box;
 	}
 	
@@ -482,29 +481,30 @@ $(function() {
 		</select> <br>
 		<input type="text" id="pwAnswer" name="pwAnswer" placeholder="답변을 입력해주세요" class="value">
 				
-		<div class="title">평소에 좋아하는 인테리어 컨셉을 선택하세요.</div>	
+		<div class="title">평소에 관심있는 인테리어 컨셉을 선택하세요.</div>	<br>
 		<input type="hidden" name="hashtagPreference" id="hashtagPreference" value="all">
 		<div class="hashtags-container">
 			<div class="hashtags">빈티지</div>
 			<div class="hashtags">화이트</div>
 			<div class="hashtags">우드</div>
 			<div class="hashtags">키덜트</div>
-			<div class="hashtags">레트로</div>
+			<div class="hashtags">레트로</div><br><br>
 			<div class="hashtags">하이틴</div>
 			<div class="hashtags">홈카페</div>
 			<div class="hashtags">라탄</div>
 			<div class="hashtags">홈캉스</div>
 			<div class="hashtags">복층</div>
+			<div class="hashtags">원룸</div>
 		</div>
 		
-		<div class="title">평소에 좋아하는 인테리어 소품을 선택하세요.</div>	
+		<div class="title">평소에 관심있는 인테리어 소품을 선택하세요.</div>	<br>
 		<div class="hashtags-container">
 			<div class="hashtags">조명</div>
 			<div class="hashtags">포스터</div>
 			<div class="hashtags">액자</div>
 			<div class="hashtags">러그</div>
 			<div class="hashtags">오브제</div>
-			<div class="hashtags">쿠션</div>
+			<div class="hashtags">쿠션</div><br><br>
 			<div class="hashtags">쇼파</div>
 			<div class="hashtags">테이블</div>
 			<div class="hashtags">캔들</div>
