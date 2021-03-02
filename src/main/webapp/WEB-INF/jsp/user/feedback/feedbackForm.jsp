@@ -82,56 +82,7 @@
   		margin: auto auto;
   		padding: 0 15px;	 		
   	}
-  		
-  	.card {
-  		display:inline-block;
-  		margin:10px 10px;
-  		width:290px;
-  	}
   	
-  	.card-img-top {
-  		width:290px;
-  		height:290px;
-  		object-fit:cover
-  	}
-  	
-  	.card-body > h4 {
-  		font-size: 12px;
-  		font-weight: bold;
-  	}
-	.scrapBtn {
-		height:25px; 
-		width:25px;
-		cursor:pointer;
-		transform: translate(20%,20%);
-		position: absolute;
-		z-index: 1;
-		margin-top: 10px;
-		margin-left: -40px
-	}
-	
-	 #list {
-	 	width:100%; 
-	 	position: relative;
-	 }
-	 
-	 #list .button {
-	 	position: absolute; 
-	 	display: inline-block; 
-	 	height: 200px; 
-	 	width: 300px; 
-	 	margin-left: 50px; 
-	 	margin-bottom: 30px;
-	 }
-	 
-	 .scrapBtn:hover {
-	 	-webkit-filter: opacity(.5) drop-shadow(0 0 0 gray);
-	 	filter: opacity(.5) drop-shadow(0 0 0 gray);
-	 }
-		 			
-	 .sort, .hashtags, #pagination {
-	 	text-align: center;
-	 }
 	 
 	 i{
 	 	margin-left:5px;
@@ -170,10 +121,9 @@
 	
 	.media-body {
 		display:inline;
-		
 	}
 	
-	#feedback-img {
+	.image-wrap, h4{
 		display:inline;
 	}
 	 
@@ -289,23 +239,27 @@
 <div class="main-visual">
 <div class="main-container visual-container"></div>
 
-<h2 class="todays">홈즈에 대한 후기를 남겨주세요</h2>
+<div class="main-container">
+<h2 class="todays">홈즈에 대한 후기를 남겨주세요</h2><br>
 <div>
 	<form id="feedback" method="post">
-	<input name="writer" value="${sessionScope.user.name}" readonly>
-	<input name="content">
-	<button type="button" onclick="addFeedback();">저장</button>
+	<input name="writer" type="hidden" value="${sessionScope.user.name}">
+	<textarea name="content" rows="5" style="width: 1200px"></textarea>
+	<button type="button" onclick="addFeedback();" class="btn btn-warning btn-sm" style="margin-bottom: 20px">저장</button>
 	</form>
 </div><br>
 
 <div class="feedback">
 	<c:forEach var="feedback" items="${feedback}">
-	<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" class="mr-3 mt-3 rounded-circle" id="feedback-img" style="width:60px;">
+	<div class="image-wrap">
+		<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" class="rounded-circle" id="feedback-img" style="width:60px;">
+	</div>
 	<div class="media-body">
 	    <h4>${feedback.writer} <small><i>Posted on ${feedback.createDate}</i></small></h4>
-	    <p><i class='fas fa-quote-left' style='font-size:24px'></i>${feedback.content}<i class='fas fa-quote-right' style='font-size:24px'></i></p>
+	    <p><i class='fas fa-quote-left' style='font-size:20px'></i>${feedback.content}<i class='fas fa-quote-right' style='font-size:20px'></i></p>
  	</div>
  	</c:forEach>
+</div>
 </div>
 
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>

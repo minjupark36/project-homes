@@ -44,10 +44,12 @@ public class MainPageController {
 	/*메인 페이지*/
 	@GetMapping("/main")
 	public String mainPageList(Model model) {
+		
+		int limit = 5;
 	
 		model.addAttribute("interior",mainPageService.getInteriorImages());
 		model.addAttribute("deco",mainPageService.getDecoImages());
-		model.addAttribute("feedback",feedbackService.getFeedbackList());
+		model.addAttribute("feedback",feedbackService.getFeedbackList(limit));
 	
 		return "/user/mainpage/main";
 	}
@@ -162,7 +164,8 @@ public class MainPageController {
 	/*코멘트 form*/
 	@GetMapping("/user/feedback")
 	public String feedback(Model model){
-		model.addAttribute("feedback",feedbackService.getFeedbackList());
+		int limit = 10;
+		model.addAttribute("feedback",feedbackService.getFeedbackList(limit));
 		return "/user/feedback/feedbackForm";
 	}
 	

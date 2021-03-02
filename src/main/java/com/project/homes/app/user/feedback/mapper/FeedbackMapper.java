@@ -16,7 +16,7 @@ import com.project.homes.app.user.mainpage.dto.MainPageDto;
 @Mapper
 public interface FeedbackMapper {
 
-	List<FeedbackDto> getFeedbackList();
+	List<FeedbackDto> getFeedbackList(int limit);
 
 	boolean addFeedback(FeedbackDto feedbackDto);
 	

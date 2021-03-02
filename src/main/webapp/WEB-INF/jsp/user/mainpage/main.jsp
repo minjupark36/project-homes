@@ -170,13 +170,12 @@
 	
 	.media-body {
 		display:inline;
-		
 	}
 	
-	#feedback-img {
+	.image-wrap, h4{
 		display:inline;
 	}
-	 
+	
 </style>
 <script>
 	var floatPosition = parseInt($(".sideBanner").css('top'))
@@ -444,10 +443,12 @@
 
 <div class="feedback">
 	<c:forEach var="feedback" items="${feedback}">
-	<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" class="mr-3 mt-3 rounded-circle" id="feedback-img" style="width:60px;">
+	<div class="image-wrap">
+		<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" class="rounded-circle" id="feedback-img" style="width:60px;">
+	</div>
 	<div class="media-body">
 	    <h4>${feedback.writer} <small><i>Posted on ${feedback.createDate}</i></small></h4>
-	    <p><i class='fas fa-quote-left' style='font-size:24px'></i>${feedback.content}<i class='fas fa-quote-right' style='font-size:24px'></i></p>
+	    <p><i class='fas fa-quote-left' style='font-size:20px'></i>${feedback.content}<i class='fas fa-quote-right' style='font-size:20px'></i></p>
  	</div>
  	</c:forEach>
 </div>

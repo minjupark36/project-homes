@@ -16,8 +16,8 @@ public class FeedbackService {
 	
 	private final FeedbackMapper feedbackMapper;
 
-	public List<FeedbackDto> getFeedbackList() {
-		return feedbackMapper.getFeedbackList();
+	public List<FeedbackDto> getFeedbackList(int limit) {
+		return feedbackMapper.getFeedbackList(limit);
 	}
 
 	public boolean addFeedback(FeedbackDto feedbackDto) {

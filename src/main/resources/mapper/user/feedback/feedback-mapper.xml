@@ -30,6 +30,7 @@
 		feedback		
 	ORDER BY
 		create_date desc
+	limit ${limit}
 	
 	</select>
 	
