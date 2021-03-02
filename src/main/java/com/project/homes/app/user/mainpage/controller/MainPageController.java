@@ -91,7 +91,7 @@ public class MainPageController {
 			, @RequestParam(value="num", defaultValue="1")int num
 			) {
 		
-		PageHelper.startPage(num,5);
+		PageHelper.startPage(num,3);
 		PageInfo<InfoDto> infoList = new PageInfo<> (mainPageService.getInfoList(searchAs));
 		model.addAttribute("infoList",infoList);
 		model.addAttribute("searchAs",searchAs);
@@ -106,7 +106,7 @@ public class MainPageController {
 			, @PathVariable int num
 			) {
 		
-		PageHelper.startPage(num,5);
+		PageHelper.startPage(num,3);
 		PageInfo<InfoDto> infoList = new PageInfo<> (mainPageService.getInfoList(searchAs));
 		model.addAttribute("infoList",infoList);
 		model.addAttribute("searchAs",searchAs);
