@@ -2,21 +2,24 @@ package com.project.homes.app.user.mainpage.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.project.homes.app.common.comment.service.CommentService;
 import com.project.homes.app.common.hashtag.service.HashtagService;
 import com.project.homes.app.common.image.dto.ImageDto;
 import com.project.homes.app.common.image.service.ImageService;
+import com.project.homes.app.common.info.dto.InfoDto;
 import com.project.homes.app.common.member.dto.MemberDto;
 import com.project.homes.app.common.utils.Utils;
 import com.project.homes.app.user.feedback.dto.FeedbackDto;
@@ -85,15 +88,29 @@ public class MainPageController {
 	public String mainInfoList(Model model
 			, @RequestParam(name="order", defaultValue="recent") String order
 			, @RequestParam(name="search", defaultValue ="") String searchAs
+			, @RequestParam(value="num", defaultValue="1")int num
 			) {
-
-		System.out.println("===========================");
-		System.out.println(searchAs);
-		System.out.println("===========================");
-//		MemberDto memberDto = Utils.getMemberFromSession();
 		
+		PageHelper.startPage(num,5);
+		PageInfo<InfoDto> infoList = new PageInfo<> (mainPageService.getInfoList(searchAs));
+		model.addAttribute("infoList",infoList);
 		model.addAttribute("searchAs",searchAs);
-		model.addAttribute("infoList", mainPageService.getInfoList(searchAs));		
+
+		return "/user/mainpage/mainInfo";
+	}
+	
+	@RequestMapping("/main/info/{num}")
+	public String getInfoList(Model model
+			, @RequestParam(name="order", defaultValue="recent") String order
+			, @RequestParam(name="search", defaultValue ="") String searchAs
+			, @PathVariable int num
+			) {
+		
+		PageHelper.startPage(num,5);
+		PageInfo<InfoDto> infoList = new PageInfo<> (mainPageService.getInfoList(searchAs));
+		model.addAttribute("infoList",infoList);
+		model.addAttribute("searchAs",searchAs);
+
 		return "/user/mainpage/mainInfo";
 	}
 	
