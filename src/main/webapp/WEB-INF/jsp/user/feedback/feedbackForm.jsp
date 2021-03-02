@@ -123,10 +123,10 @@
 		display:inline;
 	}
 	
-	.image-wrap, h4{
+	.image-wrap, h4, .content_cnt{
 		display:inline;
 	}
-	 
+
 </style>
 <script>
 
@@ -152,6 +152,27 @@
 			
 			});	
 		}
+	
+	function alert(num){
+		if(num==1){
+			alert("로그인 후 사용가능한 기능입니다. 로그인하시겠습니까?");
+			location.href = "/sign-in";
+		}else{
+			return false;
+		}
+		
+	}
+	
+	$(document).ready(function() {
+	    $('#content').on('keyup', function() {
+	        $('#cnt_letters').html("("+$(this).val().length+" / 200)");
+	 
+	        if($(this).val().length > 200) {
+	            $(this).val($(this).val().substring(0, 200));
+	            $('#cnt_letters').html("(200 / 200)");
+	        }
+	    });
+	});
 	
 </script>	
 </head>
@@ -240,13 +261,22 @@
 <div class="main-container visual-container"></div>
 
 <div class="main-container">
-<h2 class="todays">홈즈에 대한 후기를 남겨주세요</h2><br>
+<h2 class="todays">소중한 후기를 남겨주세요</h2><br>
 <div>
 	<form id="feedback" method="post">
 	<input name="writer" type="hidden" value="${sessionScope.user.name}">
-	<textarea name="content" rows="5" style="width: 1200px"></textarea>
-	<button type="button" onclick="addFeedback();" class="btn btn-warning btn-sm" style="margin-bottom: 20px">저장</button>
+	<textarea name="content" id="content" rows="5" style="width: 1200px" placeholder="홈즈를 이용하면서 느낀점을 적어주세요(200자 이내)"></textarea>	
+	<c:choose>
+		<c:when test="${sessionScope.loginCheck eq true}">
+			<button type="button" onclick="addFeedback();" class="btn btn-warning btn-sm" style="margin-bottom: 20px; display: inline;">저장</button>
+		</c:when>
+		<c:otherwise>
+			<button type="button" onclick="alert(1);" class="btn btn-warning btn-sm" style="margin-bottom: 20px; display: inline;">저장</button>
+		</c:otherwise>
+	</c:choose>
+	<div id="cnt_letters">(0 / 200)</div>
 	</form>
+	
 </div><br>
 
 <div class="feedback">
