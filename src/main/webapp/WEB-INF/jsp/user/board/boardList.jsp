@@ -86,7 +86,6 @@
 </script>
 </head>
 <body>
-${sessionScope.user.name}님 안녕하세요
 <!-- 메인 메뉴바 -->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  <ul class="navbar-nav">
