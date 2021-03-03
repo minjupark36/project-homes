@@ -24,8 +24,7 @@
 		
 		$.ajax({
 			url : '/admin/board/reply',
-			method : "post",
-	
+			method : "post",	
 			enctype: 'multipart/form-data',
 			processData: false,
 			contentType: false,
@@ -34,7 +33,7 @@
 			success : function(res) {
 				if(res.trim()=="true"){
 					alert("게시글이 등록되었습니다");
-					location.href="/user/board";
+					location.href="/admin/board";
 					
 				}else{
 					alert("게시글 등록 실패");
@@ -98,7 +97,6 @@
 <div>
 <form method="post" action="/admin/board/reply" enctype="multipart/form-data" id="form" >
 	
-	<input type="hidden" value="${sessionScope.user.id}" name="membersId">
 	<input type="hidden" value="${id}" name="id" id="id"/> 
 	<input type="hidden" value="${groupOrder}" name="groupOrder" id="groupOrder"/> 
 	<input type="hidden" value="${depth}" name="depth" id="depth"/> 
@@ -108,8 +106,9 @@
 		<tr>
 			<td>제목</td><td><input type="text" name="title" id="title" class="form-control" placeholder="제목을 입력해주세요"></td>
 		</tr>
-
-
+		<tr>
+			<td>작성자</td><td><input type="hidden" name="membersId" class="form-control" value="${sessionScope.user.id}" readonly>관리자</td>
+		</tr>
 		<tr>
 			<td colspan=2>
 			<textarea  id="content" name="content" rows="10" cols="80" placeholder="내용을 입력해주세요(300자 이내)" class="form-control"></textarea>

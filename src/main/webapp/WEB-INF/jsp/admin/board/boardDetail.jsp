@@ -60,7 +60,7 @@
 			<th>작성자</th><td>${b.membersId}</td>
 		</tr>
 		<tr>
-			<th>카테고리</th><td>${category}</td>
+			<th>카테고리</th><td>${b.categoriesId}</td>
 		</tr>
 		<tr>
 			<th>제목</th><td>${b.title}</td>
@@ -71,8 +71,8 @@
 	</table>
 </div>
 <div>
-	<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/admin/board'">목록</button>
-	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/admin/board/reply?pid=${b.groupNo}&groupOrder=${b.groupOrder}&depth=${b.depth}&categoriesId=${b.categoriesId}'">답글</button>
+	<button type="button" class="btn btn-warning" onclick="location.href='/admin/board'">목록</button>
+	<button type="button" class="btn btn-warning" onclick="location.href='/admin/board/reply?pid=${b.groupNo}&groupOrder=${b.groupOrder}&depth=${b.depth}&categoriesId=${b.categoriesId}'">답글</button>
 </div>
 </body>
 </html>

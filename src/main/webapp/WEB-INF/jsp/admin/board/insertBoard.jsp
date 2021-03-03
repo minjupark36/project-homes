@@ -113,9 +113,10 @@ function insertBoard(){
 			<input type="file" name="files" multiple="multiple">
 		</tr>   	
 	</table>
-	<button type="button" onclick="insertBoard()" class="btn btn-raised btn-primary btn-round waves-effect">작성완료</button>
-</form>
-<button type="button" class="btn btn-raised btn-primary btn-round waves-effect" onclick="location.href='/admin/board'">취소</button>
+	<button type="button" onclick="insertBoard()" class="btn btn-raised btn-warning btn-round waves-effect">작성완료</button>
+	<button type="button" class="btn btn-raised btn-warning btn-round waves-effect" onclick="location.href='/admin/board'">취소</button>
+</form><br>
+
 </div>
 </body>
 </html>

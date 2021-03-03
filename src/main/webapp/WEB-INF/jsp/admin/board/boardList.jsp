@@ -5,6 +5,7 @@
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+ <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta charset="UTF-8">
 <title>Board List</title>
 <style>
@@ -17,18 +18,54 @@
 	.category{
 		display:inline-block;
 		width:250px;
-		height:1000px;
+		height:700px;
 		float:left;
-		margin-left:40px;
-		padding-left: 40px;
+		margin-left:40px;		
 		font-size: 10px;
 		background-color: whitesmoke;		
+	}
+	
+	.intro {
+		width:100%;
+		height: 140px;
+		background-color: #aaaaaa	;
+	}
+	
+	.intro > h3 {
+		padding-top:40px;
+		font-size: 2rem;
+		text-align: center;
+		color: white;
+		opacity: 0.7
+	}
+	
+	.intro > h4 {
+		text-align: center;
+		color: white;
+	}
+	
+	.category-list > ul > li{
+		height: 60px;
+		border-bottom: 1px solid #d0cece;
+		padding-left: 17px;	
 	}
 	
 	.cate{
 		 font-size:20px;
 		 color:black;
-		 font-family:sunflower
+		 font-family: sunflower;	
+		 
+	}
+	
+	.cate > i {
+		margin-left: 90px;
+		font-size: 30px;
+		display: inline;
+		color: #aaaaaa;
+	}
+	
+	.navbar-nav {
+		margin-bottom:30px;
 	}
 
 	.detail{
@@ -59,9 +96,27 @@
 	}
 
 	#writeBtn {
-		margin-left:810px;
+		margin-left:830px;
 	}
 	
+	a:hover {
+		text-decoration: none;
+		color: black;
+	}
+	
+	a {
+		color : #FFB400;
+	}
+	
+	.page-item.active .page-link {
+		background-color : #f0ad4e;
+		border-color: #f0ad4e;
+	}
+	
+	.page-link {
+		color : #FFB400;
+		
+	}
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -159,11 +214,17 @@
 <!-------- category list --------->
 <div class="main-container">
 <div class="category">
+	<div class="intro">
+		<h3>Admin Board</h3>
+		<h4>관리자 게시판</h4>
+	</div>
+<div class="category-list">
 	<ul class="navbar-nav">
-		<li class="nav-item active"><a href="/admin/board/1" class="nav-link cate">자유게시판</a></li>
-		<li class="nav-item active"><a href="/admin/board/2" class="nav-link cate">FAQ</a></li>
-		<li class="nav-item active"><a href="/admin/board/3" class="nav-link cate">공지사항</a></li>
+		<li class="nav-item active"><a href="/admin/board/1" class="nav-link cate">자유게시판<i class="fas fa-chevron-circle-right fa-2x"></i></a></li>
+		<li class="nav-item active"><a href="/admin/board/2" class="nav-link cate">FAQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-chevron-circle-right fa-2x"></i></a></li>
+		<li class="nav-item active"><a href="/admin/board/3" class="nav-link cate">공지사항&nbsp;&nbsp;&nbsp;<i class="fas fa-chevron-circle-right fa-2x"></i></a></li>
 	</ul>
+</div>	
 </div>
 <!-------- board list --------->
 <div class="list-container">
@@ -203,19 +264,19 @@
 			</tr>	
 		</c:forEach>
 	
-	</table><br>
+	</table>
 
-<button type="button" id="massiveDeleteBtn" onclick="massiveDelete();" style="cursor: pointer;" class="btn btn-raised btn-primary btn-round waves-effect">삭제</button>
-<button type="button" id="writeBtn" onclick="location.href='/admin/board/insert'" style="cursor: pointer;" class="btn btn-raised btn-primary btn-round waves-effect">글쓰기</button>	
+<button type="button" id="massiveDeleteBtn" onclick="massiveDelete();" style="cursor: pointer;" class="btn btn-outline-primary">삭제</button>
+<button type="button" id="writeBtn" onclick="location.href='/admin/board/insert'" style="cursor: pointer;" class="btn btn-warning ">글쓰기</button>	
 <!-------- pagination --------->
 <div id="paging">
-<ul id="pagination" class="pagination">
+<ul id="pagination" class="my pagination">
 <c:choose> 
 	<c:when test="${pageInfo.hasPreviousPage}">
-		<li class="page-item"><a class="page-link" href="/admin/board/${pageInfo.pageNum-1}">이전</a></li>
+		<li class="page-item"><a class="page-link" href="/admin/board/${pageInfo.pageNum-1}">&lt&lt</a></li>
 	</c:when>
 	<c:otherwise>
-		<li class="page-item"><a class="page-link" href="javascript:void()">이전</a></li>
+		<li class="page-item"><a class="page-link" href="javascript:void()">&lt&lt</a></li>
 	</c:otherwise>
 </c:choose>
 	<c:forEach var="p" items="${pageInfo.navigatepageNums}">
@@ -230,10 +291,10 @@
 	</c:forEach>
 <c:choose>
 	<c:when test="${pageInfo.hasNextPage}">
-		<li class="page-item"><a class="page-link" href="/admin/board/${pageInfo.pageNum+1}">다음</a></li>
+		<li class="page-item"><a class="page-link" href="/admin/board/${pageInfo.pageNum+1}">&gt&gt</a></li>
 	</c:when>
 	<c:otherwise>
-		<li class="page-item"><a class="page-link" href="javascript:void()">다음</a></li>
+		<li class="page-item"><a class="page-link" href="javascript:void()">&gt&gt</a></li>
 	</c:otherwise>
 </c:choose>
 </ul>
@@ -253,7 +314,7 @@
 				<input type="text" name="search" id="search" class="form-control" value="${searchMap.search }">
 			</div>
 			<div class="col-2">
-				<button type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Search</button>
+				<button type="submit" class="btn btn-raised btn-warning btn-round waves-effect">검색</button>
 			</div>
 		</div>
 	</form>
