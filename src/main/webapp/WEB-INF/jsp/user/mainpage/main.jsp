@@ -49,7 +49,12 @@
 		text-decoration: none;
 	}
 	
-	a {
+	#logout > a {
+		text-decoration: none;
+		color:white;
+	}
+	
+	#login > a {
 		text-decoration: none;
 		color:white;
 	}
@@ -66,11 +71,11 @@
 		width:30px;
 		height:30px;
 	}
+	
 	.header {
 		width: 100%;
 		height:300px;
-		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";
-		
+		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";		
 	}
 	
 	
@@ -174,6 +179,55 @@
 	
 	.image-wrap, h4{
 		display:inline;
+	}
+	
+	.footer-category > ul {
+		list-style: none;
+		margin-top:30px;
+	}
+	
+	.footer-category > ul > li {
+		display: inline-block;
+	}
+	
+	.footer-category > a {
+		text-decoration: none;
+		font-color: black;
+	}
+	
+	a {
+		text-decoration: none;
+		color:orange;
+	}
+	
+	a:hover {
+		text-decoration: none;
+		color:orange;
+	}
+	
+	.footer-container{
+		width:100%;
+		height:300px;
+		border-top: solid 1px black;
+		padding-top:30px;
+		margin-top:30px;
+	}
+	
+	.footer-category{
+		margin-left:-40px;
+		width: 700px;		
+	}
+	
+	.footer-sns {
+		width:200px;
+		height: 100px;
+		float: right;
+		margin-top:-100px;
+		margin-right: -680px;
+	}
+	
+	.footer-info {
+		margin: 20px 40px;
 	}
 	
 </style>
@@ -451,6 +505,26 @@
 	    <p><i class='fas fa-quote-left' style='font-size:20px'></i>${feedback.content}<i class='fas fa-quote-right' style='font-size:20px'></i></p>
  	</div>
  	</c:forEach>
+</div>
+
+<div class="footer-container">
+<h3 class="footer-logo">구해줘 홈즈</h3>
+<div class="footer-category">
+	<ul>
+		<li><a href="">홈즈스토리 | </a></li>
+		<li><a href="">자주 묻는 질문 | </a></li>
+		<li><a href="/user/terms/conditions">이용약관 | </a></li>
+		<li><a href="/user/terms/privacy">개인정보처리방침</a></li>
+	</ul>
+	<div class="footer-sns">	
+		<a href=""><i class="fab fa-twitter fa-3x"></i></a>
+		<a href=""><i class="fab fa-instagram fa-3x"></i></a>
+		<a href=""><i class="fab fa-facebook-f fa-3x"></i></a>
+	</div>
+	<div class="footer-info">제휴문의 homes@homes.com</div>
+	<div class="footer-info">서울특별시 종로구 수표로 105 육의전빌딩 8,9층 TEL: 02-766-8367</div>
+	<div class="footer-info">©2020 homes</div>	
+</div>
 </div>
 
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>

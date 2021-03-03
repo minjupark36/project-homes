@@ -114,6 +114,21 @@ public class MainPageController {
 		return "/user/mainpage/mainInfo";
 	}
 	
+	/*피드백 form*/
+	@GetMapping("/user/feedback")
+	public String feedback(Model model){
+		int limit = 10;
+		model.addAttribute("feedback",feedbackService.getFeedbackList(limit));
+		return "/user/feedback/feedbackForm";
+	}
+	
+	/*피드백 추가*/
+	@RequestMapping("/add/feedback")
+	@ResponseBody
+	public String addFeedback(FeedbackDto feedbackDto){
+		return feedbackService.addFeedback(feedbackDto)+"";
+	}
+	
 	/*개인정보처리방침*/
 	@GetMapping("/user/terms/privacy")
 	public String privacyPolicy() {
@@ -173,24 +188,9 @@ public class MainPageController {
 	}
 	
 	//관리자 사이트관리 페이지
-		@GetMapping("/admin/manage")
-		public String managingPageForAdmin() {
-			return "/user/mainpage/managingPage";
-		}
-
-	/*코멘트 form*/
-	@GetMapping("/user/feedback")
-	public String feedback(Model model){
-		int limit = 10;
-		model.addAttribute("feedback",feedbackService.getFeedbackList(limit));
-		return "/user/feedback/feedbackForm";
-	}
-	
-	/*코멘트 추가*/
-	@RequestMapping("/add/feedback")
-	@ResponseBody
-	public String addFeedback(FeedbackDto feedbackDto){
-		return feedbackService.addFeedback(feedbackDto)+"";
+	@GetMapping("/admin/manage")
+	public String managingPageForAdmin() {
+		return "/admin/managing/managingPage";
 	}
 	
 }
