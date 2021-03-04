@@ -92,12 +92,21 @@
   		display:inline-block;
   		margin:10px 10px;
   		width:290px;
+  		overflow:hidden;
+  	}
+  	
+  	.card-img {
+  		width:290px;
+  		height:290px;
+  		overflow:hidden;
   	}
   	
   	.card-img-top {
   		width:290px;
   		height:290px;
-  		object-fit:cover
+  		object-fit:cover;
+  		overflow:hidden;
+  		flex: 0;
   	}
   	
   	.card-body > h4 {
@@ -307,7 +316,17 @@
 		location.href = "/sign-in"
 	}
 	
-	
+	function zoomIn(event) {
+	    event.target.style.transform = "scale(1.1)";
+	    event.target.style.zIndex = 1;
+	    event.target.style.transition = "all 0.3s";
+	  }
+
+	  function zoomOut(event) {
+	    event.target.style.transform = "scale(1)";
+	    event.target.style.zIndex = 0;
+	    event.target.style.transition = "all 0.3s";
+	  }
 	
 </script>	
 </head>
@@ -427,10 +446,15 @@
 					src="https://pics.freeicons.io/uploads/icons/png/13732025981547546480-512.png">	
 				</a>
 			</div>
-			<div class="card">
+			<div class="card"><div class="card-img">
 				<a href="/main/detail?id=${interior.id}">
-					<img class="card-img-top" src="${interior.filepath}"/>
-				</a>
+				
+					<img class="card-img-top" 
+					src="${interior.filepath}"
+					onmouseenter="zoomIn(event)"
+     				onmouseleave="zoomOut(event)"/>
+     			
+				</a></div>	
 			<div class="card-body">
 				<c:choose>
 					<c:when test="${fn:length(interior.hashtagsNames) > 43}">
@@ -474,9 +498,14 @@
 			</a>		
 		</div>
 		<div class="card">
+		<div class="card-img">
 			<a href="${deco.url}">
-				<img class="card-img-top" src="${deco.filepath}"/>
+				<img class="card-img-top" 
+				src="${deco.filepath}"
+				onmouseenter="zoomIn(event)"
+     			onmouseleave="zoomOut(event)"/>
 			</a>
+		</div>
 		<div class="card-body">
 			<h4 class="card-title">${deco.hashtagsNames}</h4>
 		    <p class="card-text">
