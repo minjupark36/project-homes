@@ -73,7 +73,7 @@
 	      </where>
       	</if>
       	
-      	order by group_no desc,group_order,depth
+      	order by group_no desc,group_order,depth desc
 	</select>
 	
 	<select id="getBoardDetail" resultType="BoardDto" parameterType="long" resultMap="boardDtoResultMap">
@@ -112,7 +112,7 @@
 			depth
 		FROM boards
 		WHERE group_no=#{id} AND id!=#{id}
-		order by group_no desc,depth
+		order by group_no desc,group_order,depth desc
 	</select>
 	
 	<delete id="deleteBoard" parameterType="long">
@@ -217,6 +217,12 @@
     	update boards set group_order=group_order+1
     	where group_no=#{id} and group_order>#{groupOrder}
 	</update>
+	
+	<select id="countReply" parameterType="long" resultType="long">
+		SELECT COUNT(*) 
+		FROM boards
+		WHERE group_no=#{id} AND id!=#{id}
+	</select>
 	
 	
 	

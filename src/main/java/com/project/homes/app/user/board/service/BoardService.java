@@ -113,4 +113,9 @@ public class BoardService {
 		return id;
 	}
 	
+	//답글 개수 
+	public long countReply(@RequestParam("id") long id) {
+		return boardMapper.countReply(id);
+	}
+	
 }
