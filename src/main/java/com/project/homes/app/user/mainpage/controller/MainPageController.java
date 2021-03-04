@@ -54,7 +54,7 @@ public class MainPageController {
 		model.addAttribute("deco",mainPageService.getDecoImages());
 		model.addAttribute("feedback",feedbackService.getFeedbackList(limit));
 	
-		return "/user/mainpage/main";
+		return "user/mainpage/main";
 	}
 	
 	/*메인추천 페이지*/
@@ -73,7 +73,7 @@ public class MainPageController {
 		model.addAttribute("deco",mainPageService.getDecoImages());	
 		model.addAttribute("feedback",feedbackService.getFeedbackList(limit));
 	
-		return "/user/mainpage/main";
+		return "user/mainpage/main";
 	}
 	
 	/*메인-사진 페이지*/
@@ -84,7 +84,7 @@ public class MainPageController {
 		model.addAttribute("mainpageList",mainPageService.getImageList(order));
 		model.addAttribute("hashtagList",hashtagService.selectHashtags());
 
-		return "/user/mainpage/mainImages";
+		return "user/mainpage/mainImages";
 	}
 	
 	/*메인-정보 페이지*/
@@ -100,7 +100,7 @@ public class MainPageController {
 		model.addAttribute("infoList",infoList);
 		model.addAttribute("searchAs",searchAs);
 
-		return "/user/mainpage/mainInfo";
+		return "user/mainpage/mainInfo";
 	}
 	
 	@RequestMapping("/main/info/{num}")
@@ -115,7 +115,7 @@ public class MainPageController {
 		model.addAttribute("infoList",infoList);
 		model.addAttribute("searchAs",searchAs);
 
-		return "/user/mainpage/mainInfo";
+		return "user/mainpage/mainInfo";
 	}
 	
 	/*피드백 form*/
@@ -123,7 +123,7 @@ public class MainPageController {
 	public String feedback(Model model){
 		int limit = 10;
 		model.addAttribute("feedback",feedbackService.getFeedbackList(limit));
-		return "/user/feedback/feedbackForm";
+		return "user/feedback/feedbackForm";
 	}
 	
 	/*피드백 추가*/
@@ -137,14 +137,14 @@ public class MainPageController {
 	@GetMapping("/user/terms/privacy")
 	public String privacyPolicy() {
 		
-		return "/user/terms/privacy_policy";
+		return "user/terms/privacy_policy";
 	}
 
 	/*이용약관*/
 	@GetMapping("/user/terms/conditions")
 	public String termsAndConditions() {
 		
-		return "/user/terms/terms_and_conditions";
+		return "user/terms/terms_and_conditions";
 	}
 	
 	@PostMapping("/main/countView")
@@ -165,7 +165,7 @@ public class MainPageController {
 		model.addAttribute("commentsList",commentService.commentList(id));
 		model.addAttribute("countComment",commentService.countComment(id));
 		model.addAttribute("view",mainPageService.countView(id));
-		return "/user/mainpage/mainDetail";
+		return "user/mainpage/mainDetail";
 	}
 	
 	//디테일 페이지에서 태그 누르면 해당 태그 포함된 인테리어 사진 리스트(메인 페이지)
@@ -173,7 +173,7 @@ public class MainPageController {
 	public String getTagImageList(Model model,@RequestParam("hashtagsNames") String hashtagsNames) {
 		model.addAttribute("mainpageList",mainPageService.getTagImageList(hashtagsNames));
 		model.addAttribute("hashtagList",hashtagService.selectHashtags());
-		return "/user/mainpage/mainImages";
+		return "user/mainpage/mainImages";
 	}
 	
 	
@@ -198,7 +198,7 @@ public class MainPageController {
 	//관리자 사이트관리 페이지
 	@GetMapping("/admin/manage")
 	public String managingPageForAdmin() {
-		return "/admin/managing/managingPage";
+		return "admin/managing/managingPage";
 	}
 	
 }
