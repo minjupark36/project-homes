@@ -152,21 +152,18 @@
 	  <p>Resize this responsive page to see the effect!</p> 
 	</div>
 <c:set var="d" value="${boardDetail}"></c:set>
+<input type="hidden" value="${d.id}" name="id" id="id"/> 
 <div id="detail">
 <div>
 	<c:choose>
-	<c:when test="${sessionScope.user.role eq 'ADMIN'}">
+	<c:when test="${sessionScope.user.id eq #id}">
 	<button type="button" class="btn btn-outline-secondary" onclick="deleteBoard(${d.id})">글 삭제</button>
-	</c:when>
-	</c:choose>
-	<c:choose>
-	<c:when test="${sessionScope.user.id}==${d.membersId}">
 	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}'">수정</button>
 	</c:when>
 	</c:choose>
 </div>
 <div>
-<input type="hidden" value="${d.id}" name="id"/> 
+
 	<table class="table table-hover">
 		<tr>
 			<th>작성자</th><td>${d.memberDto.name}</td>
