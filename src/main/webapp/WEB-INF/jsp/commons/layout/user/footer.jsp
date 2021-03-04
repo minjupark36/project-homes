@@ -52,9 +52,11 @@
 	.footer-info {
 		margin: 20px 40px;
 	}
+
 </style>
 </head>
 <body>
+
 <div class="footer-container">
 <h3 class="footer-logo">구해줘 홈즈</h3>
 <div class="footer-category">
@@ -74,5 +76,6 @@
 	<div class="footer-info">©2020 homes</div>	
 </div>
 </div>
+
 </body>
 </html>
