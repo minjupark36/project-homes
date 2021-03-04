@@ -7,18 +7,21 @@
         <put-attribute name="footer" value="/WEB-INF/jsp/commons/layout/user/footer.jsp" />
     </definition>
     
-    <!-- (3) 레이아웃 적용 - user -->
+    <definition name="login" template="/WEB-INF/jsp/commons/layout/login/login-layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/commons/layout/login/header.jsp" />
+		<put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/commons/layout/login/footer.jsp" />
+    </definition>
+    
+    <!-- user -->
     <definition name="user/*/*" extends="user">      
 		<put-attribute name="body" value="/WEB-INF/jsp/user/{1}/{2}.jsp" />
     </definition>
-    
-    <!-- (3) 레이아웃 적용 - user -->
-    <definition name="user/*/*/*" extends="user">
-		<put-attribute name="body" value="/WEB-INF/jsp/user/{1}/{2}/{3}.jsp" />
+
+     <!-- login -->
+    <definition name="login/*" extends="login">      
+		<put-attribute name="body" value="/WEB-INF/jsp/login/{1}.jsp" />
     </definition>
     
-    <!-- (3) 레이아웃 적용 - user -->
-    <definition name="user/*/*/*/*" extends="user">
-		<put-attribute name="body" value="/WEB-INF/jsp/user/{1}/{2}/{3}/{4}.jsp" />
-    </definition>
+
 </tiles-definitions>
