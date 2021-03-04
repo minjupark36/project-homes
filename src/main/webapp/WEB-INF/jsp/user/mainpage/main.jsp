@@ -106,12 +106,17 @@
   		height:290px;
   		object-fit:cover;
   		overflow:hidden;
-  		flex: 0;
+
+  	}
+  	
+  	.card-text {
+  		text-align: center;
+  		margin-top: 10px;
   	}
   	
   	.card-body > h4 {
-  		font-size: 12px;
-  		font-weight: bold;
+  		font-size: 16px;
+  		
   	}
 	.scrapBtn {
 		height:25px; 
@@ -139,7 +144,6 @@
 	 }
 	 
 	 .scrapBtn:hover {
-	 	-webkit-filter: opacity(.5) drop-shadow(0 0 0 gray);
 	 	filter: opacity(.5) drop-shadow(0 0 0 gray);
 	 }
 		 			
@@ -322,11 +326,11 @@
 	    event.target.style.transition = "all 0.3s";
 	  }
 
-	  function zoomOut(event) {
+	 function zoomOut(event) {
 	    event.target.style.transform = "scale(1)";
 	    event.target.style.zIndex = 0;
 	    event.target.style.transition = "all 0.3s";
-	  }
+	 }
 	
 </script>	
 </head>
@@ -446,15 +450,16 @@
 					src="https://pics.freeicons.io/uploads/icons/png/13732025981547546480-512.png">	
 				</a>
 			</div>
-			<div class="card"><div class="card-img">
-				<a href="/main/detail?id=${interior.id}">
-				
+			<div class="card">
+			<div class="card-img">
+				<a href="/main/detail?id=${interior.id}">				
 					<img class="card-img-top" 
 					src="${interior.filepath}"
 					onmouseenter="zoomIn(event)"
      				onmouseleave="zoomOut(event)"/>
      			
-				</a></div>	
+				</a>
+			</div>	
 			<div class="card-body">
 				<c:choose>
 					<c:when test="${fn:length(interior.hashtagsNames) > 43}">
@@ -471,7 +476,7 @@
 			    	<i class='fas fa-calendar-alt'> ${interior.createDate}</i> 
 			    	
 			    </p>
-			    <a href="/main/detail?id=${interior.id}" class="btn btn-warning btn-sm" onclick="countView(${interior.id});">+더보기</a>
+			    
 			</div>
 			</div>
 			<c:if test="${i%j==j-1}">
@@ -507,14 +512,12 @@
 			</a>
 		</div>
 		<div class="card-body">
-			<h4 class="card-title">${deco.hashtagsNames}</h4>
+			<h4 class="card-title">${deco.hashtagsNames} </h4>
 		    <p class="card-text">
 		    	<i class='fas fa-eye'></i> ${deco.view}
 		    	<i class='fas fa-heart'> ${deco.scrap}</i> 
-		    	<i class='fas fa-calendar-alt'> ${deco.createDate}</i> 
-		    	
-		    </p>
-		    <a href="/main/detail?id=${deco.id}" class="btn btn-warning btn-sm" onclick="countView(${deco.id});">+더보기</a>
+		    	<i class='fas fa-calendar-alt'> ${deco.createDate}</i> 		    	
+		    </p>		    
 		</div>
 		</div>
 		<c:if test="${i%j==j-1}">

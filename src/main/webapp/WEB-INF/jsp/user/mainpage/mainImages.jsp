@@ -39,26 +39,36 @@
 
 	.main-container {
 		width: 1320px;
-  		margin: auto auto;
-  		padding: 0 15px;	 		
+  		margin: auto auto; 			 		
   	}
   		
   	.card {
   		display:inline-block;
   		margin:10px 10px;
-  		width:250px;
-
+  		width:290px;
+		overflow:hidden;
+  	}
+  	
+  	.card-img {
+  		width:290px;
+  		height:290px;
+  		overflow:hidden;
   	}
   	
   	.card-img-top {
-  		width:250px;
-  		height:250px;
-  		object-fit:cover
+  		width:290px;
+  		height:290px;
+  		object-fit:cover;
+  		overflow:hidden;
+  	}
+  	
+  	.card-text {
+  		text-align: center;
+  		margin-top: 10px;
   	}
   	
   	.card-body > h4 {
-  		font-size: 15px;
-  		font-weight: bold;
+  		font-size: 16px;
   	}
 
 	.scrapBtn {
@@ -87,7 +97,6 @@
 	 }
 	 
 	 .scrapBtn:hover {
-	 	-webkit-filter: opacity(.5) drop-shadow(0 0 0 gray);
 	 	filter: opacity(.5) drop-shadow(0 0 0 gray);
 	 }
 		 			
@@ -113,7 +122,7 @@
 	  position: absolute;
 	  width: 150px;
 	  height: 200px;
-	  left:1700px;
+	  left:1800px;
 	  top: 400px;
 	  background-color: white;
 	  color: black;
@@ -127,7 +136,7 @@
 	
 	.hashtags {
 		width:900px;
-		margin: auto auto;
+		margin-left: 180px;
 	}
 	
 	.btn-circle.btn-sm { 
@@ -265,6 +274,18 @@
 		
 		});	
 	}
+	
+	function zoomIn(event) {
+	    event.target.style.transform = "scale(1.1)";
+	    event.target.style.zIndex = 1;
+	    event.target.style.transition = "all 0.3s";
+	 }
+
+	 function zoomOut(event) {
+	    event.target.style.transform = "scale(1)";
+	    event.target.style.zIndex = 0;
+	    event.target.style.transition = "all 0.3s";
+	 }
 </script>	
 </head>
 <body>
@@ -338,7 +359,7 @@
   </div>
 </div>
 <br>
-
+<!------- hashtags ------->
 <div class="images-container">
 <div class="hashtags">	
 	<c:forEach var="tags" items="${hashtagList}">
@@ -349,8 +370,9 @@
 			</a>			
 		</div>		
 	</c:forEach>
-</div>
-<br>
+</div><br>
+
+<!------- 이미지카드 ------->
 <c:set var="i" value="0" />
 <c:set var="j" value="4" />
 <div class="main-container">
@@ -366,35 +388,36 @@
 				</a>		
 			</div>
 			<div class="card">
+			<div class="card-img">
 				<a href="/main/detail?id=${main.id}">
-					<img class="card-img-top" src="${main.filepath}"/>
+					<img class="card-img-top" 
+					src="${main.filepath}"
+					onmouseenter="zoomIn(event)"
+     				onmouseleave="zoomOut(event)"/>
 				</a>
-			<div class="card-body" >
-			
-				<c:choose>
-					<c:when test="${fn:length(main.hashtagsNames) > 43}">
-						<h4 class="card-title">#${fn:substring(fn:replace(main.hashtagsNames,"  ","#"),0,42)}..</h4>
-					</c:when>
-					<c:otherwise>
-                    	<h4 class="card-title">#${fn:replace(main.hashtagsNames,"  ","#")}</h4>
-			        </c:otherwise>
-			
-				</c:choose>
-			    <p class="card-text">
-			    	<i class='fas fa-eye'></i> ${main.view}
-			    	<i class='fas fa-heart'> ${main.scrap}</i> 
-			    	<i class='fas fa-calendar-alt'> ${main.createDate}</i> 
-			    	
-			    </p>
-			    <a href="/main/detail?id=${main.id}" class="btn btn-warning btn-sm" onclick="countView(${main.id});">+더보기</a>
 			</div>
-			</div>
-			<c:if test="${i%j==j-1}">
-		</div>	
-		</c:if>		
-		<c:set var="i" value="${i+1}"/>
-		</c:forEach>
-	</div>
+		<div class="card-body" >			
+			<c:choose>
+				<c:when test="${fn:length(main.hashtagsNames) > 43}">
+					<h4 class="card-title">#${fn:substring(fn:replace(main.hashtagsNames,"  ","#"),0,42)}..</h4>
+				</c:when>
+				<c:otherwise>
+                   	<h4 class="card-title">#${fn:replace(main.hashtagsNames,"  ","#")}</h4>
+		        </c:otherwise>		
+			</c:choose>
+		    <p class="card-text">
+		    	<i class='fas fa-eye'></i> ${main.view}
+		    	<i class='fas fa-heart'> ${main.scrap}</i> 
+		    	<i class='fas fa-calendar-alt'> ${main.createDate}</i> 		    	
+		    </p>		    
+		</div>
+		</div>
+		<c:if test="${i%j==j-1}">
+	</div>	
+	</c:if>		
+	<c:set var="i" value="${i+1}"/>
+	</c:forEach>
+</div>
 <div class="footer-container">
 <h3 class="footer-logo">구해줘 홈즈</h3>
 <div class="footer-category">
