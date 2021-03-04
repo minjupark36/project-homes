@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 	.ScrollButton {
 		  position: fixed;   /* 버튼의 위치 고정 */
@@ -24,6 +26,28 @@
 	#home-icon {
 			width:30px;
 			height:30px;
+	}
+	#detail{
+		width:1300px;
+		margin-left:8%
+	}
+	.sideBanner {
+	  position: absolute;
+	  width: 150px;
+	  height: 200px;
+	  left:1700px;
+	  top: 400px;
+	  background-color: white;
+	  color: black;
+	  font-size:25px
+	}
+	.Btn{
+		color:black;
+		text-decoration: none;
+	}
+	.reply{
+		width:1300px;
+		margin-left:8%
 	}
 </style>
 <script>
@@ -123,9 +147,6 @@
 	      <a class="nav-link" href="/user/board">| 커뮤니티</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="/main/store">| 스토어</a>
-	    </li>
-	    <li class="nav-item">
 	      <a class="nav-link" href="/user/scrap">| 내 스크랩</a>
 	    </li>
 	  </ul>
@@ -151,16 +172,13 @@
 	  <p>Resize this responsive page to see the effect!</p> 
 	</div>
 <c:set var="d" value="${boardDetail}"></c:set>
+<input type="hidden" value="${d.id}" name="id" id="id"/> 
+<div id="detail">
 <div>
-	<button type="button" class="btn btn-outline-secondary" onclick="deleteBoard(${d.id})">글 삭제</button>
-	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}'">수정</button>
-	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board'">게시판</button>
-</div>
-<div>
-<input type="hidden" value="${d.id}" name="id"/> 
+
 	<table class="table table-hover">
 		<tr>
-			<th>작성자</th><td></td>
+			<th>작성자</th><td>${d.memberDto.name}</td>
 		</tr>
 		
 		<tr>
@@ -172,32 +190,46 @@
 	</table>
 </div>
 <div>
-	<button type="button" class="btn btn-outline-danger" onclick="showPreBoard(${d.id},1)">이전글</button>
-	<button type="button" id="nextBoard" class="btn btn-outline-danger" onclick="showNextBoard(${d.id},2)">다음글</button>
-</div>
-<c:choose>
-<c:when test="${sessionScope.loginCheck eq true}">
-	<div>
+	<c:choose>
+	<c:when test="${sessionScope.user.id eq d.membersId}">
+	<button type="button" class="btn btn-outline-secondary" onclick="deleteBoard(${d.id})">삭제</button>
+	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}'">수정</button>
+	</c:when>
+	</c:choose>
+	<c:choose>
+	<c:when test="${sessionScope.loginCheck eq true}">
 		<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/reply?pid=${d.groupNo}&groupOrder=${d.groupOrder}&depth=${d.depth}&categoriesId=${d.categoriesId}'">답글</button>	
-	</div>
-</c:when>
-<c:otherwise>
-	<div>
+	</c:when>
+	<c:otherwise>
 		<button type="button" class="btn btn-outline-secondary" onclick="login()">답글</button>	
-	</div>
-</c:otherwise>
-</c:choose>
-<div>
+	</c:otherwise>
+	</c:choose>
+	
+</div>
+</div>
+<br>
+<div class="reply">
 	<table class="table table-hover">	
 	<c:forEach var="r" items="${replyList}">		
 		<tr onclick="location.href='/user/board/detail?id=${r.id}&categoriesId=${r.categoriesId}'">
-			<th>제목</th>
-			<td>${r.title}</td>
+			<th>작성자</th><td>${d.memberDto.name}</td>
+			<th>제목</th><td>${r.title}</td>
 		</tr>		
 	</c:forEach>
 	</table>
 </div>
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
 <a id="footer"></a>
+<div class="sideBanner">
+	<ul class="navbar-nav">
+		<li class="nav-item active"><a href="/user/board" class="Btn myScrap">커뮤니티</a></li>
+		<li><br></li>
+		<li class="nav-item active"><i class='far fa-eye' style='font-size:36px'></i>${d.view}</li>
+		<li><br></li>
+		<li class="nav-item active"><a href="javascript:showPreBoard(${d.id},1);" class="Btn"><i class="material-icons" style="font-size:36px">skip_previous</i></a> PRE</li>
+		<li><br></li>
+		<li class="nav-item active"><a href="javascript:showNextBoard(${d.id},2);" class="Btn"><i class="material-icons" style="font-size:36px">skip_next</i></a> NEXT</li>
+	</ul>
+</div>
 </body>
 </html>

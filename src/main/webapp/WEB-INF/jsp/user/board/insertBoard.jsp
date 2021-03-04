@@ -14,8 +14,8 @@
 	}
 	
 	#form{
-		width:1600px;
-		margin-left:8%
+		width:1400px;
+		margin-left:13%
 	}
 	
 </style>

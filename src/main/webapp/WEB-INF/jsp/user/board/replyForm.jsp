@@ -12,6 +12,10 @@
 			width:30px;
 			height:30px;
 	}
+	#form{
+		width:1400px;
+		margin-left:13%
+	}
 	
 </style>
 <script>
@@ -107,7 +111,9 @@
 		<tr>
 			<td>제목</td><td><input type="text" name="title" id="title" class="form-control" placeholder="제목을 입력해주세요"></td>
 		</tr>
-
+		<tr>
+			<td>작성자</td><td><input type="text" name="name" class="form-control" value="${sessionScope.user.name}" readonly></td>
+		</tr>
 
 		<tr>
 			<td colspan=2>
