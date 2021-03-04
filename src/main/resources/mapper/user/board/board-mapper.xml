@@ -123,18 +123,21 @@
 		parameterType="hashMap"
 		resultType="BoardDto" resultMap="boardDtoResultMap">
 		SELECT
-			id,
+			b.id,
 			members_id,
-			CONCAT(REPEAT("ㅤRE:",depth),title) title,
+			title,
 			content,
-			create_date,
-			modified_date,
+			b.create_date,
+			b.modified_date,
 			categories_id,
 			view,
 			group_no,
 			group_order,
-			depth
-		FROM boards 
+			depth,
+			m.name
+		FROM boards b
+		JOIN members m
+		ON m.id = b.members_id
 		<if test="searchMap != null and searchMap.searchAs != null">
 	      <where>
 	      	categories_id=#{categoriesId}
