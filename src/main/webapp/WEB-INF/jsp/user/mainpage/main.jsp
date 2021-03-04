@@ -177,9 +177,25 @@
 		display:inline;
 	}
 	
-	.image-wrap, h4{
+	.media-body > p {
+		margin-top: 10px;
+		font-size: 20px;
+	}
+	
+	.image-wrap, h4, .content_cnt{
 		display:inline;
 	}
+	
+	.feedback {
+		width:1200px;
+		padding-top: 20px;
+		padding-left: 20px;
+		border: whitesmoke 1px solid;
+		box-shadow: whitesmoke 3px 3px;
+		border-radius: 10px; 
+		margin-bottom: 20px;
+	}
+	
 	
 	.footer-category > ul {
 		list-style: none;
@@ -495,8 +511,8 @@
 	<a href="/user/feedback" class="btn btn-warning btn-sm">코멘트 남기기</a>
 </div><br>
 
+<c:forEach var="feedback" items="${feedback}">
 <div class="feedback">
-	<c:forEach var="feedback" items="${feedback}">
 	<div class="image-wrap">
 		<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" class="rounded-circle" id="feedback-img" style="width:60px;">
 	</div>
@@ -504,8 +520,8 @@
 	    <h4>${feedback.writer} <small><i>Posted on ${feedback.createDate}</i></small></h4>
 	    <p><i class='fas fa-quote-left' style='font-size:20px'></i>${feedback.content}<i class='fas fa-quote-right' style='font-size:20px'></i></p>
  	</div>
- 	</c:forEach>
 </div>
+</c:forEach>
 
 <div class="footer-container">
 <h3 class="footer-logo">구해줘 홈즈</h3>

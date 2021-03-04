@@ -90,7 +90,13 @@
 	 
 	 .todays {
 	 	text-align: center;
-	 	margin-top: 30px;
+	 	margin-top: 2rem;
+	 	font-weight: bold;
+	 }
+	 
+	 .notice {
+	 	text-align: center;
+	 	font-size: 1rem;
 	 }
 	 
 	 .comment {
@@ -123,9 +129,25 @@
 		display:inline;
 	}
 	
+	.media-body > p {
+		margin-top: 10px;
+		font-size: 20px;
+	}
+	
 	.image-wrap, h4, .content_cnt{
 		display:inline;
 	}
+	
+	.feedback {
+		width:1200px;
+		padding-top: 20px;
+		padding-left: 20px;
+		border: whitesmoke 1px solid;
+		box-shadow: whitesmoke 3px 3px;
+		border-radius: 10px; 
+		margin-bottom: 20px;
+	}
+	
 
 </style>
 <script>
@@ -165,11 +187,11 @@
 	
 	$(document).ready(function() {
 	    $('#content').on('keyup', function() {
-	        $('#cnt_letters').html("("+$(this).val().length+" / 200)");
+	        $('#cnt_letters').html("("+$(this).val().length+" / 100)");
 	 
-	        if($(this).val().length > 200) {
-	            $(this).val($(this).val().substring(0, 200));
-	            $('#cnt_letters').html("(200 / 200)");
+	        if($(this).val().length > 100) {
+	            $(this).val($(this).val().substring(0, 100));
+	            $('#cnt_letters').html("(100 / 100)");
 	        }
 	    });
 	});
@@ -261,11 +283,12 @@
 <div class="main-container visual-container"></div>
 
 <div class="main-container">
-<h2 class="todays">소중한 후기를 남겨주세요</h2><br>
+<h2 class="todays">소중한 후기를 남겨주세요</h2>
+<div class="notice"><i class='fas fa-bullhorn' style='font-size:24px'></i> 매주 추첨을 통해 소정의 상품을 드립니다. 당첨자는 공지사항에서 확인하실 수 있습니다.</div><br>
 <div>
 	<form id="feedback" method="post">
 	<input name="writer" type="hidden" value="${sessionScope.user.name}">
-	<textarea name="content" id="content" rows="5" style="width: 1200px" placeholder="홈즈를 이용하면서 느낀점을 적어주세요(200자 이내)"></textarea>	
+	<textarea name="content" id="content" rows="5" style="width: 1200px" placeholder="홈즈를 이용하면서 느낀점을 적어주세요(100자 이내)"></textarea>	
 	<c:choose>
 		<c:when test="${sessionScope.loginCheck eq true}">
 			<button type="button" onclick="addFeedback();" class="btn btn-warning btn-sm" style="margin-bottom: 20px; display: inline;">저장</button>
@@ -274,13 +297,14 @@
 			<button type="button" onclick="alert(1);" class="btn btn-warning btn-sm" style="margin-bottom: 20px; display: inline;">저장</button>
 		</c:otherwise>
 	</c:choose>
-	<div id="cnt_letters">(0 / 200)</div>
+	<div id="cnt_letters">(0 / 100)</div>
 	</form>
 	
 </div><br>
 
+
+<c:forEach var="feedback" items="${feedback}">
 <div class="feedback">
-	<c:forEach var="feedback" items="${feedback}">
 	<div class="image-wrap">
 		<img src="https://www.w3schools.com/bootstrap4/img_avatar4.png" class="rounded-circle" id="feedback-img" style="width:60px;">
 	</div>
@@ -288,9 +312,10 @@
 	    <h4>${feedback.writer} <small><i>Posted on ${feedback.createDate}</i></small></h4>
 	    <p><i class='fas fa-quote-left' style='font-size:20px'></i>${feedback.content}<i class='fas fa-quote-right' style='font-size:20px'></i></p>
  	</div>
+ </div>
  	</c:forEach>
 </div>
-</div>
+
 
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
 </body>
