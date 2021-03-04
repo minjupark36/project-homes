@@ -22,18 +22,55 @@
 		border-radius: 10px; 
 	}
 	
-	.scrapBtn {height: 30px; width:30px;cursor:pointer;transform: translate(20%,20%)}
+	.scrapImage {
+		opacity: 0.9;
+	}
+	
+	.scrapImage:hover {
+		opacity: 0.5;
+	}
+	
+	.scrapBtn {
+		height: 30px; 
+		width:30px;
+		cursor:pointer;
+		transform: translate(20%,20%);
+	}
 	 
-	 #list {width:90%; position: relative;}
-	 #list .image {display: inline-block;}
-	 #list .button {position: absolute; display: inline-block; 
-	 				height: 200px; width: 300px; margin-left: 50px; margin-bottom: 30px;}
-	 .scrapBtn:hover{-webkit-filter: opacity(.5) drop-shadow(0 0 0 gray);
-	 				filter: opacity(.5) drop-shadow(0 0 0 gray);}
+	 #list {
+	 	width:90%; 
+	 	position: relative;
+	 }
+	 
+	 #list .image {
+	 	display: inline-block;
+	 }
+	 
+	 #list .button {
+	 	position: absolute; 
+	 	display: inline-block; 
+	 	height: 200px; 
+	 	width: 300px; 
+	 	margin-left: 50px; 
+	 	margin-bottom: 30px;
+	 }
+	 
+	 .scrapBtn:hover{
+	 	filter: opacity(.5) drop-shadow(0 0 0 gray);
+	 }
 	 			
-	 .sort {text-align: center;}
-	 #pagination {text-align: center;}
-	 table {margin-left: -8%}
+	 .sort {
+	 	text-align: center;
+	 }
+	 
+	 #pagination {
+	 	text-align: center;
+	 }
+	 
+	 table {
+	 	margin-left: -8%
+	 }
+	 
 	 #home-icon {
 		width:30px;
 		height:30px;
@@ -42,18 +79,16 @@
 	.header {
 		width: 100%;
 		height:300px;
-		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";
-		
+		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";		
 	}
 	
 	.btn-circle.btn-sm { 
-          width: 80px; 
-          height: 40px; 
-          padding: 3px 0px; 
-          border-radius: 20px; 
-          text-align: center; 
-          margin-right: 20px;
-
+        width: 80px; 
+        height: 40px; 
+        padding: 3px 0px; 
+        border-radius: 20px; 
+        text-align: center; 
+        margin-right: 20px;
      } 
       
      .scrap-container {
@@ -140,6 +175,10 @@
 		        });
 		    }
 		}); 
+		
+		$(document).ready(function(){
+			  $('[data-toggle="tooltip"]').tooltip();
+			});
 	</script>
 
 </head>
@@ -213,7 +252,7 @@
 			</div>
 			<div class="image">
 				<a href="${scrap.imageDto.filepath}">
-					<img class="scrapImage" src="${scrap.imageDto.filepath}">
+					<img class="scrapImage" data-toggle="tooltip" title="${scrap.imageDto.hashtagsNames}" src="${scrap.imageDto.filepath}">
 				</a>
 			</div>
 				

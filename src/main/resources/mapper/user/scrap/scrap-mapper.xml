@@ -51,6 +51,7 @@
 		, s.create_date
 		, i.filepath	
 		, i.sort
+		, i.hashtags_names
 	FROM 
 		scrap_images s		
 	JOIN 

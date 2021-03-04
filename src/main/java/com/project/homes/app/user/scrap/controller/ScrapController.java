@@ -1,5 +1,8 @@
 package com.project.homes.app.user.scrap.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +34,9 @@ public class ScrapController {
 			) {
 		
 		int limit = 20;
-		MemberDto memberDto = Utils.getMemberFromSession();		
-		System.out.println("================================");
-		System.out.println(memberDto);
-		System.out.println("================================");
+		
+		MemberDto memberDto = Utils.getMemberFromSession();
+
 		model.addAttribute("scrapList",scrapService.getScrapList(sort,limit,memberDto));
 		return "user/scrap/scrapList";
 	}
