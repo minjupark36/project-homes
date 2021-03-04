@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 	.ScrollButton {
 		  position: fixed;   /* 버튼의 위치 고정 */
@@ -196,21 +197,17 @@
 	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}'">수정</button>
 	</c:when>
 	</c:choose>
-	<c:choose>
-	<c:when test="${sessionScope.loginCheck eq true}">
-		<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/reply?pid=${d.groupNo}&groupOrder=${d.groupOrder}&depth=${d.depth}&categoriesId=${d.categoriesId}'">답글</button>	
-	</c:when>
-	<c:otherwise>
-		<button type="button" class="btn btn-outline-secondary" onclick="login()">답글</button>	
-	</c:otherwise>
-	</c:choose>
 	
 </div>
 </div>
-<br>
+<br>	
+<c:choose>	
+<c:when test="${d.depth == 0}">
 <div class="reply">
+<button type="button" class="btn btn-outline-secondary">답글 ${countReply}</button>
 	<table class="table table-hover">	
-	<c:forEach var="r" items="${replyList}">		
+	<c:forEach var="r" items="${replyList}">
+		
 		<tr onclick="location.href='/user/board/detail?id=${r.id}&categoriesId=${r.categoriesId}'">
 			<th>작성자</th><td>${d.memberDto.name}</td>
 			<th>제목</th><td>${r.title}</td>
@@ -218,6 +215,8 @@
 	</c:forEach>
 	</table>
 </div>
+</c:when>
+</c:choose>
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
 <a id="footer"></a>
 <div class="sideBanner">
@@ -229,6 +228,17 @@
 		<li class="nav-item active"><a href="javascript:showPreBoard(${d.id},1);" class="Btn"><i class="material-icons" style="font-size:36px">skip_previous</i></a> PRE</li>
 		<li><br></li>
 		<li class="nav-item active"><a href="javascript:showNextBoard(${d.id},2);" class="Btn"><i class="material-icons" style="font-size:36px">skip_next</i></a> NEXT</li>
+		<li><br></li>
+		<li class="nav-item active">
+		<c:choose>
+		<c:when test="${sessionScope.loginCheck eq true}">
+			<a href="/user/board/reply?pid=${d.groupNo}&groupOrder=${d.groupOrder}&depth=${d.depth}&categoriesId=${d.categoriesId}" class="Btn"><i class="fa fa-paper-plane"></i> 답글</a>
+		</c:when>
+		<c:otherwise>
+			<a href="javascript:login()" class="Btn"><i class="fa fa-paper-plane"></i> 답글</a>	
+		</c:otherwise>
+		</c:choose>
+		</li>
 	</ul>
 </div>
 </body>

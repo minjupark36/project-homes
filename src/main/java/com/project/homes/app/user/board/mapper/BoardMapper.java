@@ -26,4 +26,5 @@ public interface BoardMapper {
 	BoardDto getPreBoard(long id);
 	long insertReply(BoardDto boardDto);
 	void groupOrderUpdate(long id, long groupOrder);
+	long countReply(long id);
 }
