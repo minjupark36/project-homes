@@ -206,7 +206,7 @@
   <c:choose>
     <c:when test="${sessionScope.loginCheck eq true}">
 	    <li class="nav-item active">
-	      <a class="nav-link" href="/mainRecommendation?userId=${sessionScope.user.id}"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
+	      <a class="nav-link" href="/main/customized"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
 	    </li>
     </c:when>
     <c:otherwise>

@@ -48,7 +48,7 @@ public class MainPageController {
 	@GetMapping("/main")
 	public String mainPageList(Model model) {
 		
-		int limit = 5;
+		int limit = 3;
 	
 		model.addAttribute("interior",mainPageService.getInteriorImages());
 		model.addAttribute("deco",mainPageService.getDecoImages());
@@ -64,10 +64,13 @@ public class MainPageController {
 		MemberDto memberDto = Utils.getMemberFromSession();
 		String imageTags = memberDto.getHashtagPreference();		
 		List<String> tagList = Arrays.asList(imageTags.split(","));
+		
+		int limit = 3;
 	
 		model.addAttribute("tagList",tagList);
 		model.addAttribute("interior",mainPageService.getInteriorImages());
 		model.addAttribute("deco",mainPageService.getDecoImages());	
+		model.addAttribute("feedback",feedbackService.getFeedbackList(limit));
 	
 		return "/user/mainpage/main";
 	}
