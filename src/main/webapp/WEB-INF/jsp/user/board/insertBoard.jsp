@@ -13,6 +13,11 @@
 			height:30px;
 	}
 	
+	#form{
+		width:1600px;
+		margin-left:8%
+	}
+	
 </style>
 <script>
 	function writeBoard(){
@@ -129,9 +134,9 @@
    	
 </table>
 <button type="button" id="btn" class="btn btn-outline-secondary" onclick="writeBoard();">작성 완료</button>
-
-</form>
 <button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board'">취소</button>
+</form>
+
 
 </div>
 </body>
