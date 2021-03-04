@@ -200,11 +200,14 @@
 	
 </div>
 </div>
-<br>
+<br>	
+<c:choose>	
+<c:when test="${d.depth == 0}">
 <div class="reply">
-	<button type="button" class="btn btn-outline-secondary">답글${countReply}</button>
+<button type="button" class="btn btn-outline-secondary">답글 ${countReply}</button>
 	<table class="table table-hover">	
-	<c:forEach var="r" items="${replyList}">		
+	<c:forEach var="r" items="${replyList}">
+		
 		<tr onclick="location.href='/user/board/detail?id=${r.id}&categoriesId=${r.categoriesId}'">
 			<th>작성자</th><td>${d.memberDto.name}</td>
 			<th>제목</th><td>${r.title}</td>
@@ -212,6 +215,8 @@
 	</c:forEach>
 	</table>
 </div>
+</c:when>
+</c:choose>
 <a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
 <a id="footer"></a>
 <div class="sideBanner">
