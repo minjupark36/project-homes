@@ -78,11 +78,23 @@
 	
 	<select id="getBoardDetail" resultType="BoardDto" parameterType="long" resultMap="boardDtoResultMap">
 		SELECT 
-			<include refid="boardColumns" />
+			b.id,
+			members_id,
+			title,
+			content,
+			b.create_date,
+			b.modified_date,
+			categories_id,
+			view,
+			group_no,
+			group_order,
+			depth,
+			m.name
 			
-		FROM boards
-		
-		WHERE id=#{id}
+		FROM boards b
+		JOIN members m
+		ON m.id = b.members_id
+		WHERE b.id=#{id}
 	</select>
 	
 	<select id="getReplyList" resultType="BoardDto" parameterType="long" resultMap="boardDtoResultMap">

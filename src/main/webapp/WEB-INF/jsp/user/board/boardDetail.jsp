@@ -25,6 +25,10 @@
 			width:30px;
 			height:30px;
 	}
+	#detail{
+		width:1600px;
+		margin-left:8%
+	}
 </style>
 <script>
 	function deleteBoard(id){
@@ -123,9 +127,6 @@
 	      <a class="nav-link" href="/user/board">| 커뮤니티</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="/main/store">| 스토어</a>
-	    </li>
-	    <li class="nav-item">
 	      <a class="nav-link" href="/user/scrap">| 내 스크랩</a>
 	    </li>
 	  </ul>
@@ -151,16 +152,24 @@
 	  <p>Resize this responsive page to see the effect!</p> 
 	</div>
 <c:set var="d" value="${boardDetail}"></c:set>
+<div id="detail">
 <div>
+	<c:choose>
+	<c:when test="${sessionScope.user.role eq 'ADMIN'}">
 	<button type="button" class="btn btn-outline-secondary" onclick="deleteBoard(${d.id})">글 삭제</button>
+	</c:when>
+	</c:choose>
+	<c:choose>
+	<c:when test="${sessionScope.user.id}==${d.membersId}">
 	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}'">수정</button>
-	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board'">게시판</button>
+	</c:when>
+	</c:choose>
 </div>
 <div>
 <input type="hidden" value="${d.id}" name="id"/> 
 	<table class="table table-hover">
 		<tr>
-			<th>작성자</th><td></td>
+			<th>작성자</th><td>${d.memberDto.name}</td>
 		</tr>
 		
 		<tr>
@@ -170,6 +179,7 @@
 			<th>내용</th><td>${d.content}</td>
 		</tr>	
 	</table>
+</div>
 </div>
 <div>
 	<button type="button" class="btn btn-outline-danger" onclick="showPreBoard(${d.id},1)">이전글</button>
