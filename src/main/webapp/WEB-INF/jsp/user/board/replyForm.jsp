@@ -12,6 +12,10 @@
 			width:30px;
 			height:30px;
 	}
+	#form{
+		width:1400px;
+		margin-left:13%
+	}
 	
 </style>
 <script>
