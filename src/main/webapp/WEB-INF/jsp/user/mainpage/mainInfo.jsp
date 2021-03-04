@@ -47,11 +47,6 @@
 	.tag{
 		display:inline
 	}
-	#home-icon {
-		width:30px;
-		height:30px;
-	}
-	
 	.search-form {
 		text-align: center;
 		margin: 30px;
@@ -140,52 +135,6 @@
 </script>
 </head>
 <body>
-
-<!-- 메인 메뉴바 -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="/main"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
-    </li>
-    <c:choose>
-    <c:when test="${sessionScope.user.role eq 'ADMIN'}">
-	    <li class="nav-item">
-	      <a class="nav-link" href="/admin/board">| 커뮤니티</a>
-	    </li>
-     </c:when>
-     <c:otherwise>
-     	<li class="nav-item">
-	      <a class="nav-link" href="/user/board">| 커뮤니티</a>
-	    </li>
-     </c:otherwise>
-    </c:choose>
-   
-    <li class="nav-item">
-      <a class="nav-link" href="/user/scrap">| 내 스크랩</a>
-    </li>
-  </ul>
-</nav>
-
-<!-------- 하위 메뉴바 ------->
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="/main">홈</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/main/images">사진</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/main/info">정보</a>
-    </li>
-  </ul>
-</nav>
-
-<div class="jumbotron text-center">
-  <h1>My First Bootstrap Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
-</div>
-
 <!-------- 검색하기 --------->
 <div class="search-form">
 	<h2>정보 검색하기</h2>
