@@ -66,7 +66,8 @@ public class MainPageController {
 		List<String> tagList = Arrays.asList(imageTags.split(","));
 		
 		int limit = 3;
-	
+		
+		model.addAttribute("member",memberDto);
 		model.addAttribute("tagList",tagList);
 		model.addAttribute("interior",mainPageService.getInteriorImages());
 		model.addAttribute("deco",mainPageService.getDecoImages());	

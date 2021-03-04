@@ -25,7 +25,10 @@
 	resultMap="FeedbackDto">
 	
 	SELECT
-		*
+		id
+		,writer
+		,create_date
+		,content
 	FROM 
 		feedback		
 	ORDER BY

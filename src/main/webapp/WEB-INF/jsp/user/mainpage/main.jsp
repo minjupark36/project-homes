@@ -14,6 +14,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
   
 <style type="text/css">
@@ -163,25 +164,31 @@
 	 .comment {
 	 	margin-left:1100px
 	 }
-	 .ScrollButton {
-			  position: fixed;   /* 버튼의 위치 고정 */
-			  right: 10px;       /* x 위치 입력 */
-			  cursor: pointer;   /* 호버링 했을 때 커서 모양 변경 */
-			  z-index: 10;       /* 다른 태그에 가려지지 않게 우선순위 변경 */
-			  display: none;     /* 스크롤 위치에 상관없이 보이게 하려면 생략 */
-			  font-size:20px		}
-				/* 두 태그에 각각 y 위치 입력 */
-	#TopButton {
-	  	  bottom: 108px;        
+
+	.side-inner-btn{
+		width:60px;
+		height:60px;
+		border-radius:100%;
+		background-color:#685547;
+		position: relative;
+		text-align: center;	
+		margin-bottom: 20px;	
 	}
+	
+	.home-btn, .search-btn, .top-btn, .scrap-btn{
+		color: #faec8e;
+		font-size: 35px;
+		padding-top: 12px;
+		padding-right: 5px;
+	}
+
 	
 	.sideBanner {
 	  position: absolute;
 	  width: 150px;
 	  height: 200px;
-	  left:1800px;
+	  right:30px;
 	  top: 400px;
-	  background-color: white;
 	  color: black;
 	  font-size:25px
 	}
@@ -261,21 +268,7 @@
 	
 </style>
 <script>
-	var floatPosition = parseInt($(".sideBanner").css('top'))
 	
-	//scroll 인식
-	$(window).scroll(function() {
-	
-	 // 현재 스크롤 위치
-	 var currentTop = $(window).scrollTop();
-	 var bannerTop = currentTop + floatPosition + "px";
-	
-	 //이동 애니메이션
-	 $(".sideBanner").stop().animate({
-	   "top" : bannerTop
-	 }, 500);
-	
-	}).scroll();
 	function addScrapList(id){
 		
 		console.log(id)
@@ -320,19 +313,10 @@
 	}
 	
 	$(function() {
-	    $(window).scroll(function() {
-	        if ($(this).scrollTop() > 10) {
-	            $('.ScrollButton').fadeIn();
-	        } else {
-	            $('.ScrollButton').fadeOut();
-	        }
-	    });
 	        
 	    $("#TopButton").click(function() {
 	        $('html').animate({scrollTop : 0}, 600);
-	    });
-	 
-	    
+	    });	    
 	});
 	
 	function callFunction(){
@@ -547,17 +531,6 @@
 	</c:forEach>
 </div><br>
 
-<div class="sideBanner">
-	<ul class="navbar-nav">
-		<li class="nav-item active">1</li>
-		<li class="nav-item active">2</li>
-		<li class="nav-item active">3</li>
-		<li class="nav-item active">4</li>
-		<li class="nav-item active">5</li>
-		<li class="nav-item active">6</li>
-	</ul>
-</div>
-
 <h2 class="todays">고객 코멘트</h2>
 <div class="comment">
 	<a href="/user/feedback" class="btn btn-warning btn-sm">코멘트 남기기</a>
@@ -595,6 +568,35 @@
 </div>
 </div>
 
-<a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
+<div class="sideBanner">
+	<c:choose>
+		<c:when test="${sessionScope.user != null}">
+			<div class="side-inner-btn"><a href="/main/customized"><i class="fas fa-home fa-2x home-btn"></i></a></div>
+		</c:when>
+		<c:otherwise>
+			<div class="side-inner-btn"><a href="/main"><i class="fas fa-home fa-2x home-btn"></i></a></div>
+		</c:otherwise>
+	</c:choose>
+	<div class="side-inner-btn"><a href="/main/info"><i class='fas fa-search fa-2x search-btn'></i></a></div>
+	<div class="side-inner-btn"><a href="/user/scrap"><i class='far fa-bookmark fa-2x scrap-btn'></i></a></div>		
+	<div class="side-inner-btn"><a id="TopButton" class="ScrollButton"><i class='fas fa-angle-up fa-2x top-btn'></i></a></div>
+</div>
 </body>
+<script>
+	var floatPosition = parseInt($(".sideBanner").css('top'))
+	
+	//scroll 인식
+	$(window).scroll(function() {
+	
+		 // 현재 스크롤 위치
+		 var currentTop = $(window).scrollTop();
+		 var bannerTop = currentTop + floatPosition + "px";
+	
+		 //이동 애니메이션
+		 $(".sideBanner").stop().animate({
+		   "top" : bannerTop
+		 }, 500);
+	
+	}).scroll();
+</script>
 </html>
