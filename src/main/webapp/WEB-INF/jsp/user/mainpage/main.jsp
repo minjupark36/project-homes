@@ -200,7 +200,7 @@
 	}
 	
 	.feedback {
-		width:1200px;
+		width:1250px;
 		padding-top: 20px;
 		padding-left: 20px;
 		border: whitesmoke 1px solid;
@@ -299,6 +299,26 @@
 			
 			});	
 		}
+	
+	function countView(id){
+		
+		$.ajax({ 
+			url:'/main/countView', 
+			method:'post',
+			data: {'id':id },
+			dataType:'text',
+			success:function(res){
+				if(res.trim()==true){
+					
+				}
+			},
+			error:function(xhr, status, err){
+				
+			}
+		
+		});	
+	}
+	
 	$(function() {
 	    $(window).scroll(function() {
 	        if ($(this).scrollTop() > 10) {
@@ -504,7 +524,7 @@
 		</div>
 		<div class="card">
 		<div class="card-img">
-			<a href="${deco.url}">
+			<a href="${deco.url}" onclick="countView(${deco.id})">
 				<img class="card-img-top" 
 				src="${deco.filepath}"
 				onmouseenter="zoomIn(event)"
@@ -514,7 +534,7 @@
 		<div class="card-body">
 			<h4 class="card-title">${deco.hashtagsNames} </h4>
 		    <p class="card-text">
-		    	<i class='fas fa-eye'></i> ${deco.view}
+		    	<i class='fas fa-eye'></i>${deco.view}
 		    	<i class='fas fa-heart'> ${deco.scrap}</i> 
 		    	<i class='fas fa-calendar-alt'> ${deco.createDate}</i> 		    	
 		    </p>		    

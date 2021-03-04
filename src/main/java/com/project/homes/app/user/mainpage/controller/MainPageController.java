@@ -146,6 +146,10 @@ public class MainPageController {
 		return "/user/terms/terms_and_conditions";
 	}
 	
+	@PostMapping("/main/countView")
+	public void countView(@RequestParam("id") long id) {
+		mainPageService.countView(id);		
+	}
 	
 	//메인페이지에서 인테리어 사진 클릭 -> 디테일 페이지
 	@GetMapping("/main/detail")
