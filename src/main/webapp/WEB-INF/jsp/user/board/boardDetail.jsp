@@ -156,7 +156,7 @@
 <div id="detail">
 <div>
 	<c:choose>
-	<c:when test="${sessionScope.user.id eq #id}">
+	<c:when test="${sessionScope.user.id eq d.membersId}">
 	<button type="button" class="btn btn-outline-secondary" onclick="deleteBoard(${d.id})">글 삭제</button>
 	<button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/edit/?id=${d.id}&categoriesId=${d.categoriesId}'">수정</button>
 	</c:when>
