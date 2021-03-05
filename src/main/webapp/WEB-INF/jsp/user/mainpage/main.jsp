@@ -69,7 +69,6 @@
   		height:290px;
   		object-fit:cover;
   		overflow:hidden;
-
   	}
   	
   	.card-text {
@@ -96,8 +95,7 @@
 	 	width:100%; 
 	 	position: relative;
 	 	margin: auto auto;
-	 }
-	 
+	 }	 
 	 
 	 #list .button {
 	 	position: absolute; 
@@ -122,7 +120,7 @@
 	 
 	 .todays {
 	 	text-align: center;
-	 	margin-top: 30px;
+	 	margin-top: 50px;
 	 }
 	 
 	 .comment {
@@ -145,7 +143,6 @@
 		padding-top: 12px;
 		padding-right: 5px;
 	}
-
 	
 	.sideBanner {
 	  position: absolute;
@@ -259,7 +256,7 @@
 <!-------회원가입시 선택한 hashtags--------------->
 <div class="wholeScreen">
 <c:choose>
-<c:when test="${sessionScope.loginCheck eq true}">
+<c:when test="${sessionScope.user.name != null}">
 <div class="hashtags">	
 	<h2 class="todays">${sessionScope.user.name}님's hashtags</h2><br>
 	<c:forEach var="tags" items="${tagList}">
@@ -323,7 +320,7 @@
 		</c:if>		
 		<c:set var="i" value="${i+1}"/>
 		</c:forEach>
-	</div><br>
+	</div>
 	
 <h2 class="todays">오늘의 소품</h2><br>
 	

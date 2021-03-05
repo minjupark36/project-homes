@@ -21,16 +21,12 @@
 	.main-visual{
 		width:100%;
 		height:500px;
-		
-		
 	}
 	
 	.main-container {
 		width:100%;
 		margin: 0 0;
-		padding: 0 30px;
-		
-		
+		padding: 0 30px;	
 	}
 
 	.visual-container {
@@ -38,15 +34,6 @@
 		background-image: url("https://webstockreview.net/images/furniture-clipart-interior-design.png");
 		background-repeat:no-repeat;
 		background-position: center bottom;
-	}
-	
-	#login, #logout {
-		width:800px;
-		color:white;
-		text-align: right;
-		font-weight: bolder;
-		font-size: 1.5em;
-		text-decoration: none;
 	}
 	
 	a {
@@ -62,27 +49,21 @@
 		display:inline
 	}
 	
-	#home-icon {
-		width:30px;
-		height:30px;
-	}
 	.header {
 		width: 100%;
 		height:300px;
-		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";
-		
-	}
-	
+		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";		
+	}	
 	
 	.container {
 		margin-left:0px;
 	}
+	
 	.main-container {
 		width: 1320px;
   		margin: auto auto;
   		padding: 0 15px;	 		
-  	}
-  	
+  	} 	
 	 
 	 i{
 	 	margin-left:5px;
@@ -102,25 +83,30 @@
 	 .comment {
 	 	margin-left:1100px
 	 }
-	 .ScrollButton {
-			  position: fixed;   /* 버튼의 위치 고정 */
-			  right: 10px;       /* x 위치 입력 */
-			  cursor: pointer;   /* 호버링 했을 때 커서 모양 변경 */
-			  z-index: 10;       /* 다른 태그에 가려지지 않게 우선순위 변경 */
-			  display: none;     /* 스크롤 위치에 상관없이 보이게 하려면 생략 */
-			  font-size:20px		}
-				/* 두 태그에 각각 y 위치 입력 */
-	#TopButton {
-	  	  bottom: 108px;        
+	 
+	 .side-inner-btn{
+		width:60px;
+		height:60px;
+		border-radius:100%;
+		background-color:#685547;
+		position: relative;
+		text-align: center;	
+		margin-bottom: 20px;	
+	 }
+	
+	 .home-btn, .search-btn, .top-btn, .scrap-btn{
+		color: #faec8e;
+		font-size: 35px;
+		padding-top: 12px;
+		padding-right: 5px;
 	}
 	
 	.sideBanner {
 	  position: absolute;
 	  width: 150px;
 	  height: 200px;
-	  left:1800px;
+	  right:30px;
 	  top: 400px;
-	  background-color: white;
 	  color: black;
 	  font-size:25px
 	}
@@ -200,86 +186,6 @@
 </head>
 <body>
 
-<!-- 메인 메뉴바 -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav">
-  <c:choose>
-    <c:when test="${sessionScope.loginCheck eq true}">
-	    <li class="nav-item active">
-	      <a class="nav-link" href="/main/customized"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
-	    </li>
-    </c:when>
-    <c:otherwise>
-	    <li class="nav-item active">
-	      <a class="nav-link" href="/main"><img src="https://www.iconpacks.net/icons/1/free-home-icon-189-thumb.png" id="home-icon"> 구해줘 홈즈</a>
-	    </li>
-    </c:otherwise>
-    </c:choose>
-    
-    
-     <c:choose>
-    <c:when test="${sessionScope.user.role eq 'ADMIN'}">
-	    <li class="nav-item">
-	      <a class="nav-link" href="/admin/board">| 커뮤니티</a>
-	    </li>
-     </c:when>
-     <c:otherwise>
-     	<li class="nav-item">
-	      <a class="nav-link" href="/user/board">| 커뮤니티</a>
-	    </li>
-     </c:otherwise>
-    </c:choose>
-    <c:choose>
-    <c:when test="${sessionScope.loginCheck eq true}">
-    <li class="nav-item">
-      <a class="nav-link" href="/user/scrap">| 내 스크랩</a>
-    </li>   
-    </c:when>
-    <c:otherwise>
-    <li class="nav-item">
-      <a class="nav-link" href="javascript:callFunction();">| 내 스크랩</a>
-    </li>  
-    </c:otherwise>
-    </c:choose> 
-    <c:choose>
-    <c:when test="${sessionScope.user.role eq 'ADMIN'}">
-    <li class="nav-item">
-    	<a class="nav-link" href="/admin/manage">| 사이트관리</a>
-    </li>
-    </c:when>
-    </c:choose>
-  </ul>
-  <c:choose>
-  <c:when test="${sessionScope.loginCheck eq true}">
-	  <span id="logout">
-	  		<a href="/log-out">로그아웃</a>   
-	   </span>
-  </c:when>
-  <c:otherwise>
- 	<span id="login">
- 		<a href="/sign-in">로그인</a>    	
-    </span>
-  </c:otherwise>
-  </c:choose>
-   
-</nav>
-
-<!-- 하위 메뉴바 -->
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="/main">홈</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/main/images">사진</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/main/info">정보</a>
-    </li>
-  </ul>
-</nav>
-
-<div class="main-visual">
 <div class="main-container visual-container"></div>
 
 <div class="main-container">
@@ -316,7 +222,36 @@
  	</c:forEach>
 </div>
 
-
-<a id="TopButton" class="ScrollButton"><img src="https://www.iconpacks.net/icons/1/free-icon-arrow-856.png"></a>
+<!-- 사이드배너 -->
+<div class="sideBanner">
+	<c:choose>
+		<c:when test="${sessionScope.user != null}">
+			<div class="side-inner-btn"><a href="/main/customized"><i class="fas fa-home fa-2x home-btn"></i></a></div>
+		</c:when>
+		<c:otherwise>
+			<div class="side-inner-btn"><a href="/main"><i class="fas fa-home fa-2x home-btn"></i></a></div>
+		</c:otherwise>
+	</c:choose>
+	<div class="side-inner-btn"><a href="/main/info"><i class='fas fa-search fa-2x search-btn'></i></a></div>
+	<div class="side-inner-btn"><a href="/user/scrap"><i class='far fa-bookmark fa-2x scrap-btn'></i></a></div>		
+	<div class="side-inner-btn"><a id="TopButton" class="ScrollButton"><i class='fas fa-angle-up fa-2x top-btn'></i></a></div>
+</div>
 </body>
+<script>
+	var floatPosition = parseInt($(".sideBanner").css('top'))
+	
+	//scroll 인식
+	$(window).scroll(function() {
+	
+		 // 현재 스크롤 위치
+		 var currentTop = $(window).scrollTop();
+		 var bannerTop = currentTop + floatPosition + "px";
+	
+		 //이동 애니메이션
+		 $(".sideBanner").stop().animate({
+		   "top" : bannerTop
+		 }, 500);
+	
+	}).scroll();
+</script>
 </html>
