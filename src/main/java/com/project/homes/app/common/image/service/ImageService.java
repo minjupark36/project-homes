@@ -40,4 +40,8 @@ public class ImageService {
 	public long deleteInteriotImage(@RequestParam("id") long id) {
 		return imageMapper.deleteInteriorImage(id);
 	}
+	
+	public List<ImageDto> imageListBySearchingTag(@RequestParam("hashtagsNames") String hashtagsNames){
+		return imageMapper.imageListBySearchingTag(hashtagsNames);
+	}
 }

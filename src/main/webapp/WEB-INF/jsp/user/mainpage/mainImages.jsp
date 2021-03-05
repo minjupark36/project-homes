@@ -258,6 +258,12 @@
 <br>
 <div class="main-visual">
 <div class="wholeScreen">
+<!-- search form -->
+<div>
+<form action="/hashtag/search" method="get" >
+<input type="text" name="hashtagsNames" id="hashtagsNames"><button type="submit">검색</button>
+</form>
+</div>
 <!------- hashtags ------->
 <div class="images-container">
 <div class="hashtags">	

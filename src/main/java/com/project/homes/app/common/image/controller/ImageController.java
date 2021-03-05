@@ -53,5 +53,10 @@ public class ImageController {
 		return imageService.deleteInteriotImage(id);
 	}
 	
-	
+	@GetMapping("/hashtag/search")
+	public String imageListBySearchingTag(@RequestParam("hashtagsNames") String hashtagsNames,Model model) {
+		System.out.println(hashtagsNames);
+		model.addAttribute("mainpageList",imageService.imageListBySearchingTag(hashtagsNames));
+		return "user/mainpage/mainImages";
+	}
 }

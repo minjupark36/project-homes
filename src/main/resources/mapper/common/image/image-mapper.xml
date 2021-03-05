@@ -56,4 +56,11 @@
 	<delete id="deleteInteriorImage" parameterType="long">
 		DELETE FROM images WHERE id=#{id}
 	</delete>
+	
+	<select id="imageListBySearchingTag" parameterType="String" resultType="ImageDto" resultMap="ImageDto">
+		SELECT
+		<include refid="ImageColumns"/>
+		FROM images
+		WHERE hashtags_names LIKE CONCAT('%',#{hashtagsNames},'%')
+	</select>
 </mapper>
