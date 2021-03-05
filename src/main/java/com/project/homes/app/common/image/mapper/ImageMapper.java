@@ -16,4 +16,5 @@ public interface ImageMapper {
 	ImageDto getMaxIdInteriorImage();
 	long insertDecoImage(ImageDto imageDto);
 	long deleteInteriorImage(long id);
+	List<ImageDto> imageListBySearchingTag(String hashtagsNames);
 }

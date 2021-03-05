@@ -16,10 +16,11 @@
 	.header {
 		width: 100%;
 		height:300px;
-		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";		
-	}
+		background-image: 'https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' 
+		}
 	
 	#login, #logout {
+		margin-left:100px;
 		width:1320px;
 		color:whitesmoke;
 		text-align: right;
@@ -27,13 +28,24 @@
 		font-size: 1.5em;
 		text-decoration: none;
 	}
-	
+	#sign-up{
+		margin-left:30px;
+		color:whitesmoke;
+		text-align: right;
+		font-weight: bolder;
+		font-size: 1.5em;
+		text-decoration: none;
+	}
 	#logout > a {
 		text-decoration: none;
 		color:white;
 	}
 	
 	#login > a {
+		text-decoration: none;
+		color:white;
+	}
+	#sign-up > a {
 		text-decoration: none;
 		color:white;
 	}
@@ -99,6 +111,9 @@
   <c:otherwise>
  	<span id="login">
  		<a href="/sign-in">로그인</a>    	
+    </span>
+     <span id="sign-up">
+ 		<a href="/sign-up">회원가입</a>    	
     </span>
   </c:otherwise>
   </c:choose>   

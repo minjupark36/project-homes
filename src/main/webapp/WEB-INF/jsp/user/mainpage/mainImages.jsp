@@ -158,6 +158,20 @@
      a:hover {
      	text-decoration: none;
      }
+     .searchForm{
+     	margin-left:1150px;
+     	
+     }
+     .searchTag{
+     	width:300px;
+     	display:inline-block;
+     	height:40px
+     }
+     .searchBtn{
+     	display:inline-block;
+     	margin-left:20px;
+     	height:40px
+     }
 
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -258,6 +272,13 @@
 <br>
 <div class="main-visual">
 <div class="wholeScreen">
+<!-- search form -->
+<div class="searchForm">
+<form action="/hashtag/search" method="get" >
+<input type="text" name="hashtagsNames" id="hashtagsNames" class="form-control searchTag" placeholder="검색할 태그를 입력해주세요"><button type="submit" class="btn btn-outline-secondary searchBtn">검색</button>
+</form>
+</div>
+<br>
 <!------- hashtags ------->
 <div class="images-container">
 <div class="hashtags">	
