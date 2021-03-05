@@ -19,8 +19,7 @@
 		background-image: 'https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' 
 		}
 	
-	#login, #logout {
-		margin-left:100px;
+	#login, #logout {		
 		width:1320px;
 		color:whitesmoke;
 		text-align: right;
@@ -28,7 +27,8 @@
 		font-size: 1.5em;
 		text-decoration: none;
 	}
-	#sign-up{
+	
+	#sign-up {
 		margin-left:30px;
 		color:whitesmoke;
 		text-align: right;
@@ -36,6 +36,7 @@
 		font-size: 1.5em;
 		text-decoration: none;
 	}
+	
 	#logout > a {
 		text-decoration: none;
 		color:white;
