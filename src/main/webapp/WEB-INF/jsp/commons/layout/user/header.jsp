@@ -27,13 +27,24 @@
 		font-size: 1.5em;
 		text-decoration: none;
 	}
-	
+	#sign-up{
+		margin-left:30px;
+		color:whitesmoke;
+		text-align: right;
+		font-weight: bolder;
+		font-size: 1.5em;
+		text-decoration: none;
+	}
 	#logout > a {
 		text-decoration: none;
 		color:white;
 	}
 	
 	#login > a {
+		text-decoration: none;
+		color:white;
+	}
+	#sign-up > a {
 		text-decoration: none;
 		color:white;
 	}
@@ -99,6 +110,9 @@
   <c:otherwise>
  	<span id="login">
  		<a href="/sign-in">로그인</a>    	
+    </span>
+     <span id="sign-up">
+ 		<a href="/sign-up">회원가입</a>    	
     </span>
   </c:otherwise>
   </c:choose>   
