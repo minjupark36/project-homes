@@ -20,12 +20,18 @@
 		font-color: black;
 	}
 	.footer-container{
-		width:100%;
+		width:100vw;
 		height:300px;
-		border-top: solid 1px black;
+		background-color: whitesmoke;
 		padding-top:30px;
 		margin-top:30px;
 	}
+	
+	.footer-contents {
+		width: 1320px;
+		margin: auto auto;
+	}
+	
 	a {
 		text-decoration: none;
 		color:orange;
@@ -46,16 +52,18 @@
 		height: 100px;
 		float: right;
 		margin-top:-100px;
-		margin-right: -680px;
+		margin-right: -650px;
 	}
 	
 	.footer-info {
 		margin: 20px 40px;
 	}
+
 </style>
 </head>
 <body>
 <div class="footer-container">
+<div class="footer-contents">
 <h3 class="footer-logo">구해줘 홈즈</h3>
 <div class="footer-category">
 	<ul>
@@ -74,5 +82,7 @@
 	<div class="footer-info">©2020 homes</div>	
 </div>
 </div>
+</div>
+
 </body>
 </html>
