@@ -17,6 +17,16 @@
 
   
 <style type="text/css">
+
+	.main-visual{
+		width:100vw;
+		min-height:500px;	
+	}
+	
+	.wholeScreen {
+		width:100vw;		
+	}
+	
 	.tag{
 		display:inline
 	}
@@ -126,7 +136,7 @@
 	}
 	
 	.images-container {
-		width:1100px;
+		width:1320px;
 		margin: auto auto;
 	}
 	
@@ -245,6 +255,8 @@
   </div>
 </div>
 <br>
+<div class="main-visual">
+<div class="wholeScreen">
 <!------- hashtags ------->
 <div class="images-container">
 <div class="hashtags">	
@@ -304,6 +316,8 @@
 	<c:set var="i" value="${i+1}"/>
 	</c:forEach>
 </div>	
+</div>
+</div>
 </div>
 
 <div class="sideBanner">

@@ -17,6 +17,16 @@
   
 <style type="text/css">
 
+	.main-visual{
+		width:100%;
+		min-height:500px;	
+	}
+
+	.main-container {
+		width:1320px;
+		margin: auto auto;	
+	}
+
 	.side-inner-btn{
 		width:60px;
 		height:60px;
@@ -79,7 +89,7 @@
 	}
 	
 	
-	a {
+	.info-list-link {
 		text-decoration: none;
 		color:black;
 	}
@@ -136,6 +146,8 @@
 </head>
 <body>
 <!-------- 검색하기 --------->
+<div class="main-visual">
+<div class="main-container">
 <div class="search-form">
 	<h2>정보 검색하기</h2>
 	<p>인테리어 관련된 팁을 얻어가세요!</p>
@@ -188,7 +200,8 @@
 </c:choose>
 </ul>
 </div>
-
+</div>
+</div>
 <div class="sideBanner">
 	<c:choose>
 		<c:when test="${sessionScope.user != null}">

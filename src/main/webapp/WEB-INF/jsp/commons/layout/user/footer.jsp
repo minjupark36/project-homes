@@ -20,12 +20,18 @@
 		font-color: black;
 	}
 	.footer-container{
-		width:100%;
+		width:100vw;
 		height:300px;
-		border-top: solid 1px black;
+		background-color: whitesmoke;
 		padding-top:30px;
 		margin-top:30px;
 	}
+	
+	.footer-contents {
+		width: 1320px;
+		margin: auto auto;
+	}
+	
 	a {
 		text-decoration: none;
 		color:orange;
@@ -46,7 +52,7 @@
 		height: 100px;
 		float: right;
 		margin-top:-100px;
-		margin-right: -680px;
+		margin-right: -650px;
 	}
 	
 	.footer-info {
@@ -56,8 +62,8 @@
 </style>
 </head>
 <body>
-
 <div class="footer-container">
+<div class="footer-contents">
 <h3 class="footer-logo">구해줘 홈즈</h3>
 <div class="footer-category">
 	<ul>
@@ -74,6 +80,7 @@
 	<div class="footer-info">제휴문의 homes@homes.com</div>
 	<div class="footer-info">서울특별시 종로구 수표로 105 육의전빌딩 8,9층 TEL: 02-766-8367</div>
 	<div class="footer-info">©2020 homes</div>	
+</div>
 </div>
 </div>
 

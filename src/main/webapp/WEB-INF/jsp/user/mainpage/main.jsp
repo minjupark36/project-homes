@@ -18,25 +18,25 @@
 <style type="text/css">
 
 	.main-visual{
-		width:100%;
-		height:500px;
-		
-		
-	}
-	
-	.main-container {
-		width:100%;
-		margin: 0 0;
-		padding: 0 30px;
-		
-		
+		width:100vw;
+		min-height:500px;	
 	}
 
 	.visual-container {
-		height:500px;
+		height:500px ;
+		width:100%;
 		background-image: url("https://webstockreview.net/images/furniture-clipart-interior-design.png");
 		background-repeat:no-repeat;
 		background-position: center bottom;
+	}
+	
+	.wholeScreen {
+		width:100vw;		
+	}
+	
+	.main-container{
+		width:1320px;
+		margin: auto auto;
 	}
 	
 	#login, #logout {
@@ -81,12 +81,7 @@
 	.container {
 		margin-left:0px;
 	}
-	.main-container {
-		width: 1320px;
-  		margin: auto auto;
-  		padding: 0 15px;	 		
-  	}
-  		
+	
   	.card {
   		display:inline-block;
   		margin:10px 10px;
@@ -131,7 +126,9 @@
 	 #list {
 	 	width:100%; 
 	 	position: relative;
+	 	margin: auto auto;
 	 }
+	 
 	 
 	 #list .button {
 	 	position: absolute; 
@@ -288,9 +285,10 @@
 <body>
 
 <div class="main-visual">
-<div class="main-container visual-container"></div>
+<div class="visual-container"></div>
 
 <!-------회원가입시 선택한 hashtags--------------->
+<div class="wholeScreen">
 <c:choose>
 <c:when test="${sessionScope.loginCheck eq true}">
 <div class="hashtags">	
@@ -362,7 +360,7 @@
 	
 <c:set var="i" value="0" />
 <c:set var="j" value="4" />
-
+<div class="main-container">
 <div id="list">
 	<c:forEach var="deco" items="${deco}">
 	<c:if test="${i%j==0}">
@@ -415,6 +413,8 @@
  	</div>
 </div>
 </c:forEach>
+</div>
+</div>
 
 <div class="sideBanner">
 	<c:choose>
