@@ -23,4 +23,6 @@ public interface ScrapMapper {
 	int countView(long id);
 	int countScrap(long id);
 
+	int getScrapCount(Long id);
+
 }

@@ -37,4 +37,8 @@ public class ScrapService {
 		return scrapMapper.countScrap(id);
 	}
 
+	public int getScrapCount(Long id) {
+		return scrapMapper.getScrapCount(id);
+	}
+
 }

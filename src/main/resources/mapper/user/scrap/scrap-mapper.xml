@@ -76,6 +76,18 @@
 		, id desc
 	LIMIT ${limit}
 	
+	</select>	
+	
+	<select id="getScrapCount"
+	parameterType="long"
+	resultType="Integer">
+		SELECT 
+			count(images_id)
+		FROM
+			scrap_images
+		WHERE
+			members_id = #{id}
+			
 	</select>
 	
 	<insert id="addToScrap" 
@@ -116,7 +128,6 @@
 		WHERE 
 			id = #{id}
   			
-	</update>
-	
+	</update>	
 	
 </mapper>

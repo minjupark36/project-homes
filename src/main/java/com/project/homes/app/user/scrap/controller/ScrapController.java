@@ -38,6 +38,8 @@ public class ScrapController {
 		MemberDto memberDto = Utils.getMemberFromSession();
 
 		model.addAttribute("scrapList",scrapService.getScrapList(sort,limit,memberDto));
+		model.addAttribute("scrapCount",scrapService.getScrapCount(memberDto.getId()));
+		
 		return "user/scrap/scrapList";
 	}
 	

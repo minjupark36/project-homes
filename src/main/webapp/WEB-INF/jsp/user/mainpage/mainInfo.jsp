@@ -133,6 +133,7 @@
 		text-align: center;
 	}
 
+
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -152,6 +153,7 @@
 	<h2>정보 검색하기</h2>
 	<p>인테리어 관련된 팁을 얻어가세요!</p>
 	<form action="/main/info" method="post">
+		<span class="searchicon"><i class="fas fa-search fa-2x"></i></span>
 		<input type="text" name="search" id="search" placeholder="궁금한 것을 검색해보세요." value="${searchAs}">		
 	</form>
 </div>
