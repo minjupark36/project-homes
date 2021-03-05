@@ -14,8 +14,7 @@
 		display:inline-block;
 		width:250px;
 		height:700px;
-		float:left;
-		margin-left:40px;		
+		float:left;	
 		font-size: 10px;
 		background-color: whitesmoke;		
 	}
@@ -23,7 +22,7 @@
 	.intro {
 		width:100%;
 		height: 140px;
-		background-color: #aaaaaa	;
+		background-color: #6c757d	;
 	}
 	
 	.intro > h3 {
@@ -56,7 +55,7 @@
 		margin-left: 90px;
 		font-size: 30px;
 		display: inline;
-		color: #aaaaaa;
+		color: #6c757d;
 	}
 	
 	.navbar-nav {
@@ -76,6 +75,8 @@
 	
 	.main-container {
 		width:1320px;
+		height:700px;
+		margin: auto auto;
 	}
 	
 	.list-container {
@@ -94,26 +95,32 @@
 		margin-left:830px;
 	}
 	
-	a:hover {
+	.category-list > ul >li >a {
 		text-decoration: none;
-		color: black;
-	}
-	
-	a {
-		color : #FFB400;
+		color : black;
 	}
 	
 	.page-item.active .page-link {
-		background-color : #f0ad4e;
-		border-color: #f0ad4e;
+		background-color : #6c757d;
+		border-color: #6c757d;
 	}
 	
 	.page-link {
-		color : #FFB400;
-		
+		color : #6c757d;		
 	}
+	
+	.category-left{
+		width:100%;
+		height: 140px;
+		border-bottom: solid 1px #6c757d;
+	}
+	
+	.category-left > h2{
+		padding-top: 50px;
+	}
+	
 </style>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <script>
 
 	$(document).ready(function(){	
@@ -128,6 +135,9 @@
 		$(".selectEach").click(function(){
 			$("#selectAll").prop("checked",false)
 		})
+		
+		var date = new Date();
+		${".todays-date"}.text(date);
 
     });
 
@@ -161,10 +171,8 @@
 			}
 			}); 
 			
-		}
-				 
+		}				 
 	}
-
  		
 </script>
 </head>
@@ -184,8 +192,13 @@
 	</ul>
 </div>	
 </div>
+
 <!-------- board list --------->
 <div class="list-container">
+<div class="category-left">
+	<h2>관리자 게시판</h2>
+	<span class="todays-date"></span>
+</div>
 	<table class="table table-hover">
 		<tr>
 			<th>
@@ -196,8 +209,7 @@
 			<th>Title</th>
 			<th>Date</th>
 			<th>Views</th>
-			<th>Edit</th>
-			
+			<th>Edit</th>			
 		</tr>
 	
 		<c:forEach var="list" items="${pageInfo.list}">	
@@ -224,8 +236,8 @@
 	
 	</table>
 
-<button type="button" id="massiveDeleteBtn" onclick="massiveDelete();" style="cursor: pointer;" class="btn btn-outline-primary">삭제</button>
-<button type="button" id="writeBtn" onclick="location.href='/admin/board/insert'" style="cursor: pointer;" class="btn btn-warning ">글쓰기</button>	
+<button type="button" id="massiveDeleteBtn" onclick="massiveDelete();" style="cursor: pointer;" class="btn btn-outline-dark">삭제</button>
+<button type="button" id="writeBtn" onclick="location.href='/admin/board/insert'" style="cursor: pointer;" class="btn btn-secondary ">글쓰기</button>	
 <!-------- pagination --------->
 <div id="paging">
 <ul id="pagination" class="my pagination">
@@ -272,7 +284,7 @@
 				<input type="text" name="search" id="search" class="form-control" value="${searchMap.search }">
 			</div>
 			<div class="col-2">
-				<button type="submit" class="btn btn-raised btn-warning btn-round waves-effect">검색</button>
+				<button type="submit" class="btn btn-raised btn-secondary btn-round waves-effect">검색</button>
 			</div>
 		</div>
 	</form>
