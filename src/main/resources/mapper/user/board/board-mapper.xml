@@ -72,8 +72,8 @@
 	      	AND ${searchMap.searchAs} LIKE CONCAT('%',#{searchMap.search},'%')
 	      </where>
       	</if>
-      	
-      	order by group_no desc,group_order,depth desc
+      	ORDER BY group_no desc,group_order,depth desc
+	
 	</select>
 	
 	<select id="getBoardDetail" resultType="BoardDto" parameterType="long" resultMap="boardDtoResultMap">

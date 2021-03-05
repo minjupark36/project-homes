@@ -7,6 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril Fatface" rel="stylesheet">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -51,15 +52,25 @@
 		width:1000px;
 		margin-left:400px
 	}
-	#paging { font-family: "Roboto", sans-serif; }
-	#paging li a { border-radius:0 !important; color:#333 !important; }
-	#paging li.active a { color:#fff !important; background:#444 !important; border-color:#444 !important; }
-	
+	#paging { 
+		font-family: "Roboto", sans-serif; 
+	}
+	#paging li a { 
+		border-radius:0 !important; color:#333 !important; 
+	}
+	#paging li.active a { 
+		color:#fff !important; background:#444 !important; border-color:#444 !important; 
+	}
+	.title{
+		font-family:Abril Fatface;
+		font-size:120px;
+		margin-left:20px
+	}
+
 </style>
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-
 	function write(num) { 
 		
 		$.ajax({ 
@@ -84,6 +95,8 @@
 </script>
 </head>
 <body>
+<div class="title">Community</div>
+<br>
 <div class="category">
 	<ul class="navbar-nav">
 		<li class="nav-item active"><a href="/user/board/1" class="nav-link cate">자유게시판</a></li>
