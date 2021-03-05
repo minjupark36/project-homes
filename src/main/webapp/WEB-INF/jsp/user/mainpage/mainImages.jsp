@@ -28,13 +28,14 @@
 	}
 	
 	.tag{
-		display:inline
+		display:inline;
 	}
 
 	
 	.sorting {
-		width:1100px;
+		width:1300px;
 		margin: auto auto ;
+		margin-top: 30px;
 	}
 
 	.main-container {

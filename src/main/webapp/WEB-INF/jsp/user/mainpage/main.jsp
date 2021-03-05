@@ -39,25 +39,6 @@
 		margin: auto auto;
 	}
 	
-	#login, #logout {
-		width:800px;
-		color:white;
-		text-align: right;
-		font-weight: bolder;
-		font-size: 1.5em;
-		text-decoration: none;
-	}
-	
-	#logout > a {
-		text-decoration: none;
-		color:white;
-	}
-	
-	#login > a {
-		text-decoration: none;
-		color:white;
-	}
-	
 	.tag{
 		display:inline
 	}
@@ -65,18 +46,6 @@
 	.tags{
 		display:inline
 	}
-	
-	#home-icon {
-		width:30px;
-		height:30px;
-	}
-	
-	.header {
-		width: 100%;
-		height:300px;
-		background-image: "https://images.unsplash.com/photo-1504253163759-c23fccaebb55?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80";		
-	}
-	
 	
 	.container {
 		margin-left:0px;

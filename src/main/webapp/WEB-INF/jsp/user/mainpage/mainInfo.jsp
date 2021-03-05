@@ -174,10 +174,10 @@
 <ul id="pagination" class="pagination">
 <c:choose> 
 	<c:when test="${infoList.hasPreviousPage}">
-		<li class="page-item"><a class="page-link" href="/main/info/${pageInfo.pageNum-1}">이전</i></a></li>
+		<li class="page-item"><a class="page-link" href="/main/info/${pageInfo.pageNum-1}">&lt&lt</a></li>
 	</c:when>
 	<c:otherwise>
-		<li class="page-item"><a class="page-link" href="javascript:void()">이전</a></li>
+		<li class="page-item"><a class="page-link" href="javascript:void()">&lt&lt</a></li>
 	</c:otherwise>
 </c:choose>
 	<c:forEach var="p" items="${infoList.navigatepageNums}">
@@ -192,10 +192,10 @@
 	</c:forEach>
 <c:choose>
 	<c:when test="${infoList.hasNextPage}">
-		<li class="page-item"><a class="page-link" href="/main/info/${pageInfo.pageNum+1}">다음</a></li>
+		<li class="page-item"><a class="page-link" href="/main/info/${pageInfo.pageNum+1}">&gt&gt</a></li>
 	</c:when>
 	<c:otherwise>
-		<li class="page-item"><a class="page-link" href="javascript:void()">다음</a></li>
+		<li class="page-item"><a class="page-link" href="javascript:void()">&gt&gt</a></li>
 	</c:otherwise>
 </c:choose>
 </ul>
