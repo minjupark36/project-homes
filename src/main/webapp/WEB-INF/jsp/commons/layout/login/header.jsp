@@ -20,6 +20,7 @@
 	}
 	
 	#login, #logout {
+		margin-left:550px;
 		width:1320px;
 		color:whitesmoke;
 		text-align: right;

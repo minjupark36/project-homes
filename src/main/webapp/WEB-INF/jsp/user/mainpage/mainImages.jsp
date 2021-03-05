@@ -278,6 +278,7 @@
 <input type="text" name="hashtagsNames" id="hashtagsNames" class="form-control searchTag" placeholder="검색할 태그를 입력해주세요"><button type="submit" class="btn btn-outline-secondary searchBtn">검색</button>
 </form>
 </div>
+<br>
 <!------- hashtags ------->
 <div class="images-container">
 <div class="hashtags">	
