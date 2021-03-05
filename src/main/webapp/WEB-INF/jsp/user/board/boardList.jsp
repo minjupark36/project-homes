@@ -51,7 +51,9 @@
 		width:1000px;
 		margin-left:400px
 	}
-	
+	#paging { font-family: "Roboto", sans-serif; }
+	#paging li a { border-radius:0 !important; color:#333 !important; }
+	#paging li.active a { color:#fff !important; background:#444 !important; border-color:#444 !important; }
 	
 </style>
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
