@@ -9,8 +9,17 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Abril Fatface" rel="stylesheet">
 <style>
-	
+	.title{
+		font-family:Abril Fatface;
+		font-size:120px;
+		margin-left:20px
+	}
+	#form{
+		width:1400px;
+		margin-left:13%
+	}
 </style>
 <script>
 	function editBoard(id,categoriesId){
@@ -73,6 +82,8 @@
 </script>
 </head>
 <body>
+<div class="title">Community</div>
+<br><br><br>
 <c:set var="d" value="${boardDetail}"></c:set>
 <div>
 <form action="/user/board/edit" method="post" enctype="multipart/form-data" id="form">
@@ -121,9 +132,9 @@
 </table>
 <br>
 <button type="button" class="btn btn-outline-secondary" onclick="editBoard(${d.id},${d.categoriesId})">수정완료</button>
-
-</form>
 <button type="button" class="btn btn-outline-secondary" onclick="location.href='/user/board/detail?id=${d.id}&categoriesId=${d.categoriesId}'">취소</button>
+</form>
+
 </div>
 </body>
 </html>

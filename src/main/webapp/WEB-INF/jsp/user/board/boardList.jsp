@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Abril Fatface" rel="stylesheet">
 <head>
 <meta charset="UTF-8">
@@ -41,12 +41,12 @@
 	.cate{
 		 font-size:30px;
 		 color:black;
-		 font-family:sunflower
+		 font-family:Jua
 	}
 	#write{
 		color:black;
 		font-size:20px;
-		font-family:sunflower
+		font-family:Jua
 	}
 	#search-form{
 		width:1000px;

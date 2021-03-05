@@ -12,6 +12,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Abril Fatface" rel="stylesheet">
 <style>
 	.ScrollButton {
 		  position: fixed;   /* 버튼의 위치 고정 */
@@ -45,6 +46,11 @@
 	.reply{
 		width:1300px;
 		margin-left:8%
+	}
+	.title{
+		font-family:Abril Fatface;
+		font-size:120px;
+		margin-left:20px
 	}
 </style>
 <script>
@@ -134,7 +140,8 @@
 </script>
 </head>
 <body>
-
+<div class="title">Community</div>
+<br><br><br>
 <c:set var="d" value="${boardDetail}"></c:set>
 <input type="hidden" value="${d.id}" name="id" id="id"/> 
 <div id="detail">
@@ -163,7 +170,7 @@
 	
 </div>
 </div>
-<br>	
+<br><br><br>	
 <c:choose>	
 <c:when test="${d.depth == 0}">
 <div class="reply">

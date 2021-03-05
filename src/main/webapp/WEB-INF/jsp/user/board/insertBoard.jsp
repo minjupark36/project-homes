@@ -7,10 +7,16 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Abril Fatface" rel="stylesheet">
 <style>
 	#form{
 		width:1400px;
 		margin-left:13%
+	}
+	.title{
+		font-family:Abril Fatface;
+		font-size:120px;
+		margin-left:20px
 	}
 	
 </style>
@@ -58,6 +64,8 @@
 </script>
 </head>
 <body>
+<div class="title">Community</div>
+<br><br><br>
 <div>
 <form action="/user/board/insert" method="post" enctype="multipart/form-data" id="form" name="form">
 <input name="membersId" type="hidden" value="${sessionScope.user.id}">
